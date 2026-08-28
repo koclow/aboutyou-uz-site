@@ -26,3 +26,9 @@ h1,h2{font-weight:800;letter-spacing:.005em}
   .nav--split .nav__menu{display:flex;gap:12px}
   .nav--split .nav__menu a{font-size:10px;letter-spacing:.06em}
 }
+
+/* belt--paper (v2): лента между бумажным героем и бумажными направлениями —
+   тоже бумага, чтобы не висела чужой тёмной полосой. Красный YOU прямо над
+   ней — красная плашка слиплась бы с буквой. Красными остаются точки. */
+.belt--paper{background:var(--paper);border-color:var(--ink-hair)}
+.belt--paper span{color:var(--ink-dim)}
