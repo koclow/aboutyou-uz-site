@@ -87,7 +87,9 @@
   width:100%;height:100%;object-fit:cover;
   transition:transform var(--dur-m) var(--ease);
 }
-.catalog__card:hover .catalog__poster img{transform:scale(1.02)}
+@media (hover:hover){
+  .catalog__card:hover .catalog__poster img{transform:scale(1.02)}
+}
 /* высоты постеров с макета (ширина колонки 400) */
 .catalog__poster--h250{aspect-ratio:400/250}
 .catalog__poster--h260{aspect-ratio:400/260}
@@ -102,7 +104,9 @@
   width:7px;height:7px;
   transition:transform var(--dur-s) var(--ease);
 }
-.catalog__card:hover .catalog__dot--card{transform:scale(1.45)}
+@media (hover:hover){
+  .catalog__card:hover .catalog__dot--card{transform:scale(1.45)}
+}
 .catalog__t{
   margin:0;font-family:var(--body);font-size:var(--fs-card);font-weight:600;
   line-height:1.4;letter-spacing:-.005em;color:var(--ink);
@@ -116,7 +120,8 @@
   text-decoration:underline;text-underline-offset:3px;
   text-decoration-color:var(--catalog-ink-25);
 }
-.catalog__metric{color:var(--signal)}
+/* метрика — единое число, рвать её посреди «3,77 млн» нельзя */
+.catalog__metric{color:var(--signal);white-space:nowrap}
 
 /* вход остающихся карточек при смене фильтра (стагер задаёт js) */
 @media (prefers-reduced-motion:no-preference){
@@ -136,16 +141,31 @@
 }
 .catalog__all:hover{background:var(--ink);border-color:var(--ink);color:var(--paper)}
 
-/* ══ 900–1200: две колонки, параллакса нет ══ */
-@media (min-width:900px) and (max-width:1199px){
-  .catalog__grid{display:block;columns:2;column-gap:40px;margin-top:56px}
-  .catalog__col{display:contents}
-  .catalog__card{break-inside:avoid;margin:0 0 64px}
+/* ══ <1200: параллакса нет, UI становится «пальцевым» ══ */
+@media (max-width:1199px){
+  /* штрих выходит на ~9px ниже строки — даём счётчику проектов не упереться в него */
+  .catalog__head{gap:22px 20px}
+  .catalog__filter{align-items:center;margin-top:32px;gap:2px 22px}
+  /* тап-мишень фильтра: сам текст 15px, добираем до 44 по высоте */
+  .catalog__f{align-items:center;min-height:44px}
+  .catalog__foot{margin-top:64px}
 }
 
-/* ══ <900: одна колонка, форматы чередуются ══ */
-@media (max-width:899px){
-  .catalog__grid{display:flex;flex-direction:column;gap:44px;margin-top:44px}
+/* ══ 700–1200: две колонки (планшет 768), параллакса нет ══ */
+@media (min-width:700px) and (max-width:1199px){
+  .catalog__grid{display:block;columns:2;column-gap:40px;margin-top:56px}
+  .catalog__col{display:contents}
+  .catalog__card{
+    break-inside:avoid;-webkit-column-break-inside:avoid;page-break-inside:avoid;
+    margin:0 0 64px;
+  }
+}
+
+/* ══ <700: одна колонка, форматы чередуются ══ */
+@media (max-width:699px){
+  /* align-items у грида в базе — flex-start; в колоночной раскладке это
+     схлопывало карточку до ширины постера, поэтому здесь явный stretch */
+  .catalog__grid{display:flex;flex-direction:column;align-items:stretch;gap:44px;margin-top:44px}
   .catalog__col{display:contents}
   .catalog__poster{max-height:68vh}
   .catalog__col--a .catalog__card:nth-child(1){order:1}
@@ -158,7 +178,6 @@
   .catalog__col--b .catalog__card:nth-child(3){order:8}
   .catalog__col--c .catalog__card:nth-child(3){order:9}
   .catalog__foot{margin-top:56px}
-  .catalog__filter{gap:10px 20px}
 }
 
 @media (prefers-reduced-motion:no-preference) and (min-width:1200px){

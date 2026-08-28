@@ -101,6 +101,13 @@
   .apply__foot{margin-top:40px}
   .apply__plate{height:120px}
   .apply__mark{bottom:-4px}
+
+  /* тач-ширины: мишень ссылки и высота поля — не меньше 44px */
+  .apply__contacts{gap:2px;margin-top:10px}
+  .apply__contact{min-height:44px;padding:4px 0}
+  .apply__input{padding:11px 0 13px}
+  /* большое нижнее поле десктопа не нужно: даём настоящую высоту в строках */
+  .apply__area{min-height:110px;padding-bottom:14px}
 }
 
 @media (prefers-reduced-motion:reduce){

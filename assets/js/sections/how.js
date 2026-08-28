@@ -8,16 +8,40 @@
   if (!tabs.length) return;
   var panels = tabs.map(function (t) { return document.getElementById(t.getAttribute('aria-controls')); });
   var head = root.querySelector('.how__head');
+  var frames = Array.prototype.slice.call(root.querySelectorAll('.how__frame'));
   var STAGE = 1312;          /* ширина схемы в макете 1440 */
   var OUT = 200, IN = 300;   /* уход / приход панели, мс */
   var current = 0;
   var busy = false;
 
-  /* ── масштаб схемы: k = ширина контента / 1312, не больше 1 ── */
+  /* ── масштаб схемы: k = ширина контента / 1312, не больше 1 и
+     не меньше --how-k-min (ниже него подписи узлов не читаются).
+     Упёрлись в минимум → схема шире рамки и листается вбок: об этом
+     говорим словами через класс .how--pan. ── */
   function fit() {
     var w = (head || root).getBoundingClientRect().width;
     if (!w) return;
-    root.style.setProperty('--how-k', Math.min(1, w / STAGE).toFixed(4));
+    var min = parseFloat(getComputedStyle(root).getPropertyValue('--how-k-min'));
+    if (!(min > 0)) min = 0;
+    var k = Math.min(1, w / STAGE);
+    var pan = false;
+    /* держим минимум только если он даёт заметный выигрыш: ради 20px
+       прокрутки схему не режем и подсказку не показываем */
+    if (min > 0 && k < min && STAGE * min - w > 24) { k = min; pan = true; }
+    root.style.setProperty('--how-k', k.toFixed(4));
+    root.classList.toggle('how--pan', pan);
+    /* прокручиваемую рамку надо уметь листать и с клавиатуры */
+    frames.forEach(function (f) {
+      if (pan) {
+        f.setAttribute('tabindex', '0');
+        f.setAttribute('role', 'group');
+        f.setAttribute('aria-label', 'Схема сценария, прокручивается по горизонтали');
+      } else {
+        f.removeAttribute('tabindex');
+        f.removeAttribute('role');
+        f.removeAttribute('aria-label');
+      }
+    });
   }
   fit();
   window.addEventListener('resize', fit);

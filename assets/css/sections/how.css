@@ -24,13 +24,16 @@
 
   /* ── масштаб схемы: k = ширина контейнера / 1312 ── */
   --how-k:1;
+  /* ниже этого масштаба подписи узлов перестают читаться (16px → 11px):
+     схема не жмётся дальше, а листается вбок внутри рамки */
+  --how-k-min:.7;
 
   padding:clamp(64px,12vh,110px) var(--pad) clamp(56px,10vh,100px);
 }
 /* запасные значения до того, как скрипт измерит контейнер */
 @media (max-width:1439px){ .how{--how-k:.88} }
 @media (max-width:1200px){ .how{--how-k:.76} }
-@media (max-width:1024px){ .how{--how-k:.68} }
+@media (max-width:1024px){ .how{--how-k:.7} }
 
 /* ══ шапка акта ══ */
 .how__head{display:flex;align-items:flex-end;justify-content:space-between;gap:40px;flex-wrap:wrap}
@@ -73,23 +76,29 @@
 
 /* ══ схема: рамка + сцена 1312×430, масштабируемая по ширине ══ */
 .how__frame{
-  position:relative;margin-top:34px;overflow:hidden;
+  position:relative;margin-top:34px;
+  overflow-x:auto;overflow-y:hidden;overscroll-behavior-x:contain;
+  -webkit-overflow-scrolling:touch;scrollbar-width:thin;
   height:calc(430px * var(--how-k));
   border-top:1px solid var(--ink-hair);border-bottom:1px solid var(--ink-hair);
 }
 .how__stage{
-  position:relative;width:1312px;height:430px;
+  position:relative;
+  /* содержимое живёт в координатах макета 1312×430 и ужимается transform'ом,
+     а бокс сцены сразу в масштабе — иначе рамка прокручивалась бы до 1312px
+     пустоты (transform не меняет layout-размер) */
+  width:calc(1312px * var(--how-k));height:calc(430px * var(--how-k));
   transform:scale(var(--how-k));transform-origin:0 0;
 }
 /* вертикальные hairlines каждые 187px (187…1122) */
 .how__stage::before{
-  content:"";position:absolute;top:0;bottom:0;left:187px;width:936px;pointer-events:none;
+  content:"";position:absolute;top:0;height:430px;left:187px;width:936px;pointer-events:none;
   background-image:linear-gradient(to right,var(--ink-grid) 0 1px,transparent 1px);
   background-size:187px 100%;
 }
-/* пунктирная ось */
+/* пунктирная ось — на всю ширину макета, а не на ужатый бокс сцены */
 .how__stage::after{
-  content:"";position:absolute;left:0;right:0;top:215px;
+  content:"";position:absolute;left:0;width:1312px;top:215px;
   border-top:1px dashed var(--ink-hair);pointer-events:none;
 }
 
@@ -99,8 +108,9 @@
   font-size:var(--fs-tech);font-weight:600;letter-spacing:.14em;
   text-transform:uppercase;color:var(--ink-mid);white-space:nowrap;
 }
-.how__tech--right{left:auto;right:0}
-.how__tech--bottom{top:auto;bottom:14px}
+/* правый и нижний края отсчитываются от макета 1312×430, а не от ужатого бокса */
+.how__tech--right{left:auto;right:calc(100% - 1312px)}
+.how__tech--bottom{top:auto;bottom:calc(100% - 416px)}
 .how__tech--soft{color:var(--how-tech-soft)}
 .how__tech--hot{color:var(--signal)}
 
@@ -167,8 +177,28 @@
   @keyframes howNodeIn{from{opacity:0;transform:translateY(10px)}}
 }
 
-/* ══ ≤900px: схема разворачивается в вертикальный список узлов ══ */
-@media (max-width:899px){
+/* ══ планшет: схема живёт, полоса фаз складывается в 2×2,
+   вкладки получают тап-мишень ≥44px ══ */
+@media (max-width:1023px){
+  .how__phases{grid-template-columns:repeat(2,minmax(0,1fr));gap:26px 32px}
+  .how__tabs{gap:8px}
+  .how__tab{padding:15px 18px}
+}
+/* схему, которая не влезла по ширине, листают вбок — говорим об этом словами.
+   Подсказку включает скрипт (.how--pan) только когда прокрутка реально есть. */
+.how--pan .how__lead::after{
+  content:"Схема шире экрана — листается вбок →";
+  display:block;margin-top:14px;
+  font-family:var(--body);font-size:var(--fs-tech);font-weight:600;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--how-tech-soft);
+}
+
+/* ══ ≤720px: схема разворачивается в вертикальный список узлов ══ */
+@media (max-width:719px){
+  .how{--how-k-min:0}
+  /* вкладки в столбец во всю ширину — иначе рваный правый край */
+  .how__tabs{flex-direction:column;align-items:stretch}
+  .how__tab{justify-content:flex-start}
   .how__intro{margin-bottom:0}
   .how__frame{height:auto;overflow:visible;border:0;margin-top:26px}
   .how__stage{width:auto;height:auto;transform:none}
@@ -182,6 +212,8 @@
     position:relative;left:auto;top:auto;width:auto;height:auto;
     align-items:flex-start;text-align:left;padding:12px 14px;
   }
+  /* сабподпись 8.5px — размер для схемы 1:1; в списке она читается */
+  .how__node-s{margin-top:5px;font-size:var(--fs-tech);letter-spacing:.08em}
   .how__node::before{
     content:"";position:absolute;left:-26px;top:16px;
     width:9px;height:9px;border-radius:50%;background:var(--signal);
