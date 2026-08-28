@@ -24,9 +24,12 @@
 }
 .vhero__svg{width:100%;height:auto;color:inherit}
 
-/* ABOUT — по центру, под фиксированной шапкой (66px + воздух) */
+/* ABOUT — по центру у самого верха, в одной полосе с меню: два меню
+   разведены по углам, центр шапки свободен именно под него. Когда герой
+   уходит и выезжает плашка, на это же место встаёт лого (см. v2.css).
+   На ≤720 меню занимает всю ширину — там ABOUT опускается под шапку. */
 .vhero__about{
-  position:absolute;top:90px;left:50%;z-index:2;
+  position:absolute;top:12px;left:50%;z-index:2;
   transform:translateX(-50%);
   width:max(150px,21vw);color:var(--ink);
 }
@@ -116,11 +119,13 @@
    рамка крупнее — потолок 80vw вместо 70vw ── */
 @media (max-width:720px){
   .vhero{min-height:560px}
+  /* меню на узком занимает всю полосу шапки — ABOUT уходит под неё */
+  .vhero__about{top:82px}
   .vhero__frame{
     --k:2;
     --w:min(calc(var(--fw) * var(--k) * 1vw),80vw,calc(var(--cap) * var(--arn)));
   }
-  .vhero__notes{top:140px;bottom:auto;flex-direction:column;align-items:stretch;gap:6px}
+  .vhero__notes{top:132px;bottom:auto;flex-direction:column;align-items:stretch;gap:6px}
   .vhero__note{max-width:none}
   .vhero__note--r{text-align:left}
 }

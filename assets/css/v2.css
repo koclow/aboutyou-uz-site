@@ -32,3 +32,55 @@ h1,h2{font-weight:800;letter-spacing:.005em}
    ней — красная плашка слиплась бы с буквой. Красными остаются точки. */
 .belt--paper{background:var(--paper);border-color:var(--ink-hair)}
 .belt--paper span{color:var(--ink-dim)}
+
+/* Лого в шапке v2 появляется вместе с плашкой и ровно там, где было
+   слово ABOUT: пока герой на экране — вордмарк живёт в макете, шапка
+   пустая по центру; герой ушёл, плашка выехала — лого занимает его место.
+   Абсолютное позиционирование, чтобы не растащить два меню по углам. */
+.nav__id--onsolid{
+  position:absolute;left:50%;top:50%;
+  transform:translate(-50%,-50%) translateY(-6px);
+  opacity:0;pointer-events:none;
+  transition:opacity var(--dur-s) var(--ease),transform var(--dur-s) var(--ease);
+}
+.nav.solid .nav__id--onsolid{
+  opacity:1;pointer-events:auto;
+  transform:translate(-50%,-50%);
+}
+@media (prefers-reduced-motion:reduce){
+  .nav__id--onsolid{transition:none;transform:translate(-50%,-50%)}
+}
+
+/* ── подвал v2 ──
+   Секция «Заявка» общая с первой страницей (sections/apply.html), поэтому
+   всё здесь — переопределения через .page-v2: разметку не трогаем.
+
+   1. Красная плашка идёт до самого низа страницы: секции снимаем нижний
+      padding, плашке даём выпуск на поля — она ложится во всю ширину и
+      упирается в край окна, тёмной полосы под ней не остаётся.
+   2. Отклик на курсор: вордмарк всплывает (bottom:-14px → 0, буквы
+      показываются целиком) и уходит в --signal-lift, а подложка
+      прогревается от бордо к сигнальному. Подложка — псевдоэлемент,
+      потому что linear-gradient сам по себе не анимируется. */
+.page-v2 .apply{padding-bottom:0}
+.page-v2 .apply__plate{margin:22px calc(-1 * var(--pad)) 0}
+.page-v2 .apply__plate::after{
+  content:"";position:absolute;inset:0;
+  background-image:linear-gradient(160deg,var(--signal) 0%,var(--bordeaux) 100%);
+  opacity:0;transition:opacity var(--dur-m) var(--ease);
+}
+.page-v2 .apply__mark{z-index:1}
+
+@media (hover:hover){
+  .page-v2 .apply__mark{
+    transition:transform var(--dur-m) var(--ease),color var(--dur-m) var(--ease);
+  }
+  .page-v2 .apply__plate:hover::after{opacity:1}
+  .page-v2 .apply__plate:hover .apply__mark{
+    transform:translateY(-14px);color:var(--signal-lift);
+  }
+}
+
+@media (prefers-reduced-motion:reduce){
+  .page-v2 .apply__plate::after,.page-v2 .apply__mark{transition:none}
+}
