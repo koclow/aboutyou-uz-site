@@ -1,0 +1,108 @@
+/* ══════════════════════════════════════════════════════════
+   Заявка + подвал (id="contact") — финальный акт.
+   Макет: Канвас — рабочие файлы/FinalStudiogram.dc.html (1440).
+   Только var() из tokens.css; hex здесь не живёт.
+   ══════════════════════════════════════════════════════════ */
+.apply{
+  border-top:1px solid var(--faint-16);
+  padding:clamp(56px,10vh,90px) var(--pad) 24px;
+  background-image:linear-gradient(175deg,
+    var(--graphite-2) 0%, var(--graphite-25) 55%, var(--graphite-3) 100%);
+  color:var(--bone);
+}
+.apply__kicker{margin:0 0 38px}
+
+/* ── две колонки: текст 5 / форма 6 ── */
+.apply__cols{display:grid;grid-template-columns:1fr;gap:44px;align-items:start}
+@media (min-width:900px){
+  .apply__cols{grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:80px}
+}
+
+/* ── левая колонка ── */
+.apply__intro{display:flex;flex-direction:column;gap:20px}
+.apply__h{
+  font-family:var(--disp);font-weight:900;text-transform:uppercase;
+  font-size:clamp(28px,3.4vw,44px);line-height:1.08;letter-spacing:-.015em;
+  margin:0;text-wrap:balance;
+}
+.apply__dot{color:var(--signal)}
+.apply__lead{margin:0;font-size:var(--fs-body);line-height:1.6;color:var(--dim);max-width:42ch}
+
+.apply__contacts{display:flex;flex-direction:column;align-items:flex-start;gap:14px;margin-top:14px}
+.apply__contact{
+  display:inline-flex;align-items:center;gap:12px;
+  font-size:14px;color:var(--bone);text-decoration:none;
+  transition:color var(--dur-s) var(--ease);
+}
+.apply__contact:hover{color:var(--signal-lift)}
+.apply__ico{flex:0 0 auto;color:var(--signal)}
+
+/* ── форма ── */
+.apply__form{display:flex;flex-direction:column;gap:28px}
+.apply__pair{display:grid;grid-template-columns:1fr;gap:28px}
+@media (min-width:560px){.apply__pair{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+.apply__field{display:flex;flex-direction:column;gap:9px;margin:0;min-width:0}
+.apply__label{
+  font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--dim-strong);
+}
+.apply__input{
+  width:100%;margin:0;padding:6px 0 10px;
+  font-family:var(--body);font-size:var(--fs-body);line-height:1.5;color:var(--bone);
+  background:transparent;border:0;border-bottom:1px solid var(--faint-30);border-radius:0;
+  transition:border-color var(--dur-s) var(--ease);
+}
+.apply__input::placeholder{color:var(--dim);opacity:1}
+.apply__input:hover{border-bottom-color:var(--dim)}
+.apply__input:focus{outline:none;border-bottom-color:var(--signal)}
+.apply__input:focus-visible{outline:none}
+.apply__area{padding-bottom:38px;min-height:66px;resize:vertical}
+/* автозаполнение браузера не должно выбивать белым прямоугольником */
+.apply__input:-webkit-autofill,
+.apply__input:-webkit-autofill:focus{
+  -webkit-text-fill-color:var(--bone);
+  -webkit-box-shadow:inset 0 0 0 1000px var(--graphite-25);
+  caret-color:var(--bone);
+}
+
+.apply__send{display:flex;align-items:center;gap:22px;flex-wrap:wrap;margin-top:4px}
+.apply__btn{border:0;cursor:pointer;font-family:var(--disp);padding:18px 28px}
+.apply__note{font-size:var(--fs-caption);line-height:1.5;color:var(--dim);max-width:34ch}
+
+/* честная заглушка вместо ложного «отправлено» */
+.apply__status{
+  margin:0;font-size:var(--fs-small);line-height:1.55;color:var(--dim-strong);
+}
+.apply__status[hidden]{display:none}
+.apply__status a{color:var(--signal-lift);text-decoration:none;border-bottom:1px solid var(--faint-30)}
+.apply__status a:hover{border-bottom-color:var(--signal-lift)}
+
+/* ── строка подвала ── */
+.apply__foot{
+  display:flex;justify-content:space-between;gap:10px 28px;flex-wrap:wrap;
+  margin-top:56px;padding-top:16px;border-top:1px solid var(--faint);
+  font-size:var(--fs-kicker);letter-spacing:.1em;text-transform:uppercase;color:var(--dim);
+}
+.apply__foot p{margin:0}
+
+/* ── бордовая плашка со связкой ABOUT YOU ── */
+.apply__plate{
+  position:relative;margin-top:22px;height:200px;overflow:hidden;
+  background-image:linear-gradient(160deg,var(--bordeaux) 0%,var(--bordeaux-deep) 100%);
+}
+.apply__mark{
+  position:absolute;left:0;bottom:-14px;width:100%;height:auto;display:block;
+  color:var(--signal);
+}
+
+/* ── адаптив ── */
+@media (max-width:900px){
+  .apply__foot{margin-top:40px}
+  .apply__plate{height:120px}
+  .apply__mark{bottom:-4px}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .apply__contact,.apply__input{transition:none}
+}

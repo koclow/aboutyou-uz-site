@@ -1,0 +1,94 @@
+/* ══════════════════════════════════════════════════════════
+   About You UZ — секция «О нас» (графитовый акт)
+   Макет: ../Канвас — рабочие файлы/AboutManifesto.dc.html (1440).
+   Жест страницы №2: маркерный штрих под «задача определяет решение»
+   рисуется stroke-dashoffset'ом один раз, при появлении секции.
+   ══════════════════════════════════════════════════════════ */
+
+.manifesto{
+  background:var(--graphite);color:var(--bone);
+  padding:clamp(64px,12vh,130px) var(--pad) clamp(56px,10vh,110px);
+}
+
+/* ── манифест ── */
+.manifesto__text{
+  margin:clamp(28px,5vh,44px) 0 0;max-width:1120px;
+  font-size:var(--fs-manifest);font-weight:500;
+  line-height:1.48;letter-spacing:-.005em;
+}
+.manifesto__accent{font-style:normal;color:var(--signal-lift)}
+
+.manifesto__marked{position:relative;display:inline-block}
+.manifesto__underline{
+  position:absolute;left:0;bottom:-11px;
+  width:100%;height:16px;overflow:visible;pointer-events:none;
+}
+.manifesto__stroke{
+  stroke:var(--signal-lift);
+  stroke-dasharray:1;stroke-dashoffset:1;
+  transition:stroke-dashoffset var(--dur-m) var(--ease) var(--dur-s);
+}
+.manifesto.in .manifesto__stroke{stroke-dashoffset:0}
+
+/* ── строка «Команда» ── */
+.manifesto__team{
+  display:flex;align-items:flex-start;gap:60px;
+  margin-top:clamp(56px,10vh,120px);padding-top:36px;
+  border-top:1px solid var(--faint);
+}
+.manifesto__team-head{
+  display:flex;flex-direction:column;gap:10px;
+  flex:0 0 auto;width:290px;
+}
+.manifesto__team-h{
+  margin:0;font-family:var(--disp);font-weight:900;text-transform:uppercase;
+  font-size:var(--fs-stamp);line-height:1;letter-spacing:-.015em;color:var(--bone);
+}
+.manifesto__team-note{
+  margin:0;font-size:var(--fs-small);line-height:1.55;color:var(--dim);
+}
+.manifesto__team-body{display:flex;flex-direction:column;gap:24px;min-width:0}
+
+/* цепочка перекрывающихся кружков */
+.manifesto__avatars{display:flex;--av:64px;--av-lap:-14px}
+.manifesto__avatar{
+  flex:0 0 auto;width:var(--av);height:var(--av);border-radius:50%;
+  display:inline-flex;align-items:center;justify-content:center;
+  border:2px solid var(--graphite);
+  background:linear-gradient(165deg,var(--avatar-a) 0%,var(--graphite-2) 100%);
+  font-family:var(--disp);font-weight:700;font-size:var(--fs-body);
+  color:var(--dim-half);line-height:1;
+}
+.manifesto__avatar:nth-child(even){
+  background:linear-gradient(165deg,var(--avatar-b) 0%,var(--graphite-2) 100%);
+}
+.manifesto__avatar + .manifesto__avatar{margin-left:var(--av-lap)}
+.manifesto__avatar--more{
+  background:var(--graphite);border:1px dashed var(--faint-30);
+  font-family:var(--body);font-weight:400;font-size:20px;color:var(--signal-lift);
+}
+
+/* импрессум под кружками */
+.manifesto__impressum{
+  margin:0;font-size:var(--fs-body);line-height:2;color:var(--dim);max-width:78ch;
+}
+.manifesto__impressum b{color:var(--bone);font-weight:600}
+.manifesto__impressum i{color:var(--signal-lift);font-style:normal}
+
+/* ── адаптив ── */
+@media (max-width:900px){
+  .manifesto__team{flex-direction:column;gap:clamp(22px,4vh,28px)}
+  .manifesto__team-head{width:auto}
+  .manifesto__text{line-height:1.45}
+  .manifesto__impressum{line-height:1.85;max-width:60ch}
+}
+@media (max-width:520px){
+  .manifesto__avatars{--av:52px;--av-lap:-12px}
+  .manifesto__avatar{font-size:var(--fs-small)}
+  .manifesto__avatar--more{font-size:17px}
+  .manifesto__underline{bottom:-8px;height:12px}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .manifesto__stroke{stroke-dashoffset:0;transition:none}
+}

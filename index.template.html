@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About You — креативное агентство</title>
+<meta name="description" content="PR, продакшн, IT и мероприятия. Ташкент.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;900&amp;family=Golos+Text:wght@400;500;600&amp;display=swap">
+<link rel="stylesheet" href="assets/css/tokens.css">
+<link rel="stylesheet" href="assets/css/main.css">
+<link rel="stylesheet" href="assets/css/sections/cases.css">
+<link rel="stylesheet" href="assets/css/sections/how.css">
+<link rel="stylesheet" href="assets/css/sections/about.css">
+<link rel="stylesheet" href="assets/css/sections/apply.css">
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <a class="nav__id" href="#top"><img src="assets/img/wordmark.png" alt="About You" width="853" height="159"></a>
+  <ul class="nav__menu">
+    <li><a href="#work">Что делаем</a></li>
+    <li><a href="#cases">Кейсы</a></li>
+    <li><a href="#about">О нас</a></li>
+  </ul>
+  <a class="nav__cta" href="#contact">Обсудить проект</a>
+</nav>
+
+<!-- ══ ГЕРОЙ ══ -->
+<header class="hero" id="top">
+  <div class="hero__media" aria-hidden="true">
+    <video src="assets/video/reel.mp4" poster="assets/img/poster.jpg" autoplay muted loop playsinline preload="metadata"></video>
+  </div>
+  <div class="hero__veil" aria-hidden="true"></div>
+
+  <h1 class="hero__h">Это всё — <br>about <em>YOU</em></h1>
+  <div class="hero__base">
+    <p class="hero__sub"><b>Креативное агентство для смелых и сложных задач</b> · PR · Продакшн · IT · События · Ташкент</p>
+    <a class="cta" href="#cases">Посмотреть кейсы</a>
+  </div>
+</header>
+
+<!-- лента услуг: длинный перечень, не дубль направлений -->
+<div class="belt" aria-hidden="true">
+  <div class="belt__track" id="belt-track">
+    <span>+23 % к спросу на квартиры<i>·</i>3,77 млн пользователей платформы<i>·</i>500 тыс.+ посетителей в 25 городах<i>·</i>49 млн охвата события<i>·</i>+42 % к доставке<i>·</i>30 часов прямого эфира<i>·</i>2,95 млн пользователей интерактива<i>·</i></span>
+  </div>
+</div>
+
+<!-- ══ НАПРАВЛЕНИЯ ══ -->
+<section class="work" id="work">
+  <p class="kicker work__kicker rise">Что делаем</p>
+
+  <a class="row rise" href="#cases" data-goto="pr">
+    <img class="row__img" src="assets/img/dir-pr.jpg" alt="" loading="lazy" width="1000" height="562">
+    <span class="row__in">
+      <h2 class="row__name">PR и инфлюенс</h2>
+      <p class="row__desc">Стратегия коммуникаций, СМИ, лидеры мнений, спецпроекты, кризисные коммуникации.</p>
+    </span>
+  </a>
+  <a class="row rise" href="#cases" data-goto="production">
+    <img class="row__img" src="assets/img/dir-production.jpg" alt="" loading="lazy" width="1000" height="562">
+    <span class="row__in">
+      <h2 class="row__name">Продакшн</h2>
+      <p class="row__desc">Имиджевое видео, реклама, съёмки студийного уровня, моушн и графика.</p>
+    </span>
+  </a>
+  <a class="row rise" href="#cases" data-goto="it">
+    <img class="row__img" src="assets/img/dir-it.jpg" alt="" loading="lazy" width="1000" height="562">
+    <span class="row__in">
+      <h2 class="row__name">IT</h2>
+      <p class="row__desc">Платформы, бренд-сайты и цифровые экосистемы, интерактив, разработка с ИИ.</p>
+    </span>
+  </a>
+  <a class="row rise" href="#cases" data-goto="events">
+    <img class="row__img" src="assets/img/dir-events.jpg" alt="" loading="lazy" width="1000" height="562">
+    <span class="row__in">
+      <h2 class="row__name">Мероприятия и выставки</h2>
+      <p class="row__desc">Концепция, продюсирование, выставочные пространства, трансляции.</p>
+    </span>
+  </a>
+</section>
+
+<!-- include:cases -->
+
+<!-- include:how -->
+
+<!-- include:about -->
+
+<!-- include:apply -->
+
+<script src="assets/js/main.js" defer></script>
+<script src="assets/js/sections/cases.js" defer></script>
+<script src="assets/js/sections/how.js" defer></script>
+<script src="assets/js/sections/apply.js" defer></script>
+</body>
+</html>

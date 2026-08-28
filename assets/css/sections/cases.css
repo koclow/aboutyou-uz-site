@@ -1,0 +1,173 @@
+/* ══════════════════════════════════════════════════════════
+   Секция «Кейсы» — каталог в духе Hello Monday.
+   Макет: ../Канвас — рабочие файлы/CasesMonday.dc.html (1440),
+   заголовок с маркерным штрихом — Main.dc.html.
+   Приём акта (по контракту, один): параллакс колонок.
+   Все цвета — из tokens.css; промежуточные прозрачности
+   собираются color-mix'ом от var(--ink), новых hex нет.
+   ══════════════════════════════════════════════════════════ */
+.catalog{
+  /* 12.5px — кегль тихого UI (фильтр, рамочная кнопка); в tokens.css
+     такого шага пока нет, при следующей ревизии вынести в --fs-ui */
+  --catalog-fs-ui:12.5px;
+  --catalog-ink-55:color-mix(in srgb,var(--ink) 55%,transparent);
+  --catalog-ink-50:color-mix(in srgb,var(--ink) 50%,transparent);
+  --catalog-ink-35:color-mix(in srgb,var(--ink) 35%,transparent);
+  --catalog-ink-25:color-mix(in srgb,var(--ink) 25%,transparent);
+
+  padding:clamp(64px,12vh,130px) 0 clamp(56px,10vh,110px);
+  overflow:hidden;              /* сдвинутая параллаксом колонка не лезет в соседний акт */
+}
+.catalog__in{padding:0 var(--pad)}
+
+/* ══ шапка акта ══ */
+.catalog__head{
+  display:flex;align-items:baseline;justify-content:space-between;gap:16px 20px;flex-wrap:wrap;
+}
+.catalog__title{display:flex;flex-direction:column;gap:12px}
+.catalog__h{
+  margin:0;font-family:var(--disp);font-weight:900;text-transform:uppercase;
+  font-size:var(--fs-act);line-height:1;letter-spacing:-.015em;color:var(--ink);
+}
+.catalog__count{
+  margin:0;font-size:var(--fs-caption);font-weight:600;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--ink-mid);
+}
+
+/* маркерный штрих под «в виду» — рисуется при появлении, не в цикле */
+.catalog__mark{position:relative;display:inline-block}
+.catalog__stroke{
+  position:absolute;left:0;bottom:-.23em;width:100%;height:.25em;
+  overflow:visible;pointer-events:none;
+}
+.catalog__stroke path{
+  stroke:var(--signal);stroke-width:9;
+  stroke-dasharray:var(--catalog-stroke-len,240);
+  stroke-dashoffset:var(--catalog-stroke-len,240);
+  transition:stroke-dashoffset var(--dur-m) var(--ease-io);
+}
+.catalog__mark.is-drawn .catalog__stroke path{stroke-dashoffset:0}
+
+/* ══ тихая строка фильтра ══ */
+.catalog__filter{
+  display:flex;align-items:baseline;flex-wrap:wrap;gap:12px 26px;
+  margin-top:40px;font-size:var(--catalog-fs-ui);letter-spacing:.04em;
+}
+.catalog__filter-label{color:var(--ink-mid);font-weight:500}
+.catalog__f{
+  display:inline-flex;align-items:baseline;gap:8px;
+  margin:0;padding:0;border:0;background:none;cursor:pointer;
+  font-family:var(--body);font-size:inherit;letter-spacing:inherit;
+  font-weight:500;color:var(--catalog-ink-55);
+  transition:color var(--dur-s) var(--ease);
+}
+.catalog__f:hover{color:var(--ink)}
+.catalog__f.is-on{color:var(--ink);font-weight:600}
+.catalog__dot{border-radius:50%;background:var(--signal);align-self:center;flex-shrink:0}
+.catalog__dot--f{
+  width:6px;height:6px;opacity:0;transform:scale(.3);
+  transition:opacity var(--dur-s) var(--ease),transform var(--dur-s) var(--ease);
+}
+.catalog__f.is-on .catalog__dot--f{opacity:1;transform:none}
+
+/* ══ каталог: три равные колонки (на 1440 — по 400px, gap 56) ══ */
+.catalog__grid{
+  display:flex;align-items:flex-start;justify-content:space-between;
+  gap:56px;margin-top:72px;
+}
+.catalog__col{display:flex;flex-direction:column;gap:110px;flex:1 1 0;min-width:0}
+.catalog__col--b{margin-top:140px}   /* стартовые сдвиги колонок с макета */
+.catalog__col--c{margin-top:64px}
+
+/* ══ карточка ══ */
+.catalog__card{min-width:0}
+.catalog__card.is-off{display:none}
+.catalog__poster{width:100%;background:var(--graphite-2);overflow:hidden}
+.catalog__poster img{
+  width:100%;height:100%;object-fit:cover;
+  transition:transform var(--dur-m) var(--ease);
+}
+.catalog__card:hover .catalog__poster img{transform:scale(1.02)}
+/* высоты постеров с макета (ширина колонки 400) */
+.catalog__poster--h250{aspect-ratio:400/250}
+.catalog__poster--h260{aspect-ratio:400/260}
+.catalog__poster--h300{aspect-ratio:400/300}
+.catalog__poster--h400{aspect-ratio:400/400}
+.catalog__poster--h460{aspect-ratio:400/460}
+.catalog__poster--h500{aspect-ratio:400/500}
+.catalog__poster--h530{aspect-ratio:400/530}
+
+.catalog__row{display:flex;align-items:baseline;gap:10px;margin-top:18px}
+.catalog__dot--card{
+  width:7px;height:7px;
+  transition:transform var(--dur-s) var(--ease);
+}
+.catalog__card:hover .catalog__dot--card{transform:scale(1.45)}
+.catalog__t{
+  margin:0;font-family:var(--body);font-size:var(--fs-card);font-weight:600;
+  line-height:1.4;letter-spacing:-.005em;color:var(--ink);
+}
+.catalog__meta{
+  display:flex;align-items:baseline;flex-wrap:wrap;gap:6px 14px;
+  margin:12px 0 0 17px;                       /* 7px точки + 10px зазора */
+  font-size:var(--fs-kicker);font-weight:500;color:var(--catalog-ink-50);
+}
+.catalog__tag{
+  text-decoration:underline;text-underline-offset:3px;
+  text-decoration-color:var(--catalog-ink-25);
+}
+.catalog__metric{color:var(--signal)}
+
+/* вход остающихся карточек при смене фильтра (стагер задаёт js) */
+@media (prefers-reduced-motion:no-preference){
+  .catalog__card.is-enter{animation:catalogIn var(--dur-s) var(--ease) backwards}
+  @keyframes catalogIn{from{opacity:0;transform:translateY(10px)}}
+}
+
+/* ══ тихая рамочная кнопка ══ */
+.catalog__foot{display:flex;justify-content:center;margin-top:110px}
+.catalog__all{
+  display:inline-flex;align-items:center;cursor:pointer;
+  font-family:var(--disp);font-weight:700;font-size:var(--catalog-fs-ui);
+  letter-spacing:.05em;text-transform:uppercase;
+  color:var(--ink);background:none;border:1px solid var(--catalog-ink-35);
+  padding:16px 26px;
+  transition:background-color var(--dur-s) var(--ease),color var(--dur-s) var(--ease),border-color var(--dur-s) var(--ease);
+}
+.catalog__all:hover{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+
+/* ══ 900–1200: две колонки, параллакса нет ══ */
+@media (min-width:900px) and (max-width:1199px){
+  .catalog__grid{display:block;columns:2;column-gap:40px;margin-top:56px}
+  .catalog__col{display:contents}
+  .catalog__card{break-inside:avoid;margin:0 0 64px}
+}
+
+/* ══ <900: одна колонка, форматы чередуются ══ */
+@media (max-width:899px){
+  .catalog__grid{display:flex;flex-direction:column;gap:44px;margin-top:44px}
+  .catalog__col{display:contents}
+  .catalog__poster{max-height:68vh}
+  .catalog__col--a .catalog__card:nth-child(1){order:1}
+  .catalog__col--b .catalog__card:nth-child(1){order:2}
+  .catalog__col--c .catalog__card:nth-child(1){order:3}
+  .catalog__col--a .catalog__card:nth-child(2){order:4}
+  .catalog__col--b .catalog__card:nth-child(2){order:5}
+  .catalog__col--c .catalog__card:nth-child(2){order:6}
+  .catalog__col--a .catalog__card:nth-child(3){order:7}
+  .catalog__col--b .catalog__card:nth-child(3){order:8}
+  .catalog__col--c .catalog__card:nth-child(3){order:9}
+  .catalog__foot{margin-top:56px}
+  .catalog__filter{gap:10px 20px}
+}
+
+@media (prefers-reduced-motion:no-preference) and (min-width:1200px){
+  .catalog__col{will-change:transform}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .catalog__col{transform:none !important}
+  .catalog__stroke path{transition:none;stroke-dashoffset:0}
+  .catalog__poster img,.catalog__dot--f,.catalog__dot--card,.catalog__f,.catalog__all{transition:none}
+  .catalog__card.is-enter{animation:none}
+}

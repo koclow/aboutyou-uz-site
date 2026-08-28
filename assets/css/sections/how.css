@@ -1,0 +1,196 @@
+/* ══════════════════════════════════════════════════════════
+   About You UZ — секция «С чем вы приходите» (акт на бумаге)
+   Макет: HowFlow1/2/3.dc.html, десктоп 1440 (контент 1312).
+   Все цвета — производные от токенов (color-mix), новых hex нет.
+   ══════════════════════════════════════════════════════════ */
+.how{
+  /* ── производные цвета (только из токенов) ── */
+  --how-tab-border:color-mix(in srgb, var(--ink) 20%, transparent);
+  --how-tab-ink:color-mix(in srgb, var(--ink) 65%, transparent);
+  --how-num-off:color-mix(in srgb, var(--signal) 55%, transparent);
+  --how-tech-soft:color-mix(in srgb, var(--ink) 35%, transparent);
+  --how-node-shadow:0 6px 18px color-mix(in srgb, var(--ink) 6%, transparent);
+  --how-pill-shadow:0 10px 26px color-mix(in srgb, var(--signal) 28%, transparent);
+  --how-pill-sub:color-mix(in srgb, var(--white) 80%, transparent);
+
+  /* ── размеры, которых нет в общем типоритме (из артбордов) ── */
+  --how-fs-tab:13px;
+  --how-fs-tab-n:11px;
+  --how-fs-intro:14.5px;
+  --how-fs-sub:8.5px;        /* сабподпись узла */
+  --how-fs-desc:12.5px;      /* описание фазы */
+  --how-fs-phase:19px;
+  --how-fs-phase-n:12px;
+
+  /* ── масштаб схемы: k = ширина контейнера / 1312 ── */
+  --how-k:1;
+
+  padding:clamp(64px,12vh,110px) var(--pad) clamp(56px,10vh,100px);
+}
+/* запасные значения до того, как скрипт измерит контейнер */
+@media (max-width:1439px){ .how{--how-k:.88} }
+@media (max-width:1200px){ .how{--how-k:.76} }
+@media (max-width:1024px){ .how{--how-k:.68} }
+
+/* ══ шапка акта ══ */
+.how__head{display:flex;align-items:flex-end;justify-content:space-between;gap:40px;flex-wrap:wrap}
+.how__title{display:flex;flex-direction:column;gap:12px}
+.how__h{
+  font-family:var(--disp);font-weight:900;text-transform:uppercase;
+  font-size:var(--fs-act);line-height:1;letter-spacing:-.015em;margin:0;color:var(--ink);
+}
+.how__intro{
+  margin:0 0 6px;font-size:var(--how-fs-intro);line-height:1.55;
+  color:var(--ink-dim);max-width:34ch;
+}
+
+/* ══ вкладки ══ */
+.how__tabs{display:flex;gap:10px;flex-wrap:wrap;margin-top:clamp(28px,5vh,48px)}
+.how__tab{
+  display:inline-flex;align-items:baseline;gap:8px;
+  font-family:var(--body);font-size:var(--how-fs-tab);font-weight:600;line-height:1.2;
+  padding:13px 20px;cursor:pointer;
+  color:var(--how-tab-ink);background:none;border:1px solid var(--how-tab-border);
+  transition:color var(--dur-s) var(--ease),background-color var(--dur-s) var(--ease),border-color var(--dur-s) var(--ease);
+}
+.how__tab-n{
+  font-family:var(--disp);font-weight:700;font-size:var(--how-fs-tab-n);
+  color:var(--how-num-off);transition:color var(--dur-s) var(--ease);
+}
+.how__tab:hover{color:var(--ink);border-color:var(--ink)}
+.how__tab[aria-selected="true"]{
+  background:var(--graphite);color:var(--paper);border-color:var(--graphite);
+}
+.how__tab[aria-selected="true"] .how__tab-n{color:var(--signal-lift)}
+
+/* ══ панель сценария ══ */
+.how__panel[hidden]{display:none}
+.how__panel:focus{outline:none}
+.how__lead{
+  margin:22px 0 0;font-size:var(--fs-body);font-weight:600;line-height:1.5;
+  color:var(--ink);max-width:92ch;
+}
+
+/* ══ схема: рамка + сцена 1312×430, масштабируемая по ширине ══ */
+.how__frame{
+  position:relative;margin-top:34px;overflow:hidden;
+  height:calc(430px * var(--how-k));
+  border-top:1px solid var(--ink-hair);border-bottom:1px solid var(--ink-hair);
+}
+.how__stage{
+  position:relative;width:1312px;height:430px;
+  transform:scale(var(--how-k));transform-origin:0 0;
+}
+/* вертикальные hairlines каждые 187px (187…1122) */
+.how__stage::before{
+  content:"";position:absolute;top:0;bottom:0;left:187px;width:936px;pointer-events:none;
+  background-image:linear-gradient(to right,var(--ink-grid) 0 1px,transparent 1px);
+  background-size:187px 100%;
+}
+/* пунктирная ось */
+.how__stage::after{
+  content:"";position:absolute;left:0;right:0;top:215px;
+  border-top:1px dashed var(--ink-hair);pointer-events:none;
+}
+
+/* ── техподписи ── */
+.how__tech{
+  position:absolute;left:var(--x,0);top:var(--y,0);margin:0;
+  font-size:var(--fs-tech);font-weight:600;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink-mid);white-space:nowrap;
+}
+.how__tech--right{left:auto;right:0}
+.how__tech--bottom{top:auto;bottom:14px}
+.how__tech--soft{color:var(--how-tech-soft)}
+.how__tech--hot{color:var(--signal)}
+
+/* ── линии ── */
+.how__lines{position:absolute;top:0;left:0}
+.how__lines path,.how__lines circle{fill:none;stroke:var(--signal);stroke-width:1.5}
+.how__lines .how__arrow{stroke-width:2}
+.how__lines .how__dash{stroke-dasharray:7 6}
+.how__lines .how__mark{fill:var(--signal);stroke:none}
+.how__lines .how__dot{fill:var(--signal);stroke:none}
+
+/* ── узлы ── */
+.how__nodes{position:absolute;inset:0}
+.how__node{
+  position:absolute;left:var(--x);top:var(--y);width:var(--w);height:var(--h);
+  --fs:15px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:0 10px;box-sizing:border-box;
+  background:var(--white);border:1px solid var(--ink-hair);border-radius:10px;
+  box-shadow:var(--how-node-shadow);
+}
+.how__node-t{font-size:var(--fs);font-weight:600;line-height:1.1;color:var(--ink)}
+.how__node-s{
+  margin-top:3px;font-size:var(--how-fs-sub);font-weight:600;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--signal);
+}
+.how__node--pill{
+  background:var(--signal);border:0;border-radius:calc(var(--h) / 2);
+  box-shadow:var(--how-pill-shadow);
+}
+.how__node--pill .how__node-t{color:var(--white)}
+.how__node--pill .how__node-s{color:var(--how-pill-sub)}
+
+/* ══ полоса фаз 01–04 ══ */
+.how__phases{
+  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:32px;
+  margin:40px 0 0;padding:22px 0 0;list-style:none;
+  border-top:1px solid var(--ink-faint);
+}
+.how__phase{display:flex;flex-direction:column;gap:9px}
+.how__phase-h{margin:0;display:flex;align-items:baseline;gap:8px}
+.how__phase-n{font-family:var(--disp);font-weight:700;font-size:var(--how-fs-phase-n);color:var(--signal)}
+.how__phase-t{
+  font-family:var(--disp);font-weight:700;font-size:var(--how-fs-phase);
+  letter-spacing:-.01em;color:var(--ink);
+}
+.how__phase-d{margin:0;font-size:var(--how-fs-desc);line-height:1.55;color:var(--ink-dim)}
+
+/* ══ анимация смены вкладок ══ */
+@media (prefers-reduced-motion:no-preference){
+  .how__panel.is-out{animation:howOut .2s var(--ease) both}
+  .how__panel.is-in{animation:howIn .3s var(--ease) both}
+  .how__panel.is-in .how__node{animation:howNodeIn .3s var(--ease) both}
+  .how__panel.is-in .how__node:nth-child(1){animation-delay:0s}
+  .how__panel.is-in .how__node:nth-child(2){animation-delay:.04s}
+  .how__panel.is-in .how__node:nth-child(3){animation-delay:.08s}
+  .how__panel.is-in .how__node:nth-child(4){animation-delay:.12s}
+  .how__panel.is-in .how__node:nth-child(5){animation-delay:.16s}
+  .how__panel.is-in .how__node:nth-child(6){animation-delay:.2s}
+  .how__panel.is-in .how__node:nth-child(7){animation-delay:.24s}
+  .how__panel.is-in .how__node:nth-child(8){animation-delay:.28s}
+  @keyframes howOut{to{opacity:0;transform:translateY(14px)}}
+  @keyframes howIn{from{opacity:0;transform:translateY(18px)}}
+  @keyframes howNodeIn{from{opacity:0;transform:translateY(10px)}}
+}
+
+/* ══ ≤900px: схема разворачивается в вертикальный список узлов ══ */
+@media (max-width:899px){
+  .how__intro{margin-bottom:0}
+  .how__frame{height:auto;overflow:visible;border:0;margin-top:26px}
+  .how__stage{width:auto;height:auto;transform:none}
+  .how__stage::before,.how__stage::after{display:none}
+  .how__lines,.how__tech{display:none}
+  .how__nodes{
+    position:static;display:flex;flex-direction:column;gap:10px;
+    padding-left:22px;border-left:1px solid var(--signal);
+  }
+  .how__node{
+    position:relative;left:auto;top:auto;width:auto;height:auto;
+    align-items:flex-start;text-align:left;padding:12px 14px;
+  }
+  .how__node::before{
+    content:"";position:absolute;left:-26px;top:16px;
+    width:9px;height:9px;border-radius:50%;background:var(--signal);
+  }
+  .how__node--pill{border-radius:10px}
+  .how__phases{grid-template-columns:1fr;gap:22px;margin-top:30px}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .how__tab,.how__tab-n{transition:none}
+  .how__panel,.how__node{animation:none !important}
+}
