@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About You — креативное агентство</title>
+<meta name="description" content="PR, продакшн, IT и мероприятия. Ташкент.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;900&amp;family=Golos+Text:wght@400;500;600&amp;display=swap">
+<link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <a class="nav__id" href="#top"><img src="assets/img/wordmark.png" alt="About You" width="853" height="159"></a>
+  <ul class="nav__menu">
+    <li><a href="#work">Что делаем</a></li>
+    <li><a href="#cases">Кейсы</a></li>
+    <li><a href="#about">О нас</a></li>
+  </ul>
+  <a class="nav__cta" href="#contact">Обсудить проект</a>
+</nav>
+
+<!-- ══ ГЕРОЙ ══ -->
+<header class="hero" id="top">
+  <div class="hero__media" aria-hidden="true">
+    <video src="assets/video/reel.mp4" poster="assets/img/poster.jpg" autoplay muted loop playsinline preload="metadata"></video>
+  </div>
+  <div class="hero__veil" aria-hidden="true"></div>
+
+  <h1 class="hero__h">Хорошо, что вы <br>замахнулись <em>на большее</em></h1>
+  <div class="hero__base">
+    <p class="hero__sub"><b>Креативное агентство для смелых и сложных задач</b> · PR · Продакшн · IT · События · Ташкент</p>
+    <a class="cta" href="#cases">Посмотреть кейсы</a>
+  </div>
+</header>
+
+<!-- лента услуг: длинный перечень, не дубль направлений -->
+<div class="belt" aria-hidden="true">
+  <div class="belt__track" id="belt-track">
+    <span>Стратегия коммуникаций<i>·</i>Работа со СМИ<i>·</i>Лидеры мнений<i>·</i>Спецпроекты<i>·</i>Личный бренд<i>·</i>Антикризисный PR<i>·</i>Имиджевое видео<i>·</i>Рекламные ролики<i>·</i>Моушн и графика<i>·</i>Многокамерные съёмки<i>·</i>Платформы<i>·</i>Бренд-сайты<i>·</i>Дизайн-системы<i>·</i>Геймификация<i>·</i>ИИ-решения<i>·</i>Выставки<i>·</i>События под ключ<i>·</i>Прямые трансляции<i>·</i>Запуски продуктов<i>·</i></span>
+  </div>
+</div>
+
+<!-- ══ НАПРАВЛЕНИЯ ══ -->
+<section class="work" id="work">
+  <p class="kicker work__kicker rise">Что делаем</p>
+
+  <a class="row rise" href="#cases" data-goto="pr">
+    <img class="row__img" src="assets/img/dir-pr.jpg" alt="" loading="lazy" width="1000" height="562">
+    <span class="row__in">
+      <h2 class="row__name">PR и инфлюенс</h2>
+      <p class="row__desc">Стратегия коммуникаций, СМИ, лидеры мнений, спецпроекты, кризисные коммуникации.</p>
+    </span>
+  </a>
+  <a class="row rise" href="#cases" data-goto="production">
+    <img class="row__img" src="assets/img/dir-production.jpg" alt="" loading="lazy" width="1000" height="562">
+    <span class="row__in">
+      <h2 class="row__name">Продакшн</h2>
+      <p class="row__desc">Имиджевое видео, реклама, съёмки студийного уровня, моушн и графика.</p>
+    </span>
+  </a>
+  <a class="row rise" href="#cases" data-goto="it">
+    <img class="row__img" src="assets/img/dir-it.jpg" alt="" loading="lazy" width="1000" height="562">
+    <span class="row__in">
+      <h2 class="row__name">IT</h2>
+      <p class="row__desc">Платформы, бренд-сайты и цифровые экосистемы, интерактив, разработка с ИИ.</p>
+    </span>
+  </a>
+  <a class="row rise" href="#cases" data-goto="events">
+    <img class="row__img" src="assets/img/dir-events.jpg" alt="" loading="lazy" width="1000" height="562">
+    <span class="row__in">
+      <h2 class="row__name">Мероприятия и выставки</h2>
+      <p class="row__desc">Концепция, продюсирование, выставочные пространства, трансляции.</p>
+    </span>
+  </a>
+</section>
+
+<!-- ══ КАТАЛОГ КЕЙСОВ ══ -->
+<section class="act-light cases" id="cases">
+  <div class="cases__head rise">
+    <div>
+      <p class="kicker">Кейсы</p>
+      <h2 class="cases__h">Вот что мы имеем в виду</h2>
+    </div>
+    <p class="cases__count"><span id="count">12</span> проектов</p>
+  </div>
+
+  <div class="filters rise" role="group" aria-label="Фильтр кейсов">
+    <button class="filter" aria-pressed="true"  data-f="all">Все</button>
+    <button class="filter" aria-pressed="false" data-f="pr">PR и инфлюенс</button>
+    <button class="filter" aria-pressed="false" data-f="production">Продакшн</button>
+    <button class="filter" aria-pressed="false" data-f="it">IT</button>
+    <button class="filter" aria-pressed="false" data-f="events">Выставки и события</button>
+  </div>
+
+  <div class="grid" id="grid">
+
+    <!-- региональные кейсы — первыми (решение 21.08) -->
+    <a class="case-card case-card--wide rise" href="#contact" data-dir="pr">
+      <span class="case-card__media"><img src="assets/img/case-tanuki-kz.jpg" alt="" loading="lazy"></span>
+      <span class="case-card__body">
+        <span class="case-card__tags"><span class="tag tag--dir">PR и инфлюенс</span><span class="tag">Рестораны · Казахстан</span></span>
+        <h3 class="case-card__t">Запуск ресторанов Александра Орлова в Казахстане</h3>
+        <p class="case-card__d">Звёздные мастер-классы, радио, инфлюенсеры. Публикации: zakon.kz, Cosmopolitan, Harper's Bazaar.</p>
+      </span>
+    </a>
+
+    <a class="case-card rise" href="#contact" data-dir="pr">
+      <span class="case-card__media case-card__media--type"><span>Ташкент — домашний рынок</span></span>
+      <span class="case-card__body">
+        <span class="case-card__tags"><span class="tag tag--dir">PR</span><span class="tag">Рестораны · Узбекистан</span></span>
+        <h3 class="case-card__t">Рестораны Tanuki и TOKU в Ташкенте</h3>
+        <p class="case-card__d">Публикации в uznews, afisha.uz, gazeta.uz, YouTube-интеграции.</p>
+      </span>
+    </a>
+
+    <a class="case-card rise" href="#contact" data-dir="pr">
+      <span class="case-card__media case-card__media--type is-red"><span>Годовая программа</span></span>
+      <span class="case-card__body">
+        <span class="case-card__tags"><span class="tag tag--dir">PR и инфлюенс</span><span class="tag">Девелопмент</span></span>
+        <h3 class="case-card__t">Группа «Родина»: лидеры мнений для девелопера</h3>
+        <p class="case-card__d">50 инфлюенсеров за полтора года, интеграции с селебрити, +314 % переходов на сайт.</p>
+        <span class="case-card__stat"><b>+23 %</b><span>спроса на квартиры</span></span>
+      </span>
+    </a>
+
+    <a class="case-card rise" href="#contact" data-dir="pr">
+      <span class="case-card__media case-card__media--type"><span>Международный конкурс</span></span>
+      <span class="case-card__body">
+        <span class="case-card__tags"><span class="tag tag--dir">PR</span><span class="tag">Событие</span></span>
+        <h3 class="case-card__t">MISS MRS LITTLE MISS BRICS</h3>
+        <p class="case-card__d">1591 публикация, 164 инфоповода, пресс-тур для 25 федеральных СМИ.</p>
+        <span class="case-card__stat"><b>49 млн</b><span>охвата</span></span>
+      </span>
+    </a>
+
+    <a class="case-card rise" href="#contact" data-dir="production">
+      <span class="case-card__media"><img src="assets/img/dir-vfx.jpg" alt="" loading="lazy"></span>
+      <span class="case-card__body">
+        <span class="case-card__tags"><span class="tag tag--dir">Продакшн</span><span class="tag">Эфир</span></span>
+        <h3 class="case-card__t">Телемарафон финала национального чемпионата</h3>
+        <p class="case-card__d">Четыре дня, многокамерно, ТВ-уровень, 550 тыс.+ просмотров.</p>
+        <span class="case-card__stat"><b>30 часов</b><span>прямого эфира</span></span>
+      </span>
+    </a>
+
+    <a class="case-card rise" href="#contact" data-dir="events">
+      <span class="case-card__media case-card__media--type"><span>С нуля за 4 месяца</span></span>
+      <span class="case-card__body">
+        <span class="case-card__tags"><span class="tag tag--dir">Выставки</span><span class="tag">Город</span></span>
+        <h3 class="case-card__t">Мультимедийная выставка города-мегаполиса</h3>
+        <p class="case-card__d">3500 м², 12 залов: концепция, контент, интерактив, кураторство.</p>
+        <span class="case-card__stat"><b>600 тыс.</b><span>посетителей</span></span>
+      </span>
+    </a>
+
+    <a class="case-card rise" href="#contact" data-dir="it">
+      <span class="case-card__media case-card__media--type"><span>Национальный масштаб</span></span>
+      <span class="case-card__body">
+        <span class="case-card__tags"><span class="tag tag--dir">IT</span><span class="tag">Образование</span></span>
+        <h3 class="case-card__t">Образовательная платформа страны</h3>
+        <p class="case-card__d">15 млн собранных уроков, сотни тысяч активных пользователей в месяц.</p>
+        <span class="case-card__stat"><b>3,77 млн</b><span>пользователей</span></span>
+      </span>
+    </a>
+
+    <a class="case-card rise" href="#contact" data-dir="pr">
+      <span class="case-card__media case-card__media--type"><span>Комплексное ведение</span></span>
+      <span class="case-card__body">
+        <span class="case-card__tags"><span class="tag tag--dir">PR и инфлюенс</span><span class="tag">Ритейл</span></span>
+        <h3 class="case-card__t">«Азбука вкуса»: PR и инфлюенс за год</h3>
+        <p class="case-card__d">130+ интеграций, 10 кампаний, спецпроекты с художниками и медиа.</p>
+        <span class="case-card__stat"><b>+42 %</b><span>роста доставки</span></span>
+      </span>
+    </a>
+
+    <a class="case-card rise" href="#contact" data-dir="it">
+      <span class="case-card__media case-card__media--type is-red"><span>Против креативных агентств</span></span>
+      <span class="case-card__body">
+        <span class="case-card__tags"><span class="tag tag--dir">IT</span><span class="tag">Бьюти</span></span>
+        <h3 class="case-card__t">Цифровая экосистема бренда проф-косметики</h3>
+        <p class="case-card__d">Бренд-сайт, обучающая платформа, три личных кабинета, дизайн-система.</p>
+        <span class="case-card__stat"><b>Тендер</b><span>выигран вхолодную</span></span>
+      </span>
+    </a>
+
+    <a class="case-card rise" href="#contact" data-dir="events">
+      <span class="case-card__media case-card__media--type"><span>Тиражируемый формат</span></span>
+      <span class="case-card__body">
+        <span class="case-card__tags"><span class="tag tag--dir">Выставки</span><span class="tag">Сеть</span></span>
+        <h3 class="case-card__t">Выставочная система в 25 городах</h3>
+        <p class="case-card__d">9 интерактивных залов, симуляторы, квест-механика, 500 тыс.+ посетителей.</p>
+        <span class="case-card__stat"><b>25</b><span>городов</span></span>
+      </span>
+    </a>
+
+    <a class="case-card rise" href="#contact" data-dir="pr">
+      <span class="case-card__media case-card__media--type"><span>Два сезона</span></span>
+      <span class="case-card__body">
+        <span class="case-card__tags"><span class="tag tag--dir">PR и инфлюенс</span><span class="tag">Спорт</span></span>
+        <h3 class="case-card__t">ФК «Динамо Москва»</h3>
+        <p class="case-card__d">120+ инфлюенсеров за два года, интеграции с топ-артистами.</p>
+        <span class="case-card__stat"><b>30 млн</b><span>охвата</span></span>
+      </span>
+    </a>
+
+    <a class="case-card rise" href="#contact" data-dir="it">
+      <span class="case-card__media case-card__media--type"><span>Геймификация</span></span>
+      <span class="case-card__body">
+        <span class="case-card__tags"><span class="tag tag--dir">IT</span><span class="tag">Интерактив</span></span>
+        <h3 class="case-card__t">Виртуальный интерактивный город</h3>
+        <p class="case-card__d">100+ активностей, возврат 53 % пользователей каждую неделю.</p>
+        <span class="case-card__stat"><b>2,95 млн</b><span>пользователей</span></span>
+      </span>
+    </a>
+
+  </div>
+
+  <p class="cases__note rise">Черновой состав. Формулировки и статусы показа — по «Источнику правды»; кейсам без съёмок нужны кадры (плитки — временные).</p>
+</section>
+
+<!-- ══ О НАС ══ -->
+<section class="about" id="about">
+  <p class="kicker rise">О нас</p>
+  <h2 class="about__h rise">Можем сделать одну часть. <em>Всегда думаем о целом</em></h2>
+  <div class="about__cols rise">
+    <div class="about__f"><b>+23 %</b><span>к спросу на квартиры за год инфлюенс-программы</span></div>
+    <div class="about__f"><b>3,77 млн</b><span>пользователей цифровой платформы</span></div>
+    <div class="about__f"><b>600 тыс.+</b><span>посетителей мультимедийной выставки</span></div>
+  </div>
+</section>
+
+<!-- ══ КРАСНЫЙ ФИНАЛ ══ -->
+<section class="end" id="contact">
+  <p class="kicker rise">Расскажите, что вы задумали</p>
+  <a class="end__link rise" href="mailto:hello@aboutyou.uz">Давайте встретимся</a>
+  <div class="end__contacts rise">
+    <a href="mailto:hello@aboutyou.uz">hello@aboutyou.uz</a>
+    <a href="https://t.me" rel="noopener">Telegram</a>
+    <a href="https://instagram.com" rel="noopener">Instagram</a>
+  </div>
+  <div class="foot">
+    <p>About You · Ташкент</p>
+    <p>PR · Продакшн · IT · Мероприятия</p>
+    <p>© 2026</p>
+  </div>
+</section>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>
