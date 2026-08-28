@@ -33,3 +33,12 @@
 @media (min-width:1400px){
   .work .row__in{grid-template-columns:minmax(0,8fr) minmax(0,3fr)}
 }
+
+/* ── светлая версия акта (решение 28.08): бумага вместо графита.
+   Ховер-заливка красным и белый текст поверх неё — базовые, работают
+   и на светлом. Меняются только фон, цвет покоя и волосяные линии. ── */
+.work--paper{background:var(--paper)}
+.work--paper .row{border-top-color:var(--ink-hair)}
+.work--paper .row:last-of-type{border-bottom-color:var(--ink-hair)}
+.work--paper .row__name{color:var(--ink)}
+.work--paper .row__desc{color:var(--ink-dim)}

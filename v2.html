@@ -21,14 +21,15 @@
 </head>
 <body>
 
-<nav class="nav nav--paper" id="nav">
-  <a class="nav__id" href="#top"><img src="assets/img/wordmark.png" alt="About You" width="853" height="159"></a>
-  <ul class="nav__menu">
+<nav class="nav nav--paper nav--split" id="nav">
+  <ul class="nav__menu nav__menu--l">
     <li><a href="#work">Что делаем</a></li>
     <li><a href="#cases">Кейсы</a></li>
-    <li><a href="#about">О нас</a></li>
   </ul>
-  <a class="nav__cta" href="#contact">Обсудить проект</a>
+  <ul class="nav__menu nav__menu--r">
+    <li><a href="#about">О нас</a></li>
+    <li><a href="#contact">Обсудить проект</a></li>
+  </ul>
 </nav>
 
 <!-- ══ ГЕРОЙ v2 ══ бумага, вордмарк ABOUT/YOU, кадр-слайдер вместо видео.
@@ -83,7 +84,7 @@
 <!-- ══ НАПРАВЛЕНИЯ (v2) ══ пять строк вместо четырёх: PR и инфлюенс
      разведены, «Ивенты» вместо «Мероприятия и выставки».
      Разметка и классы — из базы (.work / .row), стилей своих почти нет. -->
-<section class="work" id="work">
+<section class="work work--paper" id="work">
   <p class="kicker work__kicker rise">Что делаем</p>
 
   <a class="row rise" href="#cases" data-goto="pr">

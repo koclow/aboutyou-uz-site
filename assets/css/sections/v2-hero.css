@@ -99,17 +99,28 @@
   @keyframes vhero-up-c{to{opacity:1;transform:translate(-50%,0)}}
 }
 
-/* ── планшет: рамка чуть уже, чтобы не задевала подписи по бокам ── */
+/* ── планшет и уже: главная фишка героя — наезд кадра на YOU.
+   Центрирование по вертикали её теряет (экран выше, YOU ниже),
+   поэтому рамка якорится к низу: её нижний край на 0.72 высоты YOU
+   от низа — перекрытие ~28% буквы, как на десктопе 1440.
+   Рамка растёт вверх, точка наезда не плавает при смене формата. ── */
 @media (max-width:900px){
-  .vhero__frame{--k:.92}
+  .vhero__frame{
+    --k:.92;top:auto;bottom:calc(25.92vw * .72);
+    transform:translate(-50%,0);
+  }
   .vhero__note{max-width:min(30ch,24vw)}
 }
 
-/* ── мобильный: подписи столбиком слева, рамка крупнее и выше центра ── */
+/* ── мобильный: подписи столбиком под ABOUT (низ занят кадром и YOU),
+   рамка крупнее — потолок 80vw вместо 70vw ── */
 @media (max-width:720px){
   .vhero{min-height:560px}
-  .vhero__frame{--k:1.55;top:45%}
-  .vhero__notes{flex-direction:column;align-items:stretch;gap:6px}
+  .vhero__frame{
+    --k:2;
+    --w:min(calc(var(--fw) * var(--k) * 1vw),80vw,calc(var(--cap) * var(--arn)));
+  }
+  .vhero__notes{top:140px;bottom:auto;flex-direction:column;align-items:stretch;gap:6px}
   .vhero__note{max-width:none}
   .vhero__note--r{text-align:left}
 }

@@ -15,3 +15,14 @@ h1,h2{font-weight:800;letter-spacing:.005em}
 /* nav на бумажном hero: тёмные ссылки, пока фон не стал графитовым */
 .nav--paper:not(.solid) .nav__menu a{color:var(--ink-dim)}
 .nav--paper:not(.solid) .nav__menu a:hover{color:var(--ink)}
+
+/* nav--split (v2 hero): лого убран, меню разнесено по углам,
+   чтобы слову ABOUT по центру ничего не мешало. «Обсудить проект» —
+   обычная ссылка меню (nav__cta на v2 нет). */
+.nav--split{justify-content:space-between}
+.nav--split .nav__menu--r{justify-content:flex-end}
+/* база прячет .nav__menu ≤720 — на v2 меню и есть весь nav, возвращаем */
+@media (max-width:720px){
+  .nav--split .nav__menu{display:flex;gap:12px}
+  .nav--split .nav__menu a{font-size:10px;letter-spacing:.06em}
+}
