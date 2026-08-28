@@ -1,0 +1,81 @@
+<!-- ══ О НАС (v2) ══ манифест + большой блок команды.
+     Манифест — копия sections/about.html без изменений (текст, классы,
+     SVG-жест); стили берёт из about.css, он подключён в шаблоне v2.
+     Компактная строка команды-facepile выкинута — вместо неё .vteam.
+     id="about" остаётся на первой секции: на него ведёт nav. -->
+<section class="manifesto rise" id="about">
+  <p class="kicker manifesto__kicker">О нас</p>
+
+  <p class="manifesto__text">Нам интересно работать с теми, кому <em class="manifesto__accent">есть что сказать</em> — особенно если это сложно уместить в обычный бриф. Помогаем добраться до сути, придумываем форму и создаём опыт, через который идею увидят, поймут и запомнят. Это может быть одна PR-кампания, вирусный ролик, цифровой продукт или целая экосистема — <span class="manifesto__marked">задача определяет решение<svg class="manifesto__underline" width="100%" height="16" viewBox="0 0 420 16" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path class="manifesto__stroke" pathLength="1" d="M4 12 C 130 9.5, 300 8.5, 416 7" stroke-width="9" stroke-linecap="butt" fill="none"></path></svg></span>, а не набор наших услуг.</p>
+</section>
+
+<!-- ══ КОМАНДА (v2) ══ макет: ../Канвас — рабочие файлы/Team.dc.html (1440).
+     Отличия от артборда — дозировка красного: красный только у кикера,
+     заголовок одним цветом, плашка «Видео · слот» графитовая.
+     Видео-слоты — заглушки: не кликаются, курсор обычный. -->
+<section class="vteam">
+  <div class="vteam__in">
+
+    <div class="vteam__head rise">
+      <p class="kicker vteam__kicker">Команда</p>
+      <h2 class="vteam__h">За пикселями — люди, которым не всё равно</h2>
+    </div>
+
+    <div class="vteam__founders">
+      <figure class="vteam__founder rise" style="transition-delay:.05s">
+        <div class="vteam__slot">
+          <img class="vteam__slot-img" src="assets/img/frame-f.jpg" alt="" loading="lazy" width="1000" height="563">
+          <span class="vteam__play" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" focusable="false"><path d="M8 5.5 L18.5 12 L8 18.5 Z" fill="currentColor"></path></svg>
+          </span>
+          <span class="vteam__badge">Видео · слот</span>
+        </div>
+        <figcaption class="vteam__cap">
+          <span class="vteam__cap-name">Вика</span>
+          <span class="vteam__cap-role">Сооснователь About You · о том, как мы работаем</span>
+        </figcaption>
+      </figure>
+
+      <figure class="vteam__founder rise" style="transition-delay:.12s">
+        <div class="vteam__slot">
+          <img class="vteam__slot-img" src="assets/img/frame-e.jpg" alt="" loading="lazy" width="1000" height="563">
+          <span class="vteam__play" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" focusable="false"><path d="M8 5.5 L18.5 12 L8 18.5 Z" fill="currentColor"></path></svg>
+          </span>
+          <span class="vteam__badge">Видео · слот</span>
+        </div>
+        <figcaption class="vteam__cap">
+          <span class="vteam__cap-name">Илья</span>
+          <span class="vteam__cap-role">Сооснователь About You · про кухню проектов</span>
+        </figcaption>
+      </figure>
+    </div>
+
+    <!-- четыре направления агентства в лицах; фото ещё нет — инициалы -->
+    <ul class="vteam__people">
+      <li class="vteam__person rise" style="transition-delay:.05s">
+        <span class="vteam__portrait" aria-hidden="true"><span class="vteam__initials">КЮ</span></span>
+        <span class="vteam__name">Камила Юсупова</span>
+        <span class="vteam__role">PR-менеджер</span>
+      </li>
+      <li class="vteam__person rise" style="transition-delay:.11s">
+        <span class="vteam__portrait" aria-hidden="true"><span class="vteam__initials">ТР</span></span>
+        <span class="vteam__name">Тимур Рахимов</span>
+        <span class="vteam__role">Продюсер ивентов</span>
+      </li>
+      <li class="vteam__person rise" style="transition-delay:.17s">
+        <span class="vteam__portrait" aria-hidden="true"><span class="vteam__initials">МА</span></span>
+        <span class="vteam__name">Мадина Алимова</span>
+        <span class="vteam__role">Арт-директор</span>
+      </li>
+      <li class="vteam__person rise" style="transition-delay:.23s">
+        <span class="vteam__portrait" aria-hidden="true"><span class="vteam__initials">СБ</span></span>
+        <span class="vteam__name">Санжар Бекмуратов</span>
+        <span class="vteam__role">Разработчик</span>
+      </li>
+    </ul>
+
+    <p class="vteam__impressum rise"><b>Алёна Соколова</b> — смыслы и тексты<i> · </i><b>Мария Ким</b> — инфлюенс и медиа<i> · </i><b>Даниил Волков</b> — продакшн и съёмки</p>
+
+  </div>
+</section>

@@ -1,0 +1,121 @@
+/* ══════════════════════════════════════════════════════════
+   v2-hero — герой второй страницы: бумага, вордмарк ABOUT/YOU,
+   кадр-слайдер вместо видео. Макет: «Канвас — рабочие файлы/
+   HeroVicoPaper.dc.html» (1440×900).
+   Геометрия макета переведена в vw от 1440, чтобы масштабировалась:
+     YOU  164/545 × 100vw = 30.09vw высоты, выпуск вниз −60px = −4.17vw;
+     верхний край YOU = 30.09 − 4.17 = 25.92vw от низа;
+     ABOUT 300px = 20.83 ≈ 21vw; кадр 620px = 43.06vw.
+   Значения — только через var(), красный в герое ровно один (YOU).
+   ══════════════════════════════════════════════════════════ */
+
+.vhero{
+  position:relative;isolation:isolate;overflow:hidden;
+  background:var(--paper);color:var(--ink);
+  height:100vh;height:100svh;min-height:760px;
+}
+
+/* заголовок первого экрана — сам вордмарк; текстом он остаётся для читалок */
+.vhero__wm{margin:0;font-size:0;line-height:0;font-weight:inherit}
+.vhero__sr{
+  position:absolute;width:1px;height:1px;margin:-1px;padding:0;
+  overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0;
+  font-size:var(--fs-body);
+}
+.vhero__svg{width:100%;height:auto;color:inherit}
+
+/* ABOUT — по центру, под фиксированной шапкой (66px + воздух) */
+.vhero__about{
+  position:absolute;top:90px;left:50%;z-index:2;
+  transform:translateX(-50%);
+  width:max(150px,21vw);color:var(--ink);
+}
+
+/* YOU — во всю ширину, прижат к низу с выпуском под обрез */
+.vhero__you{
+  position:absolute;left:0;right:0;bottom:-4.17vw;z-index:1;
+  color:var(--signal);
+}
+
+/* капс-подписи — строкой чуть выше верхнего края буквы Y */
+.vhero__notes{
+  position:absolute;left:0;right:0;bottom:calc(25.92vw + 24px);z-index:2;
+  display:flex;align-items:flex-end;justify-content:space-between;
+  gap:24px;padding:0 var(--pad);pointer-events:none;
+}
+.vhero__note{
+  margin:0;max-width:min(30ch,22vw);
+  font-size:var(--fs-kicker);font-weight:600;line-height:1.5;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--ink-quiet);
+}
+.vhero__note--r{text-align:right}
+
+/* ── кадр-слайдер ──
+   --fw  ширина рамки в vw от макета 1440   (ставит js по data-w слайда)
+   --arn пропорция рамки w/h                 (ставит js по data-w/data-h)
+   --k   поправка масштаба на узких экранах
+   Ширина берётся наименьшей из трёх: макетной, 70vw и той, при которой
+   высота упирается в потолок --cap. Высота считается из неё же — поэтому
+   пропорция не ломается ни на одном пределе, а width/height переезжают
+   плавно, без анимации aspect-ratio. */
+.vhero__frame{
+  --fw:43.06;
+  --arn:1.7765;
+  --k:1;
+  --cap:min(540px,58vh);
+  --w:min(calc(var(--fw) * var(--k) * 1vw),70vw,calc(var(--cap) * var(--arn)));
+  position:absolute;top:50%;left:50%;z-index:3;
+  transform:translate(-50%,-50%);
+  width:var(--w);height:calc(var(--w) / var(--arn));
+  overflow:hidden;background:var(--graphite-2);
+  transition:width var(--dur-l) var(--ease),height var(--dur-l) var(--ease);
+}
+.vhero__slide{
+  position:absolute;inset:0;margin:0;opacity:0;
+  transition:opacity var(--dur-m) var(--ease);
+}
+.vhero__slide.is-on{opacity:1}
+.vhero__slide img{width:100%;height:100%;object-fit:cover}
+.vhero__cap{
+  position:absolute;left:0;right:0;bottom:0;padding:30px 14px 11px;
+  font-size:var(--fs-tech);font-weight:600;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--dim-strong);
+  background:linear-gradient(to top,var(--graphite),transparent);
+}
+
+/* появление при загрузке: ABOUT и подписи поднимаются, YOU стоит на месте */
+@media (prefers-reduced-motion:no-preference){
+  .vhero__about{
+    opacity:0;transform:translate(-50%,var(--reveal-shift));
+    animation:vhero-up-c var(--dur-m) var(--ease) forwards;
+  }
+  .vhero__note{
+    opacity:0;transform:translateY(var(--reveal-shift));
+    animation:vhero-up var(--dur-m) var(--ease) forwards;
+    animation-delay:var(--dur-s);
+  }
+  .vhero__note--r{animation-delay:calc(var(--dur-s) * 1.4)}
+  @keyframes vhero-up{to{opacity:1;transform:translateY(0)}}
+  @keyframes vhero-up-c{to{opacity:1;transform:translate(-50%,0)}}
+}
+
+/* ── планшет: рамка чуть уже, чтобы не задевала подписи по бокам ── */
+@media (max-width:900px){
+  .vhero__frame{--k:.92}
+  .vhero__note{max-width:min(30ch,24vw)}
+}
+
+/* ── мобильный: подписи столбиком слева, рамка крупнее и выше центра ── */
+@media (max-width:720px){
+  .vhero{min-height:560px}
+  .vhero__frame{--k:1.55;top:45%}
+  .vhero__notes{flex-direction:column;align-items:stretch;gap:6px}
+  .vhero__note{max-width:none}
+  .vhero__note--r{text-align:left}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .vhero__frame,.vhero__slide{transition:none}
+  .vhero__about,.vhero__note{opacity:1;transform:none;animation:none}
+  .vhero__about{transform:translateX(-50%)}
+}

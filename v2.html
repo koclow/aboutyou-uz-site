@@ -1,0 +1,705 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About You — креативное агентство</title>
+<meta name="description" content="PR, инфлюенс, ивенты, продакшн и IT. Ташкент.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Commissioner:wght@500;600;700;800&amp;family=Golos+Text:wght@400;500;600&amp;display=swap">
+<link rel="stylesheet" href="assets/css/tokens.css">
+<link rel="stylesheet" href="assets/css/main.css">
+<link rel="stylesheet" href="assets/css/v2.css">
+<link rel="stylesheet" href="assets/css/sections/v2-hero.css">
+<link rel="stylesheet" href="assets/css/sections/v2-work.css">
+<link rel="stylesheet" href="assets/css/sections/cases.css">
+<link rel="stylesheet" href="assets/css/sections/how.css">
+<link rel="stylesheet" href="assets/css/sections/about.css">
+<link rel="stylesheet" href="assets/css/sections/v2-team.css">
+<link rel="stylesheet" href="assets/css/sections/apply.css">
+</head>
+<body>
+
+<nav class="nav nav--paper" id="nav">
+  <a class="nav__id" href="#top"><img src="assets/img/wordmark.png" alt="About You" width="853" height="159"></a>
+  <ul class="nav__menu">
+    <li><a href="#work">Что делаем</a></li>
+    <li><a href="#cases">Кейсы</a></li>
+    <li><a href="#about">О нас</a></li>
+  </ul>
+  <a class="nav__cta" href="#contact">Обсудить проект</a>
+</nav>
+
+<!-- ══ ГЕРОЙ v2 ══ бумага, вордмарк ABOUT/YOU, кадр-слайдер вместо видео.
+     Макет: «Канвас — рабочие файлы/HeroVicoPaper.dc.html» (1440×900). -->
+<header class="vhero" id="top">
+
+  <h1 class="vhero__wm">
+    <span class="vhero__sr">About You — креативное агентство полного цикла в Ташкенте</span>
+    <span class="vhero__about"><svg class="vhero__svg" viewBox="0 0 898 164" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path fill-rule="evenodd" clip-rule="evenodd" d="M833.583 53.2854L833.948 160.245H780.17L779.811 54.9322L782.993 51.7463L784.285 50.4533L781.958 48.1237L779.795 50.289L778.339 51.7463H715.208V3.75666H898V51.7463H836.7L833.081 48.1237L830.754 50.4533L833.583 53.2854Z" fill="currentColor"/><path fill-rule="evenodd" clip-rule="evenodd" d="M208.858 160.244H151.537L140.842 133.954H68.0168L57.3212 160.244H0L68.5772 3.75666H140.281L208.858 160.244ZM102.849 40.8863V48.3341L85.418 91.1811H123.44L106.14 48.6569V40.8863H102.849Z" fill="currentColor"/><path fill-rule="evenodd" clip-rule="evenodd" d="M290.257 3.75666C304.709 3.75666 316.035 7.16454 324.233 13.9805C332.432 20.6573 336.531 29.9771 336.531 41.9397C336.531 48.7555 335.003 55.1542 331.946 61.1354C329.032 66.8366 324.35 71.7155 317.901 75.7738H313.193V79.0681H319.899C321.031 79.4632 322.129 79.8834 323.191 80.3312C331.112 83.6696 337.018 88.3297 340.909 94.311C344.938 100.153 346.953 107.178 346.953 115.384C346.953 123.869 345.008 131.52 341.117 138.336C337.365 145.152 331.598 150.508 323.817 154.402C316.035 158.297 306.307 160.244 294.635 160.244H216.395L180.091 80.3312V3.75666H290.257ZM242.038 124.565H277.543C282.128 124.565 285.741 123.383 288.382 121.018C291.022 118.514 292.342 115.176 292.342 111.003C292.342 107.247 291.022 104.048 288.382 101.405C285.88 98.762 282.128 97.4405 277.126 97.4404H232.224L242.038 124.565ZM225.446 62.3873H269.205C272.818 62.3873 275.805 61.2745 278.168 59.049C280.669 56.8234 281.92 53.9718 281.92 50.4943C281.92 47.295 280.808 44.6519 278.585 42.5654C276.361 40.479 273.235 39.4355 269.205 39.4355H225.446V62.3873Z" fill="currentColor"/><path fill-rule="evenodd" clip-rule="evenodd" d="M442.139 0C461.177 2.02391e-06 477.783 3.40789 491.957 10.2238C506.27 17.0397 517.387 26.6377 525.307 39.0176C533.228 51.2584 537.188 65.5858 537.188 81.9997C537.188 98.4135 533.228 112.81 525.307 125.19C517.387 137.431 506.27 146.96 491.957 153.776C477.783 160.591 461.177 163.999 442.139 163.999C423.102 163.999 406.426 160.591 392.114 153.776C377.94 146.96 366.892 137.431 358.971 125.19C351.051 112.81 347.09 98.4135 347.09 81.9997C347.09 65.5858 351.051 51.2584 358.971 39.0176C366.892 26.6377 377.94 17.0397 392.114 10.2238C406.426 3.40794 423.102 0 442.139 0ZM442.139 47.9895C433.663 47.9895 426.367 49.3809 420.253 52.1629C414.139 54.8058 409.414 58.7003 406.079 63.847C403.35 68.1229 401.787 73.1597 401.388 78.957L398.764 80.4928V83.7871L401.408 85.3276C401.837 91.0259 403.394 96.037 406.079 100.361C409.414 105.368 414.139 109.263 420.253 112.045C426.367 114.688 433.663 116.01 442.139 116.01C450.616 116.01 457.911 114.688 464.026 112.045C470.14 109.263 474.795 105.368 477.991 100.361C480.767 96.0763 482.387 91.1171 482.852 85.483L484.917 84.1004V80.8061L482.918 79.4411C482.56 73.4397 480.918 68.2415 477.991 63.847C474.795 58.7004 470.14 54.8057 464.026 52.1629C457.911 49.3809 450.616 47.9895 442.139 47.9895Z" fill="currentColor"/><path d="M595.758 3.75666V88.4685C595.758 94.1716 596.731 99.1099 598.676 103.283C600.622 107.456 603.679 110.655 607.848 112.881C611.257 114.587 615.502 115.595 620.584 115.906L622.216 118.896H625.507L627.133 115.925C632.309 115.628 636.65 114.544 640.156 112.672C644.325 110.447 647.451 107.317 649.536 103.283C651.481 99.1099 652.454 94.1716 652.454 88.4685V4.04751H706.232V91.3895C706.232 105.995 702.827 118.723 696.018 129.573C689.07 140.422 679.482 148.908 667.253 155.028C654.886 161.009 640.503 164 624.106 164C607.57 164 593.187 161.009 580.958 155.028C568.591 148.908 559.003 140.422 552.193 129.573C545.384 118.723 541.98 105.995 541.98 91.3895V3.75666H595.758Z" fill="currentColor"/></svg></span>
+    <span class="vhero__you"><svg class="vhero__svg" viewBox="0 0 545 164" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path fill-rule="evenodd" clip-rule="evenodd" d="M274.672 0C293.729 0 310.352 3.40783 324.54 10.2237C338.868 17.0396 349.996 26.6379 357.924 39.0178C365.853 51.2586 369.818 65.5858 369.818 81.9996C369.818 98.4134 365.853 112.81 357.924 125.19C349.996 137.431 338.868 146.959 324.54 153.775C310.352 160.591 293.729 163.999 274.672 163.999C255.615 163.999 238.923 160.591 224.595 153.775C210.407 146.959 199.348 137.431 191.419 125.19C183.491 112.81 179.526 98.4134 179.526 81.9996C179.526 65.5859 183.491 51.2586 191.419 39.0178C199.348 26.6379 210.407 17.0396 224.595 10.2237C238.923 3.40785 255.615 2.09077e-05 274.672 0ZM274.672 47.9897C266.187 47.9897 258.884 49.3805 252.763 52.1625C246.643 54.8054 241.913 58.7003 238.575 63.847C235.824 68.1527 234.257 73.2298 233.871 79.0782L231.685 80.4931V83.7874L233.89 85.2071C234.307 90.9552 235.868 96.0064 238.575 100.361C241.913 105.368 246.643 109.263 252.763 112.045C258.884 114.688 266.187 116.01 274.672 116.01C283.157 116.01 290.46 114.688 296.581 112.045C302.701 109.263 307.361 105.368 310.56 100.361C313.319 96.107 314.937 91.1883 315.416 85.6046L317.93 84.1007V80.8064L315.485 79.3211C315.112 73.3703 313.471 68.2122 310.56 63.847C307.361 58.7003 302.701 54.8054 296.581 52.1625C290.46 49.3805 283.157 47.9897 274.672 47.9897Z" fill="currentColor"/><path d="M98.203 54.2316V59.7517H101.497V54.1406L140.424 3.75681H199.473L126.861 97.0072V160.244H73.0287V97.8607L0 3.75681H59.0488L98.203 54.2316Z" fill="currentColor"/><path d="M434.414 88.4686C434.414 94.1717 435.388 99.1099 437.335 103.283C439.422 107.317 442.551 110.446 446.724 112.672C450.177 114.514 454.44 115.592 459.511 115.91L461.144 118.895H464.438L466.067 115.921C471.265 115.628 475.598 114.615 479.066 112.881C483.239 110.655 486.299 107.456 488.247 103.283C490.194 99.1099 491.168 94.1716 491.168 88.4686V3.75681H545V91.39C545 105.995 541.592 118.723 534.776 129.573C527.96 140.423 518.362 148.908 505.982 155.028C493.741 161.009 479.344 164 462.791 164C446.377 164 431.98 161.009 419.6 155.028C407.359 148.908 397.761 140.423 390.806 129.573C383.99 118.723 380.581 105.995 380.581 91.39V3.75681H434.414V88.4686Z" fill="currentColor"/></svg></span>
+  </h1>
+
+  <!-- кадр-слайдер: превью кейсов, у каждого своя пропорция рамки.
+       data-w/data-h — размер рамки в пикселях макета 1440. -->
+  <div class="vhero__frame" id="vhero-frame" aria-hidden="true">
+    <figure class="vhero__slide is-on" data-w="620" data-h="349">
+      <img src="assets/img/frame-f.jpg" alt="" width="1000" height="563">
+      <figcaption class="vhero__cap">Реел студии</figcaption>
+    </figure>
+    <figure class="vhero__slide" data-w="430" data-h="540">
+      <img src="assets/img/case-tanuki-kz.jpg" alt="" width="504" height="900">
+      <figcaption class="vhero__cap">Tanuki · Казахстан</figcaption>
+    </figure>
+    <figure class="vhero__slide" data-w="560" data-h="420">
+      <img src="assets/img/frame-c.jpg" alt="" width="1200" height="676">
+      <figcaption class="vhero__cap">Продакшн · съёмочный день</figcaption>
+    </figure>
+    <figure class="vhero__slide" data-w="470" data-h="470">
+      <img src="assets/img/case-tanuki-mk.jpg" alt="" width="502" height="900">
+      <figcaption class="vhero__cap">Tanuki · Македония</figcaption>
+    </figure>
+    <figure class="vhero__slide" data-w="620" data-h="349">
+      <img src="assets/img/frame-e.jpg" alt="" width="1000" height="563">
+      <figcaption class="vhero__cap">Ивент · прямой эфир</figcaption>
+    </figure>
+  </div>
+
+  <div class="vhero__notes">
+    <p class="vhero__note">Креативное агентство полного цикла</p>
+    <p class="vhero__note vhero__note--r">PR · Инфлюенс · Ивенты · Продакшн · IT · Ташкент</p>
+  </div>
+
+</header>
+
+<!-- лента услуг: длинный перечень, не дубль направлений -->
+<div class="belt" aria-hidden="true">
+  <div class="belt__track" id="belt-track">
+    <span>+23 % к спросу на квартиры<i>·</i>3,77 млн пользователей платформы<i>·</i>500 тыс.+ посетителей в 25 городах<i>·</i>49 млн охвата события<i>·</i>+42 % к доставке<i>·</i>30 часов прямого эфира<i>·</i>2,95 млн пользователей интерактива<i>·</i></span>
+  </div>
+</div>
+
+<!-- ══ НАПРАВЛЕНИЯ (v2) ══ пять строк вместо четырёх: PR и инфлюенс
+     разведены, «Ивенты» вместо «Мероприятия и выставки».
+     Разметка и классы — из базы (.work / .row), стилей своих почти нет. -->
+<section class="work" id="work">
+  <p class="kicker work__kicker rise">Что делаем</p>
+
+  <a class="row rise" href="#cases" data-goto="pr">
+    <img class="row__img" src="assets/img/dir-pr.jpg" alt="" loading="lazy" width="1000" height="562">
+    <span class="row__in">
+      <h2 class="row__name">PR</h2>
+      <p class="row__desc">Стратегия коммуникаций, работа со СМИ, спецпроекты, кризисные коммуникации.</p>
+    </span>
+  </a>
+  <a class="row rise" href="#cases" data-goto="pr">
+    <img class="row__img" src="assets/img/frame-e.jpg" alt="" loading="lazy" width="1000" height="563">
+    <span class="row__in">
+      <h2 class="row__name">Инфлюенс-маркетинг</h2>
+      <p class="row__desc">Лидеры мнений и амбассадоры, интеграции и посевы у блогеров.</p>
+    </span>
+  </a>
+  <a class="row rise" href="#cases" data-goto="events">
+    <img class="row__img" src="assets/img/dir-events.jpg" alt="" loading="lazy" width="1000" height="562">
+    <span class="row__in">
+      <h2 class="row__name">Ивенты</h2>
+      <p class="row__desc">Концепция, продюсирование, выставочные пространства, трансляции.</p>
+    </span>
+  </a>
+  <a class="row rise" href="#cases" data-goto="production">
+    <img class="row__img" src="assets/img/dir-production.jpg" alt="" loading="lazy" width="1000" height="562">
+    <span class="row__in">
+      <h2 class="row__name">Продакшн</h2>
+      <p class="row__desc">Имиджевое видео, реклама, съёмки студийного уровня, моушн и графика.</p>
+    </span>
+  </a>
+  <a class="row rise" href="#cases" data-goto="it">
+    <img class="row__img" src="assets/img/dir-it.jpg" alt="" loading="lazy" width="1000" height="562">
+    <span class="row__in">
+      <h2 class="row__name">IT</h2>
+      <p class="row__desc">Платформы, бренд-сайты и цифровые экосистемы, интерактив, разработка с ИИ.</p>
+    </span>
+  </a>
+</section>
+
+<section class="catalog act-light" id="cases">
+  <div class="catalog__in">
+
+    <div class="catalog__head rise">
+      <div class="catalog__title">
+        <p class="kicker">Кейсы</p>
+        <h2 class="catalog__h">Вот что мы имеем <span class="catalog__mark">в виду<svg class="catalog__stroke" viewBox="0 0 240 16" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path d="M3 12 C 70 9.5, 160 8.5, 237 7" stroke-linecap="butt" fill="none"></path></svg></span></h2>
+      </div>
+      <p class="catalog__count"><span id="catalog-count" aria-live="polite">9</span> проектов</p>
+    </div>
+
+    <div class="catalog__filter rise" role="group" aria-label="Фильтр кейсов по направлениям">
+      <span class="catalog__filter-label">Фильтр:</span>
+      <button class="catalog__f is-on" type="button" data-catalog-f="all" aria-pressed="true"><span class="catalog__dot catalog__dot--f" aria-hidden="true"></span>Все</button>
+      <button class="catalog__f" type="button" data-catalog-f="pr" aria-pressed="false"><span class="catalog__dot catalog__dot--f" aria-hidden="true"></span>PR и инфлюенс</button>
+      <button class="catalog__f" type="button" data-catalog-f="production" aria-pressed="false"><span class="catalog__dot catalog__dot--f" aria-hidden="true"></span>Продакшн</button>
+      <button class="catalog__f" type="button" data-catalog-f="it" aria-pressed="false"><span class="catalog__dot catalog__dot--f" aria-hidden="true"></span>IT</button>
+      <button class="catalog__f" type="button" data-catalog-f="events" aria-pressed="false"><span class="catalog__dot catalog__dot--f" aria-hidden="true"></span>Ивенты</button>
+    </div>
+
+    <div class="catalog__grid" id="catalog-grid">
+
+      <div class="catalog__col catalog__col--a">
+
+        <article class="catalog__card rise" data-dir="pr">
+          <div class="catalog__poster catalog__poster--h300">
+            <img src="assets/img/case-tanuki-kz.jpg" alt="Запуск ресторанов Александра Орлова в Казахстане" loading="lazy" width="400" height="300">
+          </div>
+          <div class="catalog__row">
+            <span class="catalog__dot catalog__dot--card" aria-hidden="true"></span>
+            <h3 class="catalog__t">Запуск ресторанов Александра Орлова в&nbsp;Казахстане</h3>
+          </div>
+          <p class="catalog__meta">
+            <span class="catalog__tag">PR и инфлюенс</span>
+            <span class="catalog__tag">Казахстан</span>
+          </p>
+        </article>
+
+        <article class="catalog__card rise" data-dir="pr">
+          <div class="catalog__poster catalog__poster--h530">
+            <img src="assets/img/frame-c.jpg" alt="Кадр проекта MISS MRS LITTLE MISS BRICS" loading="lazy" width="400" height="530">
+          </div>
+          <div class="catalog__row">
+            <span class="catalog__dot catalog__dot--card" aria-hidden="true"></span>
+            <h3 class="catalog__t">MISS MRS LITTLE MISS BRICS</h3>
+          </div>
+          <p class="catalog__meta">
+            <span class="catalog__tag">PR</span>
+            <span class="catalog__tag">Событие</span>
+            <span class="catalog__metric">49&nbsp;млн охвата</span>
+          </p>
+        </article>
+
+        <article class="catalog__card rise" data-dir="it">
+          <div class="catalog__poster catalog__poster--h500">
+            <img src="assets/img/dir-vfx.jpg" alt="Цифровая экосистема бренда профессиональной косметики" loading="lazy" width="400" height="500">
+          </div>
+          <div class="catalog__row">
+            <span class="catalog__dot catalog__dot--card" aria-hidden="true"></span>
+            <h3 class="catalog__t">Цифровая экосистема бренда проф-косметики</h3>
+          </div>
+          <p class="catalog__meta">
+            <span class="catalog__tag">IT</span>
+            <span class="catalog__tag">Бьюти</span>
+            <span class="catalog__metric">тендер вхолодную</span>
+          </p>
+        </article>
+
+      </div>
+
+      <div class="catalog__col catalog__col--b">
+
+        <article class="catalog__card rise" data-dir="pr">
+          <div class="catalog__poster catalog__poster--h530">
+            <img src="assets/img/dir-pr.jpg" alt="Годовая программа влияния для группы «Родина»" loading="lazy" width="400" height="530">
+          </div>
+          <div class="catalog__row">
+            <span class="catalog__dot catalog__dot--card" aria-hidden="true"></span>
+            <h3 class="catalog__t">Группа «Родина»: годовая программа влияния</h3>
+          </div>
+          <p class="catalog__meta">
+            <span class="catalog__tag">PR и инфлюенс</span>
+            <span class="catalog__tag">Девелопмент</span>
+            <span class="catalog__metric">+23&nbsp;% к спросу</span>
+          </p>
+        </article>
+
+        <article class="catalog__card rise" data-dir="production">
+          <div class="catalog__poster catalog__poster--h250">
+            <img src="assets/img/dir-production.jpg" alt="Телемарафон финала национального чемпионата" loading="lazy" width="400" height="250">
+          </div>
+          <div class="catalog__row">
+            <span class="catalog__dot catalog__dot--card" aria-hidden="true"></span>
+            <h3 class="catalog__t">Телемарафон финала национального чемпионата</h3>
+          </div>
+          <p class="catalog__meta">
+            <span class="catalog__tag">Продакшн</span>
+            <span class="catalog__tag">Эфир</span>
+            <span class="catalog__metric">30&nbsp;часов эфира</span>
+          </p>
+        </article>
+
+        <article class="catalog__card rise" data-dir="events">
+          <div class="catalog__poster catalog__poster--h460">
+            <img src="assets/img/dir-events.jpg" alt="Выставочная система в 25 городах" loading="lazy" width="400" height="460">
+          </div>
+          <div class="catalog__row">
+            <span class="catalog__dot catalog__dot--card" aria-hidden="true"></span>
+            <h3 class="catalog__t">Выставочная система в&nbsp;25 городах</h3>
+          </div>
+          <p class="catalog__meta">
+            <span class="catalog__tag">Ивенты</span>
+            <span class="catalog__tag">Сеть</span>
+            <span class="catalog__metric">500&nbsp;тыс.+ посетителей</span>
+          </p>
+        </article>
+
+      </div>
+
+      <div class="catalog__col catalog__col--c">
+
+        <article class="catalog__card rise" data-dir="it">
+          <div class="catalog__poster catalog__poster--h400">
+            <img src="assets/img/dir-it.jpg" alt="Образовательная платформа страны" loading="lazy" width="400" height="400">
+          </div>
+          <div class="catalog__row">
+            <span class="catalog__dot catalog__dot--card" aria-hidden="true"></span>
+            <h3 class="catalog__t">Образовательная платформа страны</h3>
+          </div>
+          <p class="catalog__meta">
+            <span class="catalog__tag">IT</span>
+            <span class="catalog__tag">Образование</span>
+            <span class="catalog__metric">3,77&nbsp;млн пользователей</span>
+          </p>
+        </article>
+
+        <article class="catalog__card rise" data-dir="pr">
+          <div class="catalog__poster catalog__poster--h530">
+            <img src="assets/img/frame-f.jpg" alt="PR и инфлюенс-программа «Азбуки вкуса»" loading="lazy" width="400" height="530">
+          </div>
+          <div class="catalog__row">
+            <span class="catalog__dot catalog__dot--card" aria-hidden="true"></span>
+            <h3 class="catalog__t">«Азбука вкуса»: PR и инфлюенс за год</h3>
+          </div>
+          <p class="catalog__meta">
+            <span class="catalog__tag">PR и инфлюенс</span>
+            <span class="catalog__tag">Ритейл</span>
+            <span class="catalog__metric">+42&nbsp;% к доставке</span>
+          </p>
+        </article>
+
+        <article class="catalog__card rise" data-dir="it">
+          <div class="catalog__poster catalog__poster--h260">
+            <img src="assets/img/frame-e.jpg" alt="Виртуальный интерактивный город" loading="lazy" width="400" height="260">
+          </div>
+          <div class="catalog__row">
+            <span class="catalog__dot catalog__dot--card" aria-hidden="true"></span>
+            <h3 class="catalog__t">Виртуальный интерактивный город</h3>
+          </div>
+          <p class="catalog__meta">
+            <span class="catalog__tag">IT</span>
+            <span class="catalog__tag">Интерактив</span>
+            <span class="catalog__metric">2,95&nbsp;млн пользователей</span>
+          </p>
+        </article>
+
+      </div>
+
+    </div>
+
+    <div class="catalog__foot rise">
+      <button class="catalog__all" type="button" data-catalog-all>Все кейсы</button>
+    </div>
+
+  </div>
+</section>
+
+<section class="how act-light rise" id="how">
+  <div class="how__head">
+    <div class="how__title">
+      <p class="kicker">Как работаем</p>
+      <h2 class="how__h">С чем вы приходите</h2>
+    </div>
+    <p class="how__intro">Три сценария входа — переключаются. Ниже каждая схема: что происходит и что вы получаете на руки.</p>
+  </div>
+
+  <div class="how__tabs" role="tablist" aria-label="Сценарии работы">
+    <button class="how__tab" type="button" role="tab" id="how-tab-1" aria-controls="how-panel-1" aria-selected="true" tabindex="0"><span class="how__tab-n">01</span>Создать и запустить</button>
+    <button class="how__tab" type="button" role="tab" id="how-tab-2" aria-controls="how-panel-2" aria-selected="false" tabindex="-1"><span class="how__tab-n">02</span>Поддерживать и развивать</button>
+    <button class="how__tab" type="button" role="tab" id="how-tab-3" aria-controls="how-panel-3" aria-selected="false" tabindex="-1"><span class="how__tab-n">03</span>Решить одну задачу</button>
+  </div>
+
+  <!-- ══ 01 · Весь путь целиком ══ -->
+  <div class="how__panel" role="tabpanel" id="how-panel-1" aria-labelledby="how-tab-1" tabindex="0">
+    <p class="how__lead">Когда замысел ещё не уместился в бриф, а пройти нужно весь путь — от идеи до запуска и продвижения. Одна команда и один ответственный ведут проект целиком.</p>
+
+    <div class="how__frame">
+      <div class="how__stage">
+        <p class="how__tech" style="--x:0px;--y:14px">Схема 01 · Весь путь целиком</p>
+        <p class="how__tech how__tech--right" style="--y:14px">About You · Ташкент</p>
+        <p class="how__tech how__tech--bottom how__tech--soft" style="--x:230px">Разводим по направлениям</p>
+        <p class="how__tech how__tech--bottom how__tech--soft" style="--x:560px">Сводим и проверяем</p>
+
+        <svg class="how__lines" width="1312" height="430" viewBox="0 0 1312 430" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+          <path d="M180 215 L244 215"/>
+          <path d="M250 215 C 310 215, 300 60, 356 60"/>
+          <path d="M250 215 C 310 215, 300 163, 356 163"/>
+          <path d="M250 215 C 310 215, 300 267, 356 267"/>
+          <path d="M250 215 C 310 215, 300 370, 356 370"/>
+          <path d="M516 60 C 574 60, 562 215, 616 215" stroke-opacity="0.45"/>
+          <path d="M516 163 C 574 163, 562 215, 616 215" stroke-opacity="0.45"/>
+          <path d="M516 267 C 574 267, 562 215, 616 215" stroke-opacity="0.45"/>
+          <path d="M516 370 C 574 370, 562 215, 616 215" stroke-opacity="0.45"/>
+          <path d="M620 215 L 652 215"/>
+          <path d="M846 215 L 884 215"/>
+          <path d="M1058 215 L 1112 215" stroke-opacity="0.45"/>
+          <rect class="how__mark" x="244" y="209" width="12" height="12" transform="rotate(45 250 215)"/>
+          <rect class="how__mark" x="612" y="209" width="12" height="12" transform="rotate(45 618 215)"/>
+          <path class="how__arrow" d="M733 158 A 16 14 0 1 1 762 166"/>
+          <path class="how__arrow" d="M758 160 L762 166 L767 161" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+
+        <div class="how__nodes">
+          <div class="how__node" style="--x:10px;--y:186px;--w:170px;--h:58px;--fs:16px">
+            <span class="how__node-t">Ваша задача</span><span class="how__node-s">бриф не обязателен</span>
+          </div>
+          <div class="how__node" style="--x:356px;--y:36px;--w:160px;--h:48px">
+            <span class="how__node-t">PR</span><span class="how__node-s">инфоповоды · медиа</span>
+          </div>
+          <div class="how__node" style="--x:356px;--y:139px;--w:160px;--h:48px">
+            <span class="how__node-t">Продакшн</span><span class="how__node-s">съёмки · эфиры</span>
+          </div>
+          <div class="how__node" style="--x:356px;--y:243px;--w:160px;--h:48px">
+            <span class="how__node-t">IT</span><span class="how__node-s">платформы</span>
+          </div>
+          <div class="how__node" style="--x:356px;--y:346px;--w:160px;--h:48px">
+            <span class="how__node-t">События</span><span class="how__node-s">выставки · запуски</span>
+          </div>
+          <div class="how__node" style="--x:652px;--y:186px;--w:194px;--h:58px;--fs:14px">
+            <span class="how__node-t">Проверка ⇄ доработка</span><span class="how__node-s">пока протокол не закрыт</span>
+          </div>
+          <div class="how__node how__node--pill" style="--x:884px;--y:186px;--w:174px;--h:58px;--fs:17px">
+            <span class="how__node-t">Запуск</span><span class="how__node-s">дата не двигается</span>
+          </div>
+          <div class="how__node" style="--x:1112px;--y:186px;--w:190px;--h:58px">
+            <span class="how__node-t">Отчёт и разбор</span><span class="how__node-s">метрики · выводы</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <ol class="how__phases">
+      <li class="how__phase">
+        <p class="how__phase-h"><span class="how__phase-n">01</span><span class="how__phase-t">Постановка</span></p>
+        <p class="how__phase-d">Задача письменно, концепция, смета, план-график, договор</p>
+      </li>
+      <li class="how__phase">
+        <p class="how__phase-h"><span class="how__phase-n">02</span><span class="how__phase-t">Производство</span></p>
+        <p class="how__phase-d">Медиаплан, сценарии, ТЗ; направления работают параллельно, статусы еженедельно</p>
+      </li>
+      <li class="how__phase">
+        <p class="how__phase-h"><span class="how__phase-n">03</span><span class="how__phase-t">Проверка</span></p>
+        <p class="how__phase-d">Приёмка в четыре слоя; цикл повторяется, пока протокол замечаний не закрыт</p>
+      </li>
+      <li class="how__phase">
+        <p class="how__phase-h"><span class="how__phase-n">04</span><span class="how__phase-t">Запуск и отчёт</span></p>
+        <p class="how__phase-d">Дежурство команды на площадке и в эфире; метрики, анализ отклонений, рекомендации</p>
+      </li>
+    </ol>
+  </div>
+
+  <!-- ══ 02 · Рабочий цикл ══ -->
+  <div class="how__panel" role="tabpanel" id="how-panel-2" aria-labelledby="how-tab-2" tabindex="0" hidden>
+    <p class="how__lead">Когда продукт уже работает, но ему нужны развитие, внимание и ежедневная поддержка. Постоянная команда, которая знает контекст и не начинает каждый месяц заново.</p>
+
+    <div class="how__frame">
+      <div class="how__stage">
+        <p class="how__tech" style="--x:0px;--y:14px">Схема 02 · Рабочий цикл</p>
+        <p class="how__tech how__tech--right" style="--y:14px">About You · Ташкент</p>
+        <p class="how__tech how__tech--hot" style="--x:24px;--y:352px">Постоянный контур</p>
+        <p class="how__tech" style="--x:190px;--y:352px">ежедневный мониторинг тональности · дежурство по срочному · инциденты с приоритизацией</p>
+
+        <svg class="how__lines" width="1312" height="430" viewBox="0 0 1312 430" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+          <path d="M190 215 L 436 215"/>
+          <circle cx="560" cy="215" r="118" stroke-opacity="0.55"/>
+          <path class="how__arrow" d="M670 201 L678 213 L687 201" stroke-linecap="round" stroke-linejoin="round"/>
+          <path class="how__arrow" d="M433 229 L442 217 L450 229" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M678 215 L 900 215"/>
+          <path d="M1074 215 L 1112 215" stroke-opacity="0.45"/>
+          <rect class="how__mark" x="430" y="209" width="12" height="12" transform="rotate(45 436 215)"/>
+          <path class="how__dash" d="M24 392 L 1288 392" stroke-opacity="0.7"/>
+          <circle class="how__dot" cx="24" cy="392" r="4"/>
+          <circle class="how__dot" cx="1288" cy="392" r="4"/>
+        </svg>
+
+        <div class="how__nodes">
+          <div class="how__node" style="--x:10px;--y:186px;--w:180px;--h:58px;--fs:16px">
+            <span class="how__node-t">Установка</span><span class="how__node-s">стратегия · план · регламент</span>
+          </div>
+          <div class="how__node" style="--x:480px;--y:75px;--w:160px;--h:44px;--fs:14px">
+            <span class="how__node-t">Планирование</span>
+          </div>
+          <div class="how__node" style="--x:620px;--y:193px;--w:176px;--h:44px;--fs:14px">
+            <span class="how__node-t">Производство</span>
+          </div>
+          <div class="how__node" style="--x:324px;--y:193px;--w:150px;--h:44px;--fs:14px">
+            <span class="how__node-t">Проверка</span>
+          </div>
+          <div class="how__node" style="--x:480px;--y:311px;--w:160px;--h:44px;--fs:14px">
+            <span class="how__node-t">Публикация</span>
+          </div>
+          <div class="how__node how__node--pill" style="--x:900px;--y:186px;--w:174px;--h:58px;--fs:17px">
+            <span class="how__node-t">Отчёт</span><span class="how__node-s">ежемесячно · цифры и выводы</span>
+          </div>
+          <div class="how__node" style="--x:1112px;--y:186px;--w:190px;--h:58px;--fs:14px">
+            <span class="how__node-t">Пересмотр стратегии</span><span class="how__node-s">ежеквартально · по данным</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <ol class="how__phases">
+      <li class="how__phase">
+        <p class="how__phase-h"><span class="how__phase-n">01</span><span class="how__phase-t">Установка</span></p>
+        <p class="how__phase-d">Стратегия на период, план активностей, регламент: объёмы, сроки реакции, кто согласовывает</p>
+      </li>
+      <li class="how__phase">
+        <p class="how__phase-h"><span class="how__phase-n">02</span><span class="how__phase-t">Цикл</span></p>
+        <p class="how__phase-d">Планирование → производство → проверка → публикация; повторяется каждый период</p>
+      </li>
+      <li class="how__phase">
+        <p class="how__phase-h"><span class="how__phase-n">03</span><span class="how__phase-t">Постоянный контур</span></p>
+        <p class="how__phase-d">Мониторинг упоминаний и тональности каждый день; реакция не ждёт планёрки</p>
+      </li>
+      <li class="how__phase">
+        <p class="how__phase-h"><span class="how__phase-n">04</span><span class="how__phase-t">Отчёт и пересмотр</span></p>
+        <p class="how__phase-d">Ежемесячно — метрики и отклонения; ежеквартально — пересмотр стратегии по фактическим данным</p>
+      </li>
+    </ol>
+  </div>
+
+  <!-- ══ 03 · Короткий отрезок ══ -->
+  <div class="how__panel" role="tabpanel" id="how-panel-3" aria-labelledby="how-tab-3" tabindex="0" hidden>
+    <p class="how__lead">Когда нужен один понятный результат: ролик, сайт, открытие, интервью, кризис. Только нужное направление — без обязательства продолжать сотрудничество.</p>
+
+    <div class="how__frame">
+      <div class="how__stage">
+        <p class="how__tech" style="--x:0px;--y:14px">Схема 03 · Короткий отрезок</p>
+        <p class="how__tech how__tech--right" style="--y:14px">About You · Ташкент</p>
+        <p class="how__tech how__tech--bottom how__tech--soft" style="--x:420px">Без стратегии, если она здесь не нужна</p>
+
+        <svg class="how__lines" width="1312" height="430" viewBox="0 0 1312 430" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+          <path d="M186 215 L 268 215"/>
+          <path d="M448 215 L 530 215"/>
+          <path d="M710 215 L 790 215"/>
+          <path d="M994 215 L 1078 215"/>
+          <path class="how__arrow" d="M876 158 A 16 14 0 1 1 905 166"/>
+          <path class="how__arrow" d="M901 160 L905 166 L910 161" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+
+        <div class="how__nodes">
+          <div class="how__node" style="--x:10px;--y:186px;--w:176px;--h:58px">
+            <span class="how__node-t">Бриф и оценка</span><span class="how__node-s">смета и срок · ответ в тот же день</span>
+          </div>
+          <div class="how__node" style="--x:268px;--y:186px;--w:180px;--h:58px">
+            <span class="how__node-t">ТЗ и договор</span><span class="how__node-s">материалы · доступы</span>
+          </div>
+          <div class="how__node" style="--x:530px;--y:186px;--w:180px;--h:58px">
+            <span class="how__node-t">Производство</span><span class="how__node-s">первая версия · один ответственный</span>
+          </div>
+          <div class="how__node" style="--x:790px;--y:186px;--w:204px;--h:58px;--fs:14px">
+            <span class="how__node-t">Проверка ⇄ доработка</span><span class="how__node-s">правки в оговорённом объёме</span>
+          </div>
+          <div class="how__node how__node--pill" style="--x:1078px;--y:186px;--w:224px;--h:58px;--fs:17px">
+            <span class="how__node-t">Сдача</span><span class="how__node-s">исходники · доступы · отчёт</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <ol class="how__phases">
+      <li class="how__phase">
+        <p class="how__phase-h"><span class="how__phase-n">01</span><span class="how__phase-t">Смета и срок</span></p>
+        <p class="how__phase-d">Уточняющие вопросы, оценка объёма и состава работ</p>
+      </li>
+      <li class="how__phase">
+        <p class="how__phase-h"><span class="how__phase-n">02</span><span class="how__phase-t">Согласованное ТЗ</span></p>
+        <p class="how__phase-d">Договор, передача исходных материалов и доступов</p>
+      </li>
+      <li class="how__phase">
+        <p class="how__phase-h"><span class="how__phase-n">03</span><span class="how__phase-t">Первая версия</span></p>
+        <p class="how__phase-d">Работа по ТЗ; внутренняя приёмка до вашей</p>
+      </li>
+      <li class="how__phase">
+        <p class="how__phase-h"><span class="how__phase-n">04</span><span class="how__phase-t">Финал и передача</span></p>
+        <p class="how__phase-d">Правки, повторная проверка изменённого; материалы, исходники, доступы, отчёт</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ══ О НАС (v2) ══ манифест + большой блок команды.
+     Манифест — копия sections/about.html без изменений (текст, классы,
+     SVG-жест); стили берёт из about.css, он подключён в шаблоне v2.
+     Компактная строка команды-facepile выкинута — вместо неё .vteam.
+     id="about" остаётся на первой секции: на него ведёт nav. -->
+<section class="manifesto rise" id="about">
+  <p class="kicker manifesto__kicker">О нас</p>
+
+  <p class="manifesto__text">Нам интересно работать с теми, кому <em class="manifesto__accent">есть что сказать</em> — особенно если это сложно уместить в обычный бриф. Помогаем добраться до сути, придумываем форму и создаём опыт, через который идею увидят, поймут и запомнят. Это может быть одна PR-кампания, вирусный ролик, цифровой продукт или целая экосистема — <span class="manifesto__marked">задача определяет решение<svg class="manifesto__underline" width="100%" height="16" viewBox="0 0 420 16" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path class="manifesto__stroke" pathLength="1" d="M4 12 C 130 9.5, 300 8.5, 416 7" stroke-width="9" stroke-linecap="butt" fill="none"></path></svg></span>, а не набор наших услуг.</p>
+</section>
+
+<!-- ══ КОМАНДА (v2) ══ макет: ../Канвас — рабочие файлы/Team.dc.html (1440).
+     Отличия от артборда — дозировка красного: красный только у кикера,
+     заголовок одним цветом, плашка «Видео · слот» графитовая.
+     Видео-слоты — заглушки: не кликаются, курсор обычный. -->
+<section class="vteam">
+  <div class="vteam__in">
+
+    <div class="vteam__head rise">
+      <p class="kicker vteam__kicker">Команда</p>
+      <h2 class="vteam__h">За пикселями — люди, которым не всё равно</h2>
+    </div>
+
+    <div class="vteam__founders">
+      <figure class="vteam__founder rise" style="transition-delay:.05s">
+        <div class="vteam__slot">
+          <img class="vteam__slot-img" src="assets/img/frame-f.jpg" alt="" loading="lazy" width="1000" height="563">
+          <span class="vteam__play" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" focusable="false"><path d="M8 5.5 L18.5 12 L8 18.5 Z" fill="currentColor"></path></svg>
+          </span>
+          <span class="vteam__badge">Видео · слот</span>
+        </div>
+        <figcaption class="vteam__cap">
+          <span class="vteam__cap-name">Вика</span>
+          <span class="vteam__cap-role">Сооснователь About You · о том, как мы работаем</span>
+        </figcaption>
+      </figure>
+
+      <figure class="vteam__founder rise" style="transition-delay:.12s">
+        <div class="vteam__slot">
+          <img class="vteam__slot-img" src="assets/img/frame-e.jpg" alt="" loading="lazy" width="1000" height="563">
+          <span class="vteam__play" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" focusable="false"><path d="M8 5.5 L18.5 12 L8 18.5 Z" fill="currentColor"></path></svg>
+          </span>
+          <span class="vteam__badge">Видео · слот</span>
+        </div>
+        <figcaption class="vteam__cap">
+          <span class="vteam__cap-name">Илья</span>
+          <span class="vteam__cap-role">Сооснователь About You · про кухню проектов</span>
+        </figcaption>
+      </figure>
+    </div>
+
+    <!-- четыре направления агентства в лицах; фото ещё нет — инициалы -->
+    <ul class="vteam__people">
+      <li class="vteam__person rise" style="transition-delay:.05s">
+        <span class="vteam__portrait" aria-hidden="true"><span class="vteam__initials">КЮ</span></span>
+        <span class="vteam__name">Камила Юсупова</span>
+        <span class="vteam__role">PR-менеджер</span>
+      </li>
+      <li class="vteam__person rise" style="transition-delay:.11s">
+        <span class="vteam__portrait" aria-hidden="true"><span class="vteam__initials">ТР</span></span>
+        <span class="vteam__name">Тимур Рахимов</span>
+        <span class="vteam__role">Продюсер ивентов</span>
+      </li>
+      <li class="vteam__person rise" style="transition-delay:.17s">
+        <span class="vteam__portrait" aria-hidden="true"><span class="vteam__initials">МА</span></span>
+        <span class="vteam__name">Мадина Алимова</span>
+        <span class="vteam__role">Арт-директор</span>
+      </li>
+      <li class="vteam__person rise" style="transition-delay:.23s">
+        <span class="vteam__portrait" aria-hidden="true"><span class="vteam__initials">СБ</span></span>
+        <span class="vteam__name">Санжар Бекмуратов</span>
+        <span class="vteam__role">Разработчик</span>
+      </li>
+    </ul>
+
+    <p class="vteam__impressum rise"><b>Алёна Соколова</b> — смыслы и тексты<i> · </i><b>Мария Ким</b> — инфлюенс и медиа<i> · </i><b>Даниил Волков</b> — продакшн и съёмки</p>
+
+  </div>
+</section>
+
+<footer class="apply" id="contact">
+  <p class="kicker apply__kicker rise">Заявка</p>
+
+  <div class="apply__cols">
+    <div class="apply__intro rise">
+      <h2 class="apply__h">Расскажите, что вы задумали<span class="apply__dot">.</span></h2>
+      <p class="apply__lead">Двух абзацев достаточно. Прочитаем, подумаем и вернёмся с вопросами по делу.</p>
+
+      <div class="apply__contacts">
+        <a class="apply__contact" href="mailto:hello@aboutyou.uz">
+          <svg class="apply__ico" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+            <rect x="3" y="5" width="18" height="14" rx="1.5" stroke="currentColor" stroke-width="2"/>
+            <path d="M4 7 L12 13 L20 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          </svg>
+          <span>hello@aboutyou.uz</span>
+        </a>
+        <a class="apply__contact" href="#" data-tg>
+          <svg class="apply__ico" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+            <path d="M21 4 L3.5 10.8 C2.7 11.1 2.75 12.2 3.57 12.45 L9 14.1 L10.8 19.6 C11.05 20.4 12.1 20.5 12.5 19.8 L15 15.6 M21 4 L9 14.1 M21 4 L15 15.6 L12.2 14.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          </svg>
+          <span>Telegram</span>
+        </a>
+        <a class="apply__contact" href="#">
+          <svg class="apply__ico" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+            <rect x="3.5" y="3.5" width="17" height="17" rx="4.5" stroke="currentColor" stroke-width="2"/>
+            <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/>
+            <circle cx="17.2" cy="6.8" r="1.3" fill="currentColor"/>
+          </svg>
+          <span>Instagram</span>
+        </a>
+      </div>
+    </div>
+
+    <form class="apply__form rise" id="apply-form" novalidate>
+      <div class="apply__pair">
+        <p class="apply__field">
+          <label class="apply__label" for="apply-name">Имя</label>
+          <input class="apply__input" id="apply-name" name="name" type="text" autocomplete="name" placeholder="Как к вам обращаться">
+        </p>
+        <p class="apply__field">
+          <label class="apply__label" for="apply-company">Компания</label>
+          <input class="apply__input" id="apply-company" name="company" type="text" autocomplete="organization" placeholder="Бренд или организация">
+        </p>
+      </div>
+
+      <p class="apply__field">
+        <label class="apply__label" for="apply-contact">Телефон или Telegram</label>
+        <input class="apply__input" id="apply-contact" name="contact" type="text" autocomplete="tel" placeholder="Куда удобнее написать">
+      </p>
+
+      <p class="apply__field">
+        <label class="apply__label" for="apply-task">Задача</label>
+        <textarea class="apply__input apply__area" id="apply-task" name="task" rows="1" placeholder="Что задумали, в свободной форме"></textarea>
+      </p>
+
+      <div class="apply__send">
+        <button class="cta apply__btn" type="submit">Отправить</button>
+        <span class="apply__note">Нажимая, вы соглашаетесь с политикой обработки данных</span>
+      </div>
+
+      <p class="apply__status" id="apply-status" role="status" aria-live="polite" hidden>
+        Форма заработает после запуска — пока напишите нам в <a href="#" data-tg>Telegram</a>
+      </p>
+    </form>
+  </div>
+
+  <div class="apply__foot rise">
+    <p>About You · Ташкент</p>
+    <p>PR · Продакшн · IT · Мероприятия</p>
+    <p>© 2026</p>
+  </div>
+
+  <div class="apply__plate rise">
+    <svg class="apply__mark" viewBox="0 0 1476 164" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="About You">
+      <g>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M833.583 53.2854L833.948 160.245H780.17L779.811 54.9322L782.993 51.7463L784.285 50.4533L781.958 48.1237L779.795 50.289L778.339 51.7463H715.208V3.75666H898V51.7463H836.7L833.081 48.1237L830.754 50.4533L833.583 53.2854Z" fill="currentColor"/>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M208.858 160.244H151.537L140.842 133.954H68.0168L57.3212 160.244H0L68.5772 3.75666H140.281L208.858 160.244ZM102.849 40.8863V48.3341L85.418 91.1811H123.44L106.14 48.6569V40.8863H102.849Z" fill="currentColor"/>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M290.257 3.75666C304.709 3.75666 316.035 7.16454 324.233 13.9805C332.432 20.6573 336.531 29.9771 336.531 41.9397C336.531 48.7555 335.003 55.1542 331.946 61.1354C329.032 66.8366 324.35 71.7155 317.901 75.7738H313.193V79.0681H319.899C321.031 79.4632 322.129 79.8834 323.191 80.3312C331.112 83.6696 337.018 88.3297 340.909 94.311C344.938 100.153 346.953 107.178 346.953 115.384C346.953 123.869 345.008 131.52 341.117 138.336C337.365 145.152 331.598 150.508 323.817 154.402C316.035 158.297 306.307 160.244 294.635 160.244H216.395L180.091 80.3312V3.75666H290.257ZM242.038 124.565H277.543C282.128 124.565 285.741 123.383 288.382 121.018C291.022 118.514 292.342 115.176 292.342 111.003C292.342 107.247 291.022 104.048 288.382 101.405C285.88 98.762 282.128 97.4405 277.126 97.4404H232.224L242.038 124.565ZM225.446 62.3873H269.205C272.818 62.3873 275.805 61.2745 278.168 59.049C280.669 56.8234 281.92 53.9718 281.92 50.4943C281.92 47.295 280.808 44.6519 278.585 42.5654C276.361 40.479 273.235 39.4355 269.205 39.4355H225.446V62.3873Z" fill="currentColor"/>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M442.139 0C461.177 2.02391e-06 477.783 3.40789 491.957 10.2238C506.27 17.0397 517.387 26.6377 525.307 39.0176C533.228 51.2584 537.188 65.5858 537.188 81.9997C537.188 98.4135 533.228 112.81 525.307 125.19C517.387 137.431 506.27 146.96 491.957 153.776C477.783 160.591 461.177 163.999 442.139 163.999C423.102 163.999 406.426 160.591 392.114 153.776C377.94 146.96 366.892 137.431 358.971 125.19C351.051 112.81 347.09 98.4135 347.09 81.9997C347.09 65.5858 351.051 51.2584 358.971 39.0176C366.892 26.6377 377.94 17.0397 392.114 10.2238C406.426 3.40794 423.102 0 442.139 0ZM442.139 47.9895C433.663 47.9895 426.367 49.3809 420.253 52.1629C414.139 54.8058 409.414 58.7003 406.079 63.847C403.35 68.1229 401.787 73.1597 401.388 78.957L398.764 80.4928V83.7871L401.408 85.3276C401.837 91.0259 403.394 96.037 406.079 100.361C409.414 105.368 414.139 109.263 420.253 112.045C426.367 114.688 433.663 116.01 442.139 116.01C450.616 116.01 457.911 114.688 464.026 112.045C470.14 109.263 474.795 105.368 477.991 100.361C480.767 96.0763 482.387 91.1171 482.852 85.483L484.917 84.1004V80.8061L482.918 79.4411C482.56 73.4397 480.918 68.2415 477.991 63.847C474.795 58.7004 470.14 54.8057 464.026 52.1629C457.911 49.3809 450.616 47.9895 442.139 47.9895Z" fill="currentColor"/>
+        <path d="M595.758 3.75666V88.4685C595.758 94.1716 596.731 99.1099 598.676 103.283C600.622 107.456 603.679 110.655 607.848 112.881C611.257 114.587 615.502 115.595 620.584 115.906L622.216 118.896H625.507L627.133 115.925C632.309 115.628 636.65 114.544 640.156 112.672C644.325 110.447 647.451 107.317 649.536 103.283C651.481 99.1099 652.454 94.1716 652.454 88.4685V4.04751H706.232V91.3895C706.232 105.995 702.827 118.723 696.018 129.573C689.07 140.422 679.482 148.908 667.253 155.028C654.886 161.009 640.503 164 624.106 164C607.57 164 593.187 161.009 580.958 155.028C568.591 148.908 559.003 140.422 552.193 129.573C545.384 118.723 541.98 105.995 541.98 91.3895V3.75666H595.758Z" fill="currentColor"/>
+      </g>
+      <g transform="translate(931,0)">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M274.672 0C293.729 0 310.352 3.40783 324.54 10.2237C338.868 17.0396 349.996 26.6379 357.924 39.0178C365.853 51.2586 369.818 65.5858 369.818 81.9996C369.818 98.4134 365.853 112.81 357.924 125.19C349.996 137.431 338.868 146.959 324.54 153.775C310.352 160.591 293.729 163.999 274.672 163.999C255.615 163.999 238.923 160.591 224.595 153.775C210.407 146.959 199.348 137.431 191.419 125.19C183.491 112.81 179.526 98.4134 179.526 81.9996C179.526 65.5859 183.491 51.2586 191.419 39.0178C199.348 26.6379 210.407 17.0396 224.595 10.2237C238.923 3.40785 255.615 2.09077e-05 274.672 0ZM274.672 47.9897C266.187 47.9897 258.884 49.3805 252.763 52.1625C246.643 54.8054 241.913 58.7003 238.575 63.847C235.824 68.1527 234.257 73.2298 233.871 79.0782L231.685 80.4931V83.7874L233.89 85.2071C234.307 90.9552 235.868 96.0064 238.575 100.361C241.913 105.368 246.643 109.263 252.763 112.045C258.884 114.688 266.187 116.01 274.672 116.01C283.157 116.01 290.46 114.688 296.581 112.045C302.701 109.263 307.361 105.368 310.56 100.361C313.319 96.107 314.937 91.1883 315.416 85.6046L317.93 84.1007V80.8064L315.485 79.3211C315.112 73.3703 313.471 68.2122 310.56 63.847C307.361 58.7003 302.701 54.8054 296.581 52.1625C290.46 49.3805 283.157 47.9897 274.672 47.9897Z" fill="currentColor"/>
+        <path d="M98.203 54.2316V59.7517H101.497V54.1406L140.424 3.75681H199.473L126.861 97.0072V160.244H73.0287V97.8607L0 3.75681H59.0488L98.203 54.2316Z" fill="currentColor"/>
+        <path d="M434.414 88.4686C434.414 94.1717 435.388 99.1099 437.335 103.283C439.422 107.317 442.551 110.446 446.724 112.672C450.177 114.514 454.44 115.592 459.511 115.91L461.144 118.895H464.438L466.067 115.921C471.265 115.628 475.598 114.615 479.066 112.881C483.239 110.655 486.299 107.456 488.247 103.283C490.194 99.1099 491.168 94.1716 491.168 88.4686V3.75681H545V91.39C545 105.995 541.592 118.723 534.776 129.573C527.96 140.423 518.362 148.908 505.982 155.028C493.741 161.009 479.344 164 462.791 164C446.377 164 431.98 161.009 419.6 155.028C407.359 148.908 397.761 140.423 390.806 129.573C383.99 118.723 380.581 105.995 380.581 91.39V3.75681H434.414V88.4686Z" fill="currentColor"/>
+      </g>
+    </svg>
+  </div>
+</footer>
+
+<script src="assets/js/main.js" defer></script>
+<script src="assets/js/sections/v2-hero.js" defer></script>
+<script src="assets/js/sections/cases.js" defer></script>
+<script src="assets/js/sections/how.js" defer></script>
+<script src="assets/js/sections/apply.js" defer></script>
+</body>
+</html>

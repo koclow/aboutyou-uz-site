@@ -1,0 +1,126 @@
+/* ══════════════════════════════════════════════════════════
+   v2-team.css — большой блок «Команда» второй страницы (v2.html).
+   Макет: ../Канвас — рабочие файлы/Team.dc.html (1440, графит).
+
+   Отличия от артборда — дозировка красного (правило v2):
+   красный в блоке ровно один — кикер «Команда» (--signal-lift).
+   Заголовок идёт одним цветом --bone, без красного span; плашка
+   «Видео · слот» из сигнально-красной стала графитовой.
+   Дисплейный шрифт и вес h2 берём у v2.css (Commissioner 800) —
+   жёстко 900 не задаём.
+
+   Манифест выше живёт на своих классах и своих стилях (about.css),
+   здесь не повторяется и не перебивается.
+   ══════════════════════════════════════════════════════════ */
+
+.vteam{
+  background:var(--graphite);color:var(--bone);
+  /* сверху не отступаем: воздух даёт нижний padding манифеста */
+  padding:0 var(--pad) clamp(72px,12vh,120px);
+}
+.vteam__in{
+  border-top:1px solid var(--faint);
+  padding-top:clamp(44px,7vh,72px);
+  display:flex;flex-direction:column;gap:clamp(30px,5vh,44px);
+}
+
+/* ── шапка блока ── */
+.vteam__head{display:flex;flex-direction:column;gap:12px}
+.vteam__h{
+  margin:0;max-width:26ch;
+  font-family:var(--disp);text-transform:uppercase;
+  font-size:var(--fs-act);line-height:1.06;color:var(--bone);
+}
+
+/* ── два видео-слота сооснователей ── */
+.vteam__founders{
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:26px;
+}
+.vteam__founder{margin:0;display:flex;flex-direction:column;gap:14px;min-width:0}
+
+.vteam__slot{
+  position:relative;aspect-ratio:16/9;overflow:hidden;
+  background:var(--graphite-2);
+  display:flex;align-items:center;justify-content:center;
+}
+.vteam__slot-img{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;opacity:.45;
+}
+/* заглушка, а не проигрыватель: кликов нет, курсор обычный */
+.vteam__play{
+  position:relative;width:68px;height:68px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  border:2px solid var(--bone);background:var(--ink-mid);color:var(--bone);
+}
+.vteam__badge{
+  position:absolute;top:14px;left:14px;padding:5px 10px;
+  background:var(--graphite-2);color:var(--dim-strong);
+  font-size:var(--fs-tech);font-weight:600;
+  letter-spacing:.12em;text-transform:uppercase;
+}
+
+.vteam__cap{display:flex;flex-direction:column;gap:4px}
+.vteam__cap-name{
+  font-family:var(--disp);font-weight:700;
+  font-size:var(--fs-card);color:var(--bone);
+}
+.vteam__cap-role{
+  font-size:var(--fs-caption);letter-spacing:.08em;
+  text-transform:uppercase;color:var(--dim);
+}
+
+/* ── четыре портретные карточки ── */
+.vteam__people{
+  list-style:none;margin:0;padding:0;
+  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:20px;
+}
+.vteam__person{display:flex;flex-direction:column;gap:10px;min-width:0}
+/* фото ещё нет: вместо него инициалы, как в кружках facepile */
+.vteam__portrait{
+  aspect-ratio:3/4;
+  display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(165deg,var(--avatar-a) 0%,var(--graphite-2) 100%);
+}
+.vteam__person:nth-child(even) .vteam__portrait{
+  background:linear-gradient(165deg,var(--avatar-b) 0%,var(--graphite-2) 100%);
+}
+.vteam__initials{
+  font-family:var(--disp);font-weight:700;
+  font-size:var(--fs-sub);line-height:1;letter-spacing:.02em;
+  color:var(--dim-half);
+}
+.vteam__name{
+  font-family:var(--disp);font-weight:700;
+  font-size:var(--fs-small);line-height:1.2;color:var(--bone);
+}
+.vteam__role{
+  margin-top:-6px;
+  font-size:var(--fs-caption);letter-spacing:.06em;
+  text-transform:uppercase;color:var(--dim);
+}
+
+/* ── импрессум: остальные, кого не видно карточками ── */
+.vteam__impressum{
+  margin:0;max-width:78ch;
+  font-size:var(--fs-body);line-height:2;color:var(--dim);
+}
+.vteam__impressum b{color:var(--bone);font-weight:600}
+/* разделитель в about.css красный — здесь гасим: красный уже занят кикером */
+.vteam__impressum i{color:var(--faint-30);font-style:normal}
+
+/* ── адаптив ── */
+@media (max-width:900px){
+  .vteam__founders{grid-template-columns:minmax(0,1fr);gap:30px}
+  .vteam__people{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+  .vteam__h{max-width:20ch}
+  .vteam__impressum{line-height:1.85;max-width:60ch}
+}
+@media (max-width:520px){
+  /* две колонки держим: «Санжар Бекмуратов» в 13px влезает и на 320px */
+  .vteam__people{gap:14px}
+  .vteam__play{width:56px;height:56px}
+  .vteam__cap-role{letter-spacing:.06em}
+}

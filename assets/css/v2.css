@@ -1,0 +1,17 @@
+/* ══════════════════════════════════════════════════════════
+   v2.css — вторая страница (v2.html). Подключается ПОСЛЕ
+   tokens.css и main.css ТОЛЬКО на v2. index.html не трогает.
+   Два дела: спокойный дисплейный шрифт + дозировка красного.
+   ══════════════════════════════════════════════════════════ */
+:root{
+  /* Commissioner вместо Unbounded: выразительный, но не кричит */
+  --disp:"Commissioner","Golos Text",system-ui,sans-serif;
+}
+
+/* Unbounded 900 в Commissioner слишком чёрный не бывает — ведём 800,
+   межбуквенный слегка положительный (Unbounded требовал отрицательного) */
+h1,h2{font-weight:800;letter-spacing:.005em}
+
+/* nav на бумажном hero: тёмные ссылки, пока фон не стал графитовым */
+.nav--paper:not(.solid) .nav__menu a{color:var(--ink-dim)}
+.nav--paper:not(.solid) .nav__menu a:hover{color:var(--ink)}
