@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>About You — прототипы</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@700;900&family=Golos+Text:wght@400;500&display=swap">
+<style>
+  :root{--bg:#0E0D0C;--bg2:#171514;--line:#2E2A27;--fg:#EDEAE3;--dim:#9C958C;--red:#E33D2B}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--fg);
+    font-family:"Golos Text",system-ui,sans-serif;font-size:15px;line-height:1.55;
+    -webkit-font-smoothing:antialiased}
+  .wrap{max-width:900px;margin:0 auto;padding:0 24px}
+  header{padding:72px 0 30px}
+  .kicker{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);font-weight:500}
+  h1{font-family:"Unbounded",sans-serif;font-weight:900;font-size:clamp(30px,7vw,54px);
+     line-height:.96;letter-spacing:-.02em;margin:14px 0 0}
+  h1 em{font-style:normal;color:var(--red)}
+  .lede{max-width:56ch;color:var(--dim);margin-top:16px}
+  ul{list-style:none;margin:44px 0 0;padding:0;display:flex;flex-direction:column;gap:0;
+     border-top:1px solid var(--line)}
+  li{border-bottom:1px solid var(--line)}
+  a.item{display:flex;gap:22px;align-items:baseline;padding:26px 4px;text-decoration:none;
+    color:inherit;transition:background .18s,padding .18s}
+  a.item:hover,a.item:focus-visible{background:var(--bg2);padding-left:14px;outline:none}
+  a.item:focus-visible{box-shadow:inset 3px 0 0 var(--red)}
+  .num{font-family:"Unbounded",sans-serif;font-weight:700;font-size:12px;color:var(--red);
+    flex:none;font-variant-numeric:tabular-nums}
+  .name{font-family:"Unbounded",sans-serif;font-weight:700;font-size:clamp(17px,2.6vw,23px);
+    letter-spacing:-.01em;margin:0}
+  .desc{color:var(--dim);font-size:14px;margin:7px 0 0;max-width:52ch}
+  .desc b{color:var(--fg);font-weight:500}
+  footer{margin-top:56px;padding:24px 0 70px;border-top:1px solid var(--line);
+    color:var(--dim);font-size:13px}
+  footer a{color:var(--red)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <p class="kicker">About You · Ташкент</p>
+    <h1>Три прототипа <em>главной</em></h1>
+    <p class="lede">Разные заходы одного августа. Не итерации друг друга —
+      самостоятельные версии, из которых выбираем направление.</p>
+  </header>
+
+  <ul>
+    <li><a class="item" href="etalon/">
+      <span class="num">01</span>
+      <span>
+        <h2 class="name">Эталон</h2>
+        <p class="desc">Канон стиля, выбранный 22.08. Большая типографика на графите,
+          красная звезда, четыре направления строками. <b>Кадры в ленте «Родины» —
+          из других наших кейсов</b>, их надо заменить настоящими.</p>
+      </span>
+    </a></li>
+
+    <li><a class="item" href="taste-full/">
+      <span class="num">02</span>
+      <span>
+        <h2 class="name">Эталон, развёрнутый в лендинг</h2>
+        <p class="desc">«Делаем вас главными» — тот же стиль, доведённый до полной
+          страницы: направления, кейсы, клиенты, команда, форма.</p>
+      </span>
+    </a></li>
+
+    <li><a class="item" href="deck/">
+      <span class="num">03</span>
+      <span>
+        <h2 class="name">Лендинг из презентации</h2>
+        <p class="desc">«Делаем вас узнаваемыми» — собран по логике общей презы,
+          с кейсами картинками внизу.</p>
+      </span>
+    </a></li>
+  </ul>
+
+  <footer>
+    Песочница, не боевой сайт. Боевой — <a href="../">на корне</a>
+    (<a href="../v2.html">v2</a>). Скриншоты всех вариантов лежат в студии,
+    папка «Дизайн — все варианты (31.08)».
+  </footer>
+</div>
+</body>
+</html>

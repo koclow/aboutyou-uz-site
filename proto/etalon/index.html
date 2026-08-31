@@ -1,0 +1,411 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About You — креативное агентство</title>
+<meta name="description" content="PR и инфлюенс, продакшн, IT, мероприятия. Одной командой.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;900&family=Golos+Text:wght@400;500;600&display=swap">
+
+<style>
+:root{
+  --bg:#0F0E0C;
+  --bg2:#151310;
+  --bone:#EDEAE3;
+  --red:#E33D2B;
+  --sand:#C9A26C;
+  --dim:rgba(237,234,227,.55);
+  --faint:rgba(237,234,227,.13);
+  --disp:"Unbounded","Golos Text",system-ui,sans-serif;
+  --body:"Golos Text",system-ui,sans-serif;
+  --ease:cubic-bezier(.16,1,.3,1);
+  --pad:clamp(20px,4.5vw,64px);
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;overflow-x:clip}
+body{
+  margin:0;background:var(--bg);color:var(--bone);
+  font-family:var(--body);font-size:16px;line-height:1.5;
+  overflow-x:hidden;
+}
+::selection{background:var(--red);color:var(--bg)}
+img,svg{display:block;max-width:100%}
+img{height:auto}
+:focus-visible{outline:2px solid var(--red);outline-offset:4px}
+a{color:inherit}
+
+.kicker{margin:0;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--sand)}
+
+/* ── знак ───────────────────────────────────── */
+.ast,.end__star{aspect-ratio:1}
+.ast{color:var(--red)}
+@keyframes spin{to{transform:rotate(360deg)}}
+.ast--spin{animation:spin 16s linear infinite}
+
+/* ── шапка ──────────────────────────────────── */
+.nav{
+  position:absolute;top:0;left:0;right:0;z-index:10;height:64px;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 var(--pad);
+}
+.nav__id{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav__id svg{width:17px}
+.nav__name{font-family:var(--disp);font-weight:700;font-size:13px;letter-spacing:.06em;text-transform:uppercase}
+.nav__link{
+  font-size:12.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+  text-decoration:none;border-bottom:2px solid var(--red);padding-bottom:3px;
+  transition:color .25s var(--ease);
+}
+.nav__link:hover{color:var(--red)}
+
+/* ── герой ──────────────────────────────────── */
+.hero{
+  min-height:100dvh;display:flex;flex-direction:column;justify-content:flex-end;
+  padding:84px var(--pad) clamp(20px,4vh,44px);position:relative;overflow:hidden;
+}
+.hero__ast{
+  position:absolute;z-index:0;pointer-events:none;
+  width:clamp(210px,34vw,480px);
+  right:calc(-1*clamp(40px,7vw,120px));
+  top:clamp(64px,10vh,140px);
+}
+.hero__h{
+  position:relative;z-index:1;
+  font-family:var(--disp);font-weight:900;text-transform:uppercase;
+  line-height:.96;letter-spacing:-.01em;margin:0;
+  font-size:clamp(34px,9.2vw,124px);
+}
+.hero__h .l{display:block}
+.hero__h .l--2{color:var(--red);margin-left:.6em}
+.hero__h .l--4{margin-left:.28em}
+.hero__base{
+  position:relative;z-index:1;
+  display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;
+  margin-top:clamp(26px,5vh,52px);padding-top:18px;border-top:1px solid var(--faint);
+}
+.hero__sub{margin:0;font-size:13px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);max-width:30ch;line-height:1.7}
+.hero__sub b{color:var(--sand);font-weight:500}
+.cta{
+  display:inline-flex;align-items:center;gap:12px;white-space:nowrap;
+  font-family:var(--disp);font-weight:700;font-size:13px;letter-spacing:.04em;text-transform:uppercase;
+  color:var(--bg);background:var(--red);text-decoration:none;
+  padding:18px 26px;
+  transition:transform .3s var(--ease),background-color .3s var(--ease);
+}
+.cta:hover{background:var(--bone);transform:translateY(-2px)}
+.cta:active{transform:translateY(0) scale(.98)}
+
+@media (prefers-reduced-motion:no-preference){
+  .hero__h .l,.hero__base{opacity:0;transform:translateY(34px);animation:up .8s var(--ease) forwards}
+  .hero__h .l--1{animation-delay:.05s}
+  .hero__h .l--2{animation-delay:.15s}
+  .hero__h .l--3{animation-delay:.25s}
+  .hero__h .l--4{animation-delay:.35s}
+  .hero__base{animation-delay:.5s}
+  @keyframes up{to{opacity:1;transform:none}}
+}
+
+/* ── лента ──────────────────────────────────── */
+.belt{
+  border-top:1px solid var(--faint);border-bottom:1px solid var(--faint);
+  overflow:hidden;padding:16px 0;white-space:nowrap;
+}
+.belt .ast{color:var(--sand)}
+.belt__track{display:inline-flex}
+@media (prefers-reduced-motion:no-preference){
+  .belt__track{animation:belt 26s linear infinite}
+  @keyframes belt{to{transform:translateX(-50%)}}
+}
+.belt span{
+  font-family:var(--disp);font-weight:700;font-size:clamp(15px,2.2vw,24px);
+  text-transform:uppercase;letter-spacing:.02em;padding:0 .7em;
+}
+.belt svg{width:.85em;display:inline-block;vertical-align:-.06em}
+
+/* ── что делаем ─────────────────────────────── */
+.work{padding:clamp(64px,12vh,150px) 0 0}
+.work__intro{padding:0 var(--pad);margin:0 0 clamp(30px,6vh,64px);max-width:34ch;
+  font-size:clamp(17px,2vw,22px);line-height:1.45;color:var(--dim)}
+.work__intro b{color:var(--bone);font-weight:600}
+.row{
+  display:block;text-decoration:none;position:relative;overflow:hidden;
+  border-top:1px solid var(--faint);padding:clamp(22px,4vh,40px) var(--pad);
+  background:linear-gradient(var(--red),var(--red)) no-repeat 0 100%/100% 0%;
+  transition:background-size .45s var(--ease);
+}
+.row:last-of-type{border-bottom:1px solid var(--faint)}
+.row:hover{background-size:100% 100%}
+.row__in{display:grid;grid-template-columns:1fr;gap:10px;position:relative;z-index:1}
+.row__name{
+  font-family:var(--disp);font-weight:900;text-transform:uppercase;line-height:1;
+  font-size:clamp(24px,6.4vw,72px);margin:0;letter-spacing:-.01em;
+  transition:color .35s var(--ease),transform .45s var(--ease);
+}
+.row__desc{margin:0;font-size:14.5px;line-height:1.55;color:var(--dim);max-width:48ch;
+  transition:color .35s var(--ease),opacity .3s var(--ease)}
+.row:hover .row__name{color:var(--bg);transform:translateX(clamp(4px,1vw,16px))}
+.row:hover .row__desc{color:rgba(15,14,12,.75)}
+/* фото направления: проявляется на ховере, только десктоп с курсором */
+.row__img{display:none}
+@media (min-width:820px){
+  .row__in{grid-template-columns:minmax(0,7fr) minmax(0,4fr);align-items:center;gap:40px}
+}
+@media (min-width:820px) and (pointer:fine){
+  .row__img{
+    display:block;position:absolute;z-index:0;
+    right:calc(var(--pad) + 30px);top:50%;
+    width:clamp(240px,26vw,340px);aspect-ratio:16/11;object-fit:cover;
+    background:var(--bg2);
+    transform:translateY(-50%) rotate(-4deg) scale(.9);
+    opacity:0;filter:grayscale(1) contrast(1.06);
+    transition:opacity .4s var(--ease),transform .5s var(--ease);
+    pointer-events:none;
+  }
+  .row:hover .row__img{opacity:1;transform:translateY(-50%) rotate(-2deg) scale(1)}
+  .row:hover .row__desc{opacity:0}
+}
+
+/* ── фото-пауза ─────────────────────────────── */
+.mood{position:relative;margin-top:clamp(64px,12vh,150px)}
+.mood img{
+  width:100%;height:clamp(320px,72vh,640px);object-fit:cover;
+  filter:grayscale(1) contrast(1.05);background:var(--bg2);
+}
+.mood::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(to top,rgba(15,14,12,.72),transparent 46%);
+}
+.mood figcaption{
+  position:absolute;left:var(--pad);bottom:22px;z-index:1;
+  font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--sand);
+}
+
+/* ── кейс ───────────────────────────────────── */
+.case{padding:clamp(64px,12vh,150px) 0 0}
+.case__head{padding:0 var(--pad)}
+.case__h{
+  font-family:var(--disp);font-weight:900;text-transform:uppercase;
+  font-size:clamp(26px,5.4vw,64px);line-height:1;letter-spacing:-.01em;
+  margin:14px 0 0;max-width:16ch;
+}
+.case__txt{margin:clamp(16px,3vh,26px) 0 0;font-size:15.5px;line-height:1.6;color:var(--dim);max-width:52ch}
+.stats{
+  display:grid;grid-template-columns:1fr;gap:0;
+  margin-top:clamp(30px,6vh,60px);
+  border-top:1px solid var(--faint);
+}
+.stat{padding:clamp(22px,4vh,40px) var(--pad);border-bottom:1px solid var(--faint);min-width:0}
+.stat__n{
+  font-family:var(--disp);font-weight:900;line-height:.9;letter-spacing:-.02em;
+  font-size:clamp(56px,11.5vw,148px);margin:0;white-space:nowrap;word-spacing:-.28em;
+}
+.stat--a .stat__n{color:var(--red)}
+.stat--b .stat__n{color:var(--bone)}
+.stat__l{margin:12px 0 0;font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--sand)}
+@media (min-width:820px){
+  .stats{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+  .stat--a{border-right:1px solid var(--faint)}
+}
+/* лента фото кейса */
+.reel{
+  display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;
+  padding:clamp(28px,5vh,56px) var(--pad) 8px;
+  scrollbar-width:none;
+}
+.reel::-webkit-scrollbar{display:none}
+.shot{flex:0 0 clamp(210px,30vw,330px);scroll-snap-align:start;margin:0}
+.shot img{
+  width:100%;aspect-ratio:4/5;object-fit:cover;background:var(--bg2);
+  filter:grayscale(1) contrast(1.06);
+  transition:filter .45s var(--ease),transform .45s var(--ease);
+}
+.shot:hover img{filter:grayscale(0) contrast(1);transform:scale(1.015)}
+.shot figcaption{
+  margin-top:9px;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);
+}
+
+/* ── финал ──────────────────────────────────── */
+.end{padding:clamp(70px,14vh,170px) var(--pad) clamp(28px,5vh,52px)}
+.end .kicker{margin-bottom:18px}
+.end__link{
+  display:block;text-decoration:none;
+  font-family:var(--disp);font-weight:900;text-transform:uppercase;
+  font-size:clamp(30px,8.6vw,116px);line-height:.98;letter-spacing:-.01em;
+  color:var(--bone);transition:color .3s var(--ease);
+}
+.end__link .end__star{width:.72em;display:inline-block;vertical-align:-.02em;color:var(--red);transition:transform .5s var(--ease)}
+.end__link:hover{color:var(--red)}
+.end__link:hover .end__star{transform:rotate(90deg)}
+.foot{
+  display:flex;justify-content:space-between;gap:14px 28px;flex-wrap:wrap;
+  margin-top:clamp(48px,9vh,110px);padding-top:18px;border-top:1px solid var(--faint);
+  font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);
+}
+.foot p{margin:0}
+.foot a{text-decoration:none;transition:color .25s var(--ease)}
+.foot a:hover{color:var(--sand)}
+
+/* ── появление ──────────────────────────────── */
+.rise{opacity:0;transform:translateY(26px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.rise.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  .rise{opacity:1;transform:none;transition:none}
+  .ast--spin,.belt__track{animation:none}
+  .cta,.row,.row__name,.row__desc,.row__img,.shot img,.end__link .end__star{transition:none}
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="star" viewBox="0 0 100 100">
+    <g fill="currentColor">
+      <path d="M44 2 H56 V98 H44 Z"/>
+      <path d="M44 2 H56 V98 H44 Z" transform="rotate(45 50 50)"/>
+      <path d="M44 2 H56 V98 H44 Z" transform="rotate(90 50 50)"/>
+      <path d="M44 2 H56 V98 H44 Z" transform="rotate(135 50 50)"/>
+    </g>
+  </symbol>
+</svg>
+
+<nav class="nav">
+  <a class="nav__id" href="#top">
+    <svg class="ast" aria-hidden="true"><use href="#star"/></svg>
+    <span class="nav__name">About You</span>
+  </a>
+  <a class="nav__link" href="#contact">Обсудить проект</a>
+</nav>
+
+<!-- герой -->
+<header class="hero" id="top">
+  <svg class="hero__ast ast ast--spin" aria-hidden="true"><use href="#star"/></svg>
+  <h1 class="hero__h">
+    <span class="l l--1">Большие</span>
+    <span class="l l--2">проекты</span>
+    <span class="l l--3">для больших</span>
+    <span class="l l--4">брендов</span>
+  </h1>
+  <div class="hero__base">
+    <p class="hero__sub"><b>Креативное агентство, Ташкент.</b><br>PR, продакшн, IT и мероприятия — одной командой.</p>
+    <a class="cta" href="#contact">Обсудить проект</a>
+  </div>
+</header>
+
+<!-- лента направлений -->
+<div class="belt" aria-hidden="true">
+  <div class="belt__track">
+    <span>PR и инфлюенс <svg class="ast"><use href="#star"/></svg></span>
+    <span>Продакшн <svg class="ast"><use href="#star"/></svg></span>
+    <span>IT <svg class="ast"><use href="#star"/></svg></span>
+    <span>Мероприятия <svg class="ast"><use href="#star"/></svg></span>
+    <span>PR и инфлюенс <svg class="ast"><use href="#star"/></svg></span>
+    <span>Продакшн <svg class="ast"><use href="#star"/></svg></span>
+    <span>IT <svg class="ast"><use href="#star"/></svg></span>
+    <span>Мероприятия <svg class="ast"><use href="#star"/></svg></span>
+  </div>
+</div>
+
+<!-- что делаем -->
+<section class="work" id="work">
+  <p class="work__intro rise">Четыре направления, за которыми обычно идут к четырём подрядчикам. <b>Здесь — к одной команде.</b></p>
+
+  <a class="row rise" href="#contact">
+    <img class="row__img" src="assets/dir-pr.jpg" alt="" loading="lazy" width="640" height="440">
+    <span class="row__in">
+      <h2 class="row__name">PR и инфлюенс</h2>
+      <p class="row__desc">Стратегия коммуникаций, СМИ, лидеры мнений, спецпроекты, кризисные коммуникации.</p>
+    </span>
+  </a>
+  <a class="row rise" href="#contact">
+    <img class="row__img" src="assets/dir-production.jpg" alt="" loading="lazy" width="640" height="440">
+    <span class="row__in">
+      <h2 class="row__name">Продакшн</h2>
+      <p class="row__desc">Имиджевое видео, реклама, съёмки студийного уровня, моушн.</p>
+    </span>
+  </a>
+  <a class="row rise" href="#contact">
+    <img class="row__img" src="assets/dir-it.jpg" alt="" loading="lazy" width="640" height="440">
+    <span class="row__in">
+      <h2 class="row__name">IT</h2>
+      <p class="row__desc">Сайты, платформы и цифровые экосистемы бренда, интерактивные механики, разработка с ИИ.</p>
+    </span>
+  </a>
+  <a class="row rise" href="#contact">
+    <img class="row__img" src="assets/dir-events.jpg" alt="" loading="lazy" width="640" height="440">
+    <span class="row__in">
+      <h2 class="row__name">Мероприятия и выставки</h2>
+      <p class="row__desc">Концепция, продюсирование, выставочные пространства, трансляции.</p>
+    </span>
+  </a>
+</section>
+
+<!-- фото-пауза -->
+<figure class="mood rise" style="margin-left:0;margin-right:0">
+  <img src="assets/mood.jpg" alt="Кадр со съёмок About You" loading="lazy" width="1600" height="900">
+  <figcaption>Со съёмок наших кампаний</figcaption>
+</figure>
+
+<!-- кейс -->
+<section class="case" id="case">
+  <div class="case__head">
+    <p class="kicker rise">Кейс · Группа «Родина», девелопер</p>
+    <h2 class="case__h rise">Годовая программа с лидерами мнений</h2>
+    <p class="case__txt rise">Подбор амбассадоров, продюсирование съёмок, ведение кампании. Цифры за год работы:</p>
+  </div>
+
+  <div class="stats rise">
+    <div class="stat stat--a">
+      <p class="stat__n">+23&nbsp;%</p>
+      <p class="stat__l">спроса на квартиры</p>
+    </div>
+    <div class="stat stat--b">
+      <p class="stat__n">+314&nbsp;%</p>
+      <p class="stat__l">переходов на сайт застройщика</p>
+    </div>
+  </div>
+
+  <!-- TODO: заменить на скриншоты публикаций и кадры со съёмок кампании -->
+  <div class="reel rise">
+    <figure class="shot"><img src="assets/shot-1.jpg" alt="" loading="lazy" width="600" height="750"><figcaption>Публикация</figcaption></figure>
+    <figure class="shot"><img src="assets/shot-2.jpg" alt="" loading="lazy" width="600" height="750"><figcaption>Кадр со съёмки</figcaption></figure>
+    <figure class="shot"><img src="assets/shot-3.jpg" alt="" loading="lazy" width="600" height="750"><figcaption>Публикация</figcaption></figure>
+    <figure class="shot"><img src="assets/shot-4.jpg" alt="" loading="lazy" width="600" height="750"><figcaption>Кадр со съёмки</figcaption></figure>
+    <figure class="shot"><img src="assets/shot-5.jpg" alt="" loading="lazy" width="600" height="750"><figcaption>Публикация</figcaption></figure>
+    <figure class="shot"><img src="assets/shot-6.jpg" alt="" loading="lazy" width="600" height="750"><figcaption>Кадр со съёмки</figcaption></figure>
+  </div>
+</section>
+
+<!-- финал -->
+<section class="end" id="contact">
+  <p class="kicker rise">Есть задача для бренда?</p>
+  <a class="end__link rise" href="mailto:hello@aboutyou.uz">Обсудить<br>проект <svg class="end__star" aria-hidden="true"><use href="#star"/></svg></a>
+  <div class="foot">
+    <p>About You · Ташкент</p>
+    <p><a href="https://instagram.com" rel="noopener">Instagram</a> · <a href="https://t.me" rel="noopener">Telegram</a></p>
+    <p><a href="mailto:hello@aboutyou.uz">hello@aboutyou.uz</a></p>
+  </div>
+</section>
+
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var items = document.querySelectorAll('.rise');
+  if (reduce || !('IntersectionObserver' in window)) {
+    items.forEach(function(el){ el.classList.add('in'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (!e.isIntersecting) return;
+      e.target.classList.add('in');
+      io.unobserve(e.target);
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+  items.forEach(function(el){ io.observe(el); });
+})();
+</script>
+</body>
+</html>
