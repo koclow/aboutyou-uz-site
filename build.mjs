@@ -8,7 +8,7 @@ const pages = [
   { tpl: 'index.template.html', out: 'index.html',
     sections: ['cases', 'how', 'about', 'apply'], post: (s) => s },
   { tpl: 'index-v2.template.html', out: 'v2.html',
-    sections: ['v2-hero', 'v2-work', 'cases', 'how', 'v2-about', 'apply'], post: eventify },
+    sections: ['v2-hero', 'v2-work', 'v2-cases', 'how', 'v2-about', 'apply'], post: eventify },
 ];
 
 for (const p of pages) {
