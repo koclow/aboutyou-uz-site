@@ -29,7 +29,7 @@ const pages = [
   { tpl: 'index-v2.template.html', out: 'v2.html',
     sections: ['v2-hero', 'v2-work', 'v2-cases', 'how', 'v2-about', 'apply'], post: eventify },
   { tpl: 'index-v3.template.html', out: 'v3.html',
-    sections: ['v3-hero', 'v2-work', 'v2-cases', 'how', 'v2-about', 'apply'], post: v3ify },   // «вдох» (v3-breath) и «Опыт больших проектов» (v3-scale) сняты 07.09: логотипы ушли в манифест (v2-about)
+    sections: ['v3-hero', 'v2-work', 'v3-artcases', 'how', 'v2-about', 'apply'], post: v3ify },   // «вдох» (v3-breath) и «Опыт больших проектов» (v3-scale) сняты 07.09: логотипы ушли в манифест (v2-about)
 ];
 
 for (const p of pages) {
