@@ -257,6 +257,7 @@
 .page-v3{
   --v3-content-max:1920px;
   --v3-inset:max(var(--pad),calc((100vw - var(--v3-content-max))/2));
+  --v3-fs-hero-sub-mobile:17px;
   --v3-fs-opening:clamp(32px,3.5vw,68px);
   --v3-fs-story:clamp(19px,1.65vw,28px);
   --v3-photo:48px;

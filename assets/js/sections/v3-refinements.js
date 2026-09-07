@@ -6,7 +6,8 @@
     function show(open){
       extra.forEach(function(item){item.hidden=!open;});
       button.setAttribute('aria-expanded',String(open));
-      button.innerHTML=(open?'Свернуть':'Все клиенты и партнёры')+' <span aria-hidden="true">'+(open?'−':'+')+'</span>';
+      button.setAttribute('aria-label',open?'Свернуть список клиентов и партнёров':'Показать всех клиентов и партнёров');
+      button.innerHTML=(open?'Свернуть':'Все')+' <span aria-hidden="true">'+(open?'−':'+')+'</span>';
     }
     button.hidden=false;show(false);
     button.addEventListener('click',function(){show(button.getAttribute('aria-expanded')!=='true');});
