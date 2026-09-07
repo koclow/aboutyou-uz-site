@@ -10,6 +10,40 @@
   padding:clamp(64px,12vh,130px) var(--pad) clamp(56px,10vh,110px);
 }
 
+/* ── две колонки: манифест слева, клиенты справа (07.09) ── */
+.manifesto__grid{display:grid;grid-template-columns:1fr;gap:clamp(40px,6vh,64px) clamp(40px,5vw,96px);max-width:var(--content-max);margin:0 auto}
+@media (min-width:1000px){
+  .manifesto__grid{grid-template-columns:minmax(0,7fr) minmax(0,5fr);align-items:start}
+}
+
+/* ── клиенты: белые знаки в три колонки, приглушены одинаково,
+   высоты по оптической массе (те же ступени, что были в v3-scale) ── */
+.manifesto__logos{
+  --logo-xw:22px;--logo-w:26px;--logo-m:32px;--logo-t:44px;--logo-s:50px;--logo-row:56px;
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,2vh,22px) clamp(18px,2vw,32px);
+  margin:clamp(28px,5vh,44px) 0 0;padding:0;list-style:none;
+}
+.manifesto__logos li{display:flex;align-items:center;justify-content:center;min-width:0;height:var(--logo-row)}
+.manifesto__logo{
+  width:auto;max-width:90%;object-fit:contain;opacity:.62;
+  transition:opacity var(--dur-s) var(--ease);
+}
+.manifesto__logo--xw{max-height:var(--logo-xw)}
+.manifesto__logo--w {max-height:var(--logo-w)}
+.manifesto__logo--m {max-height:var(--logo-m)}
+.manifesto__logo--t {max-height:var(--logo-t)}
+.manifesto__logo--s {max-height:var(--logo-s)}
+.manifesto__logo--light{opacity:.78}
+.manifesto__logo--heavy{opacity:.5}
+@media (hover:hover){.manifesto__logo:hover{opacity:1}}
+@media (max-width:999px){
+  .manifesto__logos{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media (max-width:560px){
+  .manifesto__logos{--logo-xw:18px;--logo-w:21px;--logo-m:26px;--logo-t:36px;--logo-s:40px;--logo-row:44px;gap:10px 16px}
+}
+@media (prefers-reduced-motion:reduce){.manifesto__logo{transition:none}}
+
 /* ── манифест ── */
 .manifesto__text{
   margin:clamp(28px,5vh,44px) 0 0;max-width:1120px;

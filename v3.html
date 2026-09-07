@@ -12,7 +12,6 @@
 <link rel="stylesheet" href="assets/css/tokens.css">
 <link rel="stylesheet" href="assets/css/main.css">
 <link rel="stylesheet" href="assets/css/sections/v3-hero.css">
-<link rel="stylesheet" href="assets/css/sections/v3-scale.css">
 <link rel="stylesheet" href="assets/css/sections/v2-work.css">
 <link rel="stylesheet" href="assets/css/sections/cases.css">
 <link rel="stylesheet" href="assets/css/sections/v2-cases.css">
@@ -839,70 +838,49 @@
   </div>
 </section>
 
-<!-- ══ МАСШТАБ (v3) ══ разделительная линия перед уходом в графит:
-     кикер, заголовок и ряд знаков на бумаге. Цифры сняты 07.09 —
-     ждут проверки у Вики и Ильи, вернутся отдельным блоком. -->
-<section class="v3scale act-light" id="scale" aria-labelledby="v3scale-title">
-  <div class="v3scale__in">
 
-    <p class="kicker v3scale__kicker rise">Клиенты и партнёры</p>
-    <h2 class="v3scale__h rise" id="v3scale-title">Опыт больших проектов</h2>
-    <!-- одна тихая строка фактов под заголовком — включить, когда партнёры
-         подтвердят цифры (07.09: ждём). Пример:
-    <p class="v3scale__facts rise">С 2015 года&nbsp;· 4 страны&nbsp;· 300+ проектов</p>
-    -->
-
-    <!-- 13 знаков со слайда «Наши клиенты» презы About You (ABOUT YOU.pdf, с. 3)
-         и 6 знаков из блока «Если достигать, то вместе» старого сайта студии
-         (вузы кроме МФТИ/МИСИС, «Билет в будущее» и Кировский завод сняты 07.09:
-         читаются как гос-образование, против СУТИ; файлы остались в clients/).
-         Все тёмным по прозрачному; *-white.png — пара для графита.
-         Порядок: узнаваемые бренды в первых двух рядах, дальше — по массе.
-         Ряды 5-5-5-4, последний центрирован (сетка в v3-scale.css считает
-         на 19 знаков — добавил/убрал знак → перепроверь nth-child там).
-         Модификаторы --xw…--s задают высоту по пропорции (широкие
-         вордмарки ниже, квадратные знаки выше); --light / --heavy правят
-         оптическую массу: тонкие и мелкие (ВФЛА, «Здоровое Отечество»,
-         Роскосмос, МФТИ) крупнее, плотные (VK, BIOCAD, INVITE, RMG, Quidi)
-         мельче — ряд смотрится ровным. -->
-    <ul class="v3scale__clients rise" aria-label="Клиенты и партнёры агентства">
-      <li><img class="v3scale__logo v3scale__logo--xw v3scale__logo--heavy" src="assets/img/clients/vk.png" alt="ВКонтакте" loading="lazy" width="608" height="112"></li>
-      <li><img class="v3scale__logo v3scale__logo--t v3scale__logo--light" src="assets/img/clients/roscosmos.png" alt="Роскосмос" loading="lazy" width="560" height="361"></li>
-      <li><img class="v3scale__logo v3scale__logo--m" src="assets/img/clients/rzd.png" alt="РЖД" loading="lazy" width="560" height="253"></li>
-      <li><img class="v3scale__logo v3scale__logo--w" src="assets/img/clients/rostelecom.png" alt="Ростелеком" loading="lazy" width="560" height="142"></li>
-      <li><img class="v3scale__logo v3scale__logo--w" src="assets/img/clients/azbuka.png" alt="Азбука вкуса" loading="lazy" width="839" height="261"></li>
-
-      <li><img class="v3scale__logo v3scale__logo--xw v3scale__logo--heavy" src="assets/img/clients/biocad.png" alt="BIOCAD" loading="lazy" width="560" height="105"></li>
-      <li><img class="v3scale__logo v3scale__logo--w v3scale__logo--light" src="assets/img/clients/mipt.png" alt="МФТИ" loading="lazy" width="560" height="170"></li>
-      <li><img class="v3scale__logo v3scale__logo--t" src="assets/img/clients/misis.png" alt="НИТУ МИСИС" loading="lazy" width="560" height="275"></li>
-      <li><img class="v3scale__logo v3scale__logo--w v3scale__logo--heavy" src="assets/img/clients/invite.png" alt="Invite" loading="lazy" width="332" height="80"></li>
-      <li><img class="v3scale__logo v3scale__logo--m v3scale__logo--heavy" src="assets/img/clients/rmg.png" alt="Русская медиагруппа" loading="lazy" width="473" height="249"></li>
-
-      <li><img class="v3scale__logo v3scale__logo--t v3scale__logo--light" src="assets/img/clients/rodina.png" alt="Группа «Родина»" loading="lazy" width="400" height="362"></li>
-      <li><img class="v3scale__logo v3scale__logo--w" src="assets/img/clients/bulldozer.png" alt="Bulldozer Group" loading="lazy" width="384" height="97"></li>
-      <li><img class="v3scale__logo v3scale__logo--s" src="assets/img/clients/dynamo.png" alt="Динамо" loading="lazy" width="131" height="196"></li>
-      <li><img class="v3scale__logo v3scale__logo--s v3scale__logo--light" src="assets/img/clients/vfla.png" alt="Всероссийская федерация лёгкой атлетики" loading="lazy" width="332" height="228"></li>
-
-      <li><img class="v3scale__logo v3scale__logo--w v3scale__logo--light" src="assets/img/clients/champions.png" alt="Сообщество чемпионов" loading="lazy" width="487" height="141"></li>
-      <li><img class="v3scale__logo v3scale__logo--m v3scale__logo--light" src="assets/img/clients/zdorovoe.png" alt="Здоровое Отечество" loading="lazy" width="397" height="122"></li>
-      <li><img class="v3scale__logo v3scale__logo--m v3scale__logo--heavy" src="assets/img/clients/quidi.png" alt="Quidi" loading="lazy" width="645" height="234"></li>
-
-      <li><img class="v3scale__logo v3scale__logo--xw v3scale__logo--light" src="assets/img/clients/2mimor.png" alt="2MIMOR" loading="lazy" width="449" height="98"></li>
-      <li><img class="v3scale__logo v3scale__logo--xw" src="assets/img/clients/kukoyaka.png" alt="Kukoyaka Barbershop" loading="lazy" width="966" height="182"></li>
-    </ul>
-
-  </div>
-</section>
-
-<!-- ══ О НАС (v2) ══ манифест + большой блок команды.
-     Манифест — копия sections/about.html без изменений (текст, классы,
-     SVG-жест); стили берёт из about.css, он подключён в шаблоне v2.
+<!-- ══ О НАС (v2/v3) ══ манифест + логотипы клиентов + большой блок команды.
+     Манифест — текст и SVG-жест как в sections/about.html; стили — about.css.
+     Справа от манифеста — «Клиенты и партнёры» (белые знаки), см. ниже.
      Компактная строка команды-facepile выкинута — вместо неё .vteam.
      id="about" остаётся на первой секции: на него ведёт nav. -->
 <section class="manifesto rise" id="about">
-  <p class="kicker manifesto__kicker">О нас</p>
+  <div class="manifesto__grid">
+    <div class="manifesto__col">
+      <p class="kicker manifesto__kicker">О нас</p>
 
-  <p class="manifesto__text">Нам интересно работать с теми, кому <em class="manifesto__accent">есть что сказать</em> — особенно если это сложно уместить в обычный бриф. Помогаем добраться до сути, придумываем форму и создаём опыт, через который идею увидят, поймут и запомнят. Это может быть одна PR-кампания, вирусный ролик, цифровой продукт или целая экосистема — <span class="manifesto__marked">задача определяет решение<svg class="manifesto__underline" width="100%" height="16" viewBox="0 0 420 16" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path class="manifesto__stroke" pathLength="1" d="M4 12 C 130 9.5, 300 8.5, 416 7" stroke-width="9" stroke-linecap="butt" fill="none"></path></svg></span>, а не набор наших услуг.</p>
+      <p class="manifesto__text">Нам интересно работать с теми, кому <em class="manifesto__accent">есть что сказать</em> — особенно если это сложно уместить в обычный бриф. Помогаем добраться до сути, придумываем форму и создаём опыт, через который идею увидят, поймут и запомнят. Это может быть одна PR-кампания, вирусный ролик, цифровой продукт или целая экосистема — <span class="manifesto__marked">задача определяет решение<svg class="manifesto__underline" width="100%" height="16" viewBox="0 0 420 16" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path class="manifesto__stroke" pathLength="1" d="M4 12 C 130 9.5, 300 8.5, 416 7" stroke-width="9" stroke-linecap="butt" fill="none"></path></svg></span>, а не набор наших услуг.</p>
+    </div>
+
+    <!-- Клиенты и партнёры (07.09, вечер, решение Никиты): бывший акт
+         «Опыт больших проектов» (v3-scale) совмещён с манифестом — логотипы
+         белыми справа от текста, кикер как у «О нас». Состав и порядок —
+         те же 19 знаков; модификаторы оптической массы — как в v3-scale. -->
+    <div class="manifesto__clients">
+      <p class="kicker manifesto__kicker">Клиенты и партнёры</p>
+      <ul class="manifesto__logos" aria-label="Клиенты и партнёры агентства">
+        <li><img class="manifesto__logo manifesto__logo--xw manifesto__logo--heavy" src="assets/img/clients/vk-white.png" alt="ВКонтакте" loading="lazy" width="608" height="112"></li>
+        <li><img class="manifesto__logo manifesto__logo--t manifesto__logo--light" src="assets/img/clients/roscosmos-white.png" alt="Роскосмос" loading="lazy" width="560" height="361"></li>
+        <li><img class="manifesto__logo manifesto__logo--m" src="assets/img/clients/rzd-white.png" alt="РЖД" loading="lazy" width="560" height="253"></li>
+        <li><img class="manifesto__logo manifesto__logo--w" src="assets/img/clients/rostelecom-white.png" alt="Ростелеком" loading="lazy" width="560" height="142"></li>
+        <li><img class="manifesto__logo manifesto__logo--w" src="assets/img/clients/azbuka-white.png" alt="Азбука вкуса" loading="lazy" width="839" height="261"></li>
+        <li><img class="manifesto__logo manifesto__logo--xw manifesto__logo--heavy" src="assets/img/clients/biocad-white.png" alt="BIOCAD" loading="lazy" width="560" height="105"></li>
+        <li><img class="manifesto__logo manifesto__logo--w manifesto__logo--light" src="assets/img/clients/mipt-white.png" alt="МФТИ" loading="lazy" width="560" height="170"></li>
+        <li><img class="manifesto__logo manifesto__logo--t" src="assets/img/clients/misis-white.png" alt="НИТУ МИСИС" loading="lazy" width="560" height="275"></li>
+        <li><img class="manifesto__logo manifesto__logo--w manifesto__logo--heavy" src="assets/img/clients/invite-white.png" alt="Invite" loading="lazy" width="332" height="80"></li>
+        <li><img class="manifesto__logo manifesto__logo--m manifesto__logo--heavy" src="assets/img/clients/rmg-white.png" alt="Русская медиагруппа" loading="lazy" width="473" height="249"></li>
+        <li><img class="manifesto__logo manifesto__logo--t manifesto__logo--light" src="assets/img/clients/rodina-white.png" alt="Группа «Родина»" loading="lazy" width="400" height="362"></li>
+        <li><img class="manifesto__logo manifesto__logo--w" src="assets/img/clients/bulldozer-white.png" alt="Bulldozer Group" loading="lazy" width="384" height="97"></li>
+        <li><img class="manifesto__logo manifesto__logo--s" src="assets/img/clients/dynamo-white.png" alt="Динамо" loading="lazy" width="131" height="196"></li>
+        <li><img class="manifesto__logo manifesto__logo--s manifesto__logo--light" src="assets/img/clients/vfla-white.png" alt="Всероссийская федерация лёгкой атлетики" loading="lazy" width="332" height="228"></li>
+        <li><img class="manifesto__logo manifesto__logo--w manifesto__logo--light" src="assets/img/clients/champions-white.png" alt="Сообщество чемпионов" loading="lazy" width="487" height="141"></li>
+        <li><img class="manifesto__logo manifesto__logo--m manifesto__logo--light" src="assets/img/clients/zdorovoe-white.png" alt="Здоровое Отечество" loading="lazy" width="397" height="122"></li>
+        <li><img class="manifesto__logo manifesto__logo--m manifesto__logo--heavy" src="assets/img/clients/quidi-white.png" alt="Quidi" loading="lazy" width="645" height="234"></li>
+        <li><img class="manifesto__logo manifesto__logo--xw manifesto__logo--light" src="assets/img/clients/2mimor-white.png" alt="2MIMOR" loading="lazy" width="449" height="98"></li>
+        <li><img class="manifesto__logo manifesto__logo--xw" src="assets/img/clients/kukoyaka-white.png" alt="Kukoyaka Barbershop" loading="lazy" width="966" height="182"></li>
+      </ul>
+    </div>
+  </div>
 </section>
 
 <!-- ══ КОМАНДА (v2/v3) ══ состав объединённого агентства, утверждён
