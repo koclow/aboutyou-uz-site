@@ -11,9 +11,12 @@
 }
 
 /* ── две колонки: манифест слева, клиенты справа (07.09) ── */
-.manifesto__grid{display:grid;grid-template-columns:1fr;gap:clamp(40px,6vh,64px) clamp(40px,5vw,96px);max-width:var(--content-max);margin:0 auto}
+.manifesto__grid{display:grid;grid-template-columns:1fr;gap:clamp(40px,6vh,64px) clamp(40px,5vw,96px)}   /* во всю ширину полей: без max-width (Никита 07.09) */
 @media (min-width:1000px){
   .manifesto__grid{grid-template-columns:minmax(0,7fr) minmax(0,5fr);align-items:start}
+}
+@media (min-width:1600px){
+  .manifesto__grid{grid-template-columns:minmax(0,6fr) minmax(0,6fr)}
 }
 
 /* ── клиенты: белые знаки в три колонки, приглушены одинаково,
@@ -24,6 +27,14 @@
   margin:clamp(28px,5vh,44px) 0 0;padding:0;list-style:none;
 }
 .manifesto__logos li{display:flex;align-items:center;justify-content:center;min-width:0;height:var(--logo-row)}
+/* на широких экранах — четыре колонки и знаки крупнее, чтобы правая колонка
+   доходила до поля, а не оставляла пустоту справа */
+@media (min-width:1000px){
+  .manifesto__logos{--logo-xw:24px;--logo-w:29px;--logo-m:36px;--logo-t:50px;--logo-s:56px;--logo-row:62px;gap:clamp(16px,2.4vh,26px) clamp(20px,2.4vw,40px)}
+}
+@media (min-width:1600px){
+  .manifesto__logos{grid-template-columns:repeat(4,minmax(0,1fr));--logo-xw:24px;--logo-w:29px;--logo-m:36px;--logo-t:50px;--logo-s:56px;--logo-row:62px;gap:clamp(16px,2.4vh,26px) clamp(20px,2.4vw,40px)}
+}
 .manifesto__logo{
   width:auto;max-width:90%;object-fit:contain;opacity:.62;
   transition:opacity var(--dur-s) var(--ease);
@@ -46,7 +57,7 @@
 
 /* ── манифест ── */
 .manifesto__text{
-  margin:clamp(28px,5vh,44px) 0 0;max-width:1120px;
+  margin:clamp(28px,5vh,44px) 0 0;max-width:1120px;   /* на v3 колонка сама ограничивает ширину */
   font-size:var(--fs-manifest);font-weight:500;
   line-height:1.48;letter-spacing:-.005em;
 }
