@@ -1,4 +1,16 @@
-import { readFileSync, writeFileSync } from 'node:fs';
+import { readFileSync, writeFileSync, existsSync } from 'node:fs';
+import { createHash } from 'node:crypto';
+
+// Версии ссылок на css/js: GitHub Pages кэширует статику на 10 минут, и после
+// пуша браузер показывал старые стили (07.09). К каждому href/src на assets/
+// добавляем ?v=<8 символов хэша содержимого файла> — меняется файл, меняется
+// ссылка, кэш обходится сам. Картинки не трогаем: они лежат в html и css
+// по своим путям и меняются редко.
+const bust = (html) => html.replace(/(href|src)="(assets\/(?:css|js)\/[^"?]+)"/g, (m, attr, path) => {
+  if (!existsSync(path)) return m;
+  const v = createHash('sha1').update(readFileSync(path)).digest('hex').slice(0, 8);
+  return `${attr}="${path}?v=${v}"`;
+});
 
 // v2: «выставки» → «ивенты» в ОБЩИХ фрагментах (метка фильтра и тег
 // каталога), не трогая index.html. Порядок замен: длинная первой.
@@ -26,6 +38,6 @@ for (const p of pages) {
     const frag = p.post(readFileSync(`sections/${name}.html`, 'utf8').trim());
     html = html.replace(`<!-- include:${name} -->`, frag);
   }
-  writeFileSync(p.out, html);
+  writeFileSync(p.out, bust(html));
   console.log(`${p.out} собран: ${Buffer.byteLength(html)} байт`);
 }
