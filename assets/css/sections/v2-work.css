@@ -55,23 +55,26 @@
   .work--paper .row__tags{grid-column:3}
 }
 
-/* ── картинка ховера: во второй колонке, без наклона ──
+/* ── картинка ховера: во второй колонке, с наклоном, поверх сетки ──
    Абсолютно позиционированный потомок grid-контейнера берёт за
-   containing block свою grid-область — картинка центрируется в среднем
-   слоте и никогда не заходит на теги. Обе линии заданы явно (2 / 3):
-   у absolute-элемента auto-линия — это край контейнера, и с одной
-   линией слот тянулся бы до правого поля, поверх тегов.
-   Наклон снят: стиль v3 — «никаких наклонов и искажений на ховере»;
-   остаётся проявление и лёгкий рост .96 → 1. Высота строки её режет
-   (у .row overflow:hidden) — это кадр-полоса, а не карточка. */
+   containing block свою grid-область — картинка сидит в среднем слоте
+   и не заходит на теги. Обе линии заданы явно (2 / 3): у absolute-элемента
+   auto-линия — это край контейнера.
+   07.09 (вечер, Никита): вернуть как в самом первом варианте — картинка
+   чуть под наклоном и выходит за пределы строки, поверх соседних.
+   Поэтому на v3 у .row снимается overflow:hidden (база режет), картинка
+   крупнее строки и лежит над соседями (z-index у строки на ховере). */
+.page-v3 .work--paper .row{overflow:visible}
+.page-v3 .work--paper .row:hover{z-index:3}
 @media (min-width:820px) and (pointer:fine){
   .work--paper .row__img{
-    grid-column:2 / 3;
+    grid-column:2 / 3;z-index:2;
     right:auto;left:50%;top:50%;
-    width:min(100%,320px);
-    transform:translate(-50%,-50%) scale(.96);
+    width:clamp(280px,27vw,400px);
+    transform:translate(-50%,-50%) rotate(-3deg) scale(.92);
   }
-  .work--paper .row:hover .row__img{transform:translate(-50%,-50%) scale(1)}
+  .work--paper .row:hover .row__img{transform:translate(-50%,-50%) rotate(-1.5deg) scale(1)}
+  .row__img--top{object-position:50% 12%}   /* вертикальный кадр в горизонтальном окне: держим лицо */
 }
 
 @media (prefers-reduced-motion:reduce){

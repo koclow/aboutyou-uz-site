@@ -107,30 +107,35 @@
   /* ── кнопка под каталогом ──
      v3: «Ещё кейсы» — порционная подгрузка без перехода: в разметке первые
      тринадцать карточек открыты, остальные под hidden; кнопка снимает hidden
-     со следующей порции. Размер порции задаёт css (--catalog-page на сетке:
-     13 на всех ширинах — с 07.09 модуль на трёх колонках тоже закрывается
-     на тринадцатой; resize ниже оставлен на случай, если порции разойдутся).
-     Хвост меньше половины порции досыпается к текущей, чтобы не оставлять
-     сироту на отдельный клик. Кончились карточки — кнопка исчезает.
-     Пока вторая порция не открыта, смена ширины пересчитывает первую по
-     новому --catalog-page: иначе 13 карточек на трёх колонках оставили бы
-     дыру в последнем ряду.
+     со следующей порции. Размеры задаёт css на сетке: --catalog-page —
+     первая порция (13: закрывает модуль на 4 и 3 колонках), --catalog-more —
+     каждая следующая (8: период сетки, [пара] → [четвёрка] → [пара]).
+     С 29 карточками: 13 → 21 → 29, потом кнопка исчезает (07.09, вечер;
+     раньше вторая порция была равна первой, и при 29 карточках второй клик
+     открыл бы сразу всё). Хвост меньше половины порции досыпается к текущей,
+     чтобы не оставлять сироту на отдельный клик.
+     Считаем открытые порции, а не карточки: смена ширины пересчитывает
+     видимое по новым --catalog-page/--catalog-more, не схлопывая уже
+     открытое (прежний resize возвращал к первой порции после любого клика).
      index/v2: страницы каталога нет — кнопка честно снимает фильтр и
      возвращает к началу каталога, а не притворяется переходом. */
   var all = root.querySelector('[data-catalog-all]');
   var foot = root.querySelector('.catalog__foot');
 
-  function pageSize() {
-    var n = grid ? parseInt(getComputedStyle(grid).getPropertyValue('--catalog-page'), 10) : 0;
-    return n > 0 ? n : 10;
+  function gridVar(name, fallback) {
+    var n = grid ? parseInt(getComputedStyle(grid).getPropertyValue(name), 10) : 0;
+    return n > 0 ? n : fallback;
   }
+  function pageSize() { return gridVar('--catalog-page', 10); }
+  function moreSize() { return gridVar('--catalog-more', pageSize()); }
 
   if (all && v3) {
     var total = cards.length;
     var visible = 0;
-    function reveal(upto) {
-      var page = pageSize();
-      if (total - upto < page / 2) upto = total;
+    var opened = 1;                      /* первая порция открыта разметкой */
+    function reveal() {
+      var upto = pageSize() + (opened - 1) * moreSize();
+      if (total - upto < moreSize() / 2) upto = total;
       var first = null;
       cards.forEach(function (c, i) {
         var show = i < upto;
@@ -141,12 +146,13 @@
       if (foot) foot.hidden = visible >= total;
       return first;
     }
-    reveal(pageSize());
+    reveal();
     window.addEventListener('resize', function () {
-      if (visible < total && visible !== pageSize()) reveal(pageSize());
+      if (visible < total) reveal();
     });
     all.addEventListener('click', function () {
-      var first = reveal(visible + pageSize());
+      opened++;
+      var first = reveal();
       if (first) {                       /* клавиатуре — фокус на первую новую карточку */
         first.setAttribute('tabindex', '-1');
         first.focus({ preventScroll: true });

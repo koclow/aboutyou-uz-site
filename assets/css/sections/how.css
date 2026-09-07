@@ -34,9 +34,11 @@
 @media (max-width:1200px){ .how{--how-k:.76} }
 @media (max-width:1024px){ .how{--how-k:.7} }
 
-/* ══ шапка акта ══ */
-.how__head{display:flex;align-items:flex-end;justify-content:space-between;gap:40px;flex-wrap:wrap}
-.how__title{display:flex;flex-direction:column;gap:12px}
+/* ══ шапка акта ══
+   07.09 (Никита): голова акта — кикер, заголовок, вкладки и лид — по центру,
+   как «Опыт больших проектов» ниже; схема остаётся во всю ширину контента. */
+.how__head{display:flex;align-items:flex-end;justify-content:center;gap:40px;flex-wrap:wrap;text-align:center}
+.how__title{display:flex;flex-direction:column;align-items:center;gap:12px}
 .how__h{
   font-family:var(--disp);font-weight:900;text-transform:uppercase;
   font-size:var(--fs-act);line-height:1;letter-spacing:-.015em;margin:0;color:var(--ink);
@@ -47,7 +49,7 @@
    (v3-hero.css): обводка --ink-faint, под курсором — тонировка фоном и
    плотнее обводка, без инверсии. 14px по вертикали: 13 × 1.2 + 28 + 2
    обводки = 45.6px — тап-мишень ≥44 на любой ширине (аудит, п. 5). */
-.how__tabs{display:flex;gap:10px;flex-wrap:wrap;margin-top:clamp(28px,5vh,48px)}
+.how__tabs{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:clamp(28px,5vh,48px)}
 .how__tab{
   display:inline-flex;align-items:baseline;gap:8px;
   font-family:var(--body);font-size:var(--fs-small);font-weight:600;line-height:1.2;
@@ -69,8 +71,8 @@
 .how__panel[hidden]{display:none}
 .how__panel:focus{outline:none}
 .how__lead{
-  margin:22px 0 0;font-size:var(--fs-body);font-weight:600;line-height:1.5;
-  color:var(--ink);max-width:92ch;
+  margin:22px auto 0;font-size:var(--fs-body);font-weight:600;line-height:1.5;
+  color:var(--ink);max-width:60ch;text-align:center;
 }
 
 /* ══ схема: рамка + сцена 1312×430, масштабируемая по ширине ══ */
@@ -86,6 +88,9 @@
 }
 .how__stage{
   position:relative;
+  /* шире 1440 сцена (1312) уже рамки — стоит по центру; при k<1 бокс
+     сцены равен рамке и auto ничего не меняет */
+  margin:0 auto;
   /* содержимое живёт в координатах макета 1312×430 и ужимается transform'ом,
      а бокс сцены сразу в масштабе — иначе рамка прокручивалась бы до 1312px
      пустоты (transform не меняет layout-размер) */
@@ -113,11 +118,17 @@
 /* правый и нижний края отсчитываются от макета 1312×430, а не от ужатого бокса */
 .how__tech--right{left:auto;right:calc(100% - 1312px)}
 .how__tech--bottom{top:auto;bottom:calc(100% - 416px)}
+/* подпись под колонкой: --x — центр колонки узлов, а не левый край текста */
+.how__tech--center{transform:translateX(-50%)}
 .how__tech--soft{color:var(--ink-soft)}
 .how__tech--hot{color:var(--signal)}
 
 /* ── линии ── */
-.how__lines{position:absolute;top:0;left:0}
+/* svg живёт в координатах макета 1312×430, как и узлы: без явных размеров
+   его ужимает max-width:100% из main.css до бокса сцены (1312·k), а затем
+   сцена масштабируется ещё раз — линии отрывались от узлов на всём, что
+   уже 1440 (косяк 07.09) */
+.how__lines{position:absolute;top:0;left:0;width:1312px;height:430px;max-width:none}
 .how__lines path,.how__lines circle{fill:none;stroke:var(--signal);stroke-width:1.5}
 .how__lines .how__arrow{stroke-width:2}
 .how__lines .how__dash{stroke-dasharray:7 6}
@@ -192,9 +203,10 @@
    подписи узлов 16 × .85 ≈ 13.6px — читаются. */
 @media (max-width:719px){
   .how{--how-k-min:.85}
-  /* вкладки в столбец во всю ширину — иначе рваный правый край */
+  /* вкладки в столбец во всю ширину — иначе рваный правый край;
+     текст по центру, как и вся голова акта */
   .how__tabs{flex-direction:column;align-items:stretch}
-  .how__tab{justify-content:flex-start}
+  .how__tab{justify-content:center}
   .how__frame{margin-top:26px}
 }
 

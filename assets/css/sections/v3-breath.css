@@ -1,15 +1,21 @@
 /* ══════════════════════════════════════════════════════════
-   v3-breath — «вдох»: один документальный кадр на всю ширину
-   между каталогом кейсов и «Что можно поручить нам».
+   v3-breath — «вдох»: один документальный кадр между каталогом
+   кейсов и «Что можно поручить нам». 07.09 (вечер): не от края до
+   края, а в общие поля страницы — иначе читается как баннер поперёк.
    Секция не меняет тему: сверху и снизу бумага, подложка тоже
    бумага (видна только пока кадр грузится). Без параллакса —
    кадр стоит, подпись просто rise. Все значения — var().
    ══════════════════════════════════════════════════════════ */
 
 .breath{
+  padding:0 var(--pad);
+  background:var(--paper);color:var(--bone);   /* секция на всю ширину — бумага; фон body графитовый */
+}
+.breath__frame{
   position:relative;isolation:isolate;overflow:hidden;
   height:60vh;height:60svh;min-height:320px;max-height:760px;
-  background:var(--paper);color:var(--bone);
+  margin:0 auto;max-width:var(--content-max);
+  background:var(--paper);
 }
 
 /* Кадр 3:2, окно ~2.4:1 — кроп идёт по вертикали; окно держим у верха
@@ -21,7 +27,7 @@
 
 /* Лёгкая завеса снизу под подпись — ступени того же графита,
    что у героя (--veil-*), верх кадра остаётся чистым. */
-.breath::after{
+.breath__frame::after{
   content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
   background:linear-gradient(0deg,var(--veil-mid) 0%,var(--veil-none) 38%);
 }
@@ -29,12 +35,12 @@
 /* Подпись — кикерный кегль, но не .kicker: на act-light он красный,
    а здесь по решению — кость на тёмном градиенте. */
 .breath__cap{
-  position:absolute;left:var(--pad);right:var(--pad);bottom:clamp(20px,3.4vh,32px);z-index:2;
+  position:absolute;left:clamp(18px,2.4vw,32px);right:clamp(18px,2.4vw,32px);bottom:clamp(20px,3.4vh,32px);z-index:2;
   margin:0;font-size:var(--fs-kicker);font-weight:600;
   letter-spacing:.18em;text-transform:uppercase;color:var(--bone);
 }
 
 @media (max-width:720px){
-  .breath{height:50vh;height:50svh;min-height:260px}
+  .breath__frame{height:50vh;height:50svh;min-height:260px}
   .breath__img{object-position:center 36%}
 }

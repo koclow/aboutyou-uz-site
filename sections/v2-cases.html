@@ -1,24 +1,33 @@
 <!-- ══ КАТАЛОГ КЕЙСОВ (v2 + v3) ══
-     Плоский список 21 карточки в порядке показа v3. Порядок 07.09 (ночь):
-     кадр подобран под пропорцию слота (см. v2-cases.css): вертикальные
-     слоты — 1 и 8–11, 16–19 (зонты Казахстана, мегаполис, оператор, киоск,
-     Эрарта, Кукояка, ростовой костюм, репортёр, абстракция), горизонтальные —
-     остальные. «Выставочная система в 25 городах» снята 07.09 (тёмный кадр
-     300 px), чтобы при добавлении Ташкента остался 21 слот.
-     остальные (широкие кадры: суперкар, эфиры, UI платформ, ролики).
+     Плоский список 29 карточек в порядке показа v3 (07.09, вечер: было 21;
+     третья порция 22–29 — решение Никиты «добавляй Динамо и ролики
+     Локоткова», фактура — «03 Фактура/Кейсы About You — сверка с презами
+     Вики 07.09.2026.md»). Кадр подобран под пропорцию слота (см. v2-cases.css):
+     вертикальные слоты — 1, 8–11, 16–19, 24–27 (Ташкент, мегаполис, оператор,
+     киоск, Эрарта, Кукояка, ростовой костюм, репортёр, абстракция, трибуна
+     «Динамо», блогер «Азбуки», жёлтая куртка в боксах трассы, ювелирный
+     портрет), горизонтальные — остальные (широкие кадры: суперкар, эфиры,
+     UI платформ, ролики). «Выставочная система в 25 городах» снята 07.09
+     (тёмный кадр 300 px).
      Порядок 07.09 (вечер): Ташкент первым (Tanuki и TOKU, преза Вики
      «страны», кейс №1), Казахстан → BRICS → Родина → Азбука (палочки) →
      продакшн → IT → ивенты, в первых десяти все пять направлений.
-     v3 (.page-v3): модульная сетка 24/12/2/1 единиц, слот карточки задаёт
+     Третья порция: AR-ролик и живая сессия (пара) → «Динамо», инфлюенс
+     «Азбуки», робокамера на трассе, вертикальный ювелирный (четвёрка 4:5) →
+     клип с субтитрами и бьюти-история (пара). Букмекерский ролик и кадры
+     со спонсором-букмекером не ставить никогда (юр. статус в отчёте).
+     v3 (.page-v3): модульная сетка 32/12/2/1 единиц, слот карточки задаёт
      положение и пропорцию обложки (nth-child в v2-cases.css), а не карточка.
-     Первые 13 видны, остальные под hidden — «Ещё кейсы» открывает их (cases.js).
+     Первые 13 видны, остальные под hidden — «Ещё кейсы» открывает по восемь:
+     14–21, затем 22–29 (cases.js, --catalog-page / --catalog-more).
      catalog__poster--top — фокус кадра на верх (BRICS: вертикальный кадр в
      горизонтальном слоте, лица не режутся); catalog__poster--upper — фокус
      35 % сверху (зонты Казахстана: в исходнике сверху шапка сторис, снизу
      водяной знак, чистое окно между ними ≈ 4:5).
      v2 (.page-v2): cases.js собирает из data-col («буква колонки + место в ней»)
      три прежние колонки с параллаксом; классы высот постеров нужны только v2,
-     порядок в разметке на v2 не влияет.
+     порядок в разметке на v2 не влияет. Новые восемь разложены a8–a10,
+     b8–b9, c8–c10 так, чтобы колонки кончались вровень (суммы в v2-cases.css).
      data-dir — направления через пробел, в порядке блока «Что делаем»:
      pr · influence · events · production · it. -->
 <section class="catalog act-light" id="cases">
@@ -76,7 +85,7 @@
           <span class="catalog__metric">1,4&nbsp;млн+ охвата</span>
         </p>
       </article>
-      <!-- 2 -->
+      <!-- 3 -->
       <article class="catalog__card rise" data-dir="pr" data-col="b1">
         <div class="catalog__poster catalog__poster--h530 catalog__poster--top">
           <img src="assets/img/cases/case-brics-1.jpg" alt="Победительницы конкурса MISS MRS LITTLE MISS BRICS на церемонии" loading="lazy" width="400" height="530">
@@ -92,7 +101,7 @@
           <span class="catalog__metric">49&nbsp;млн охвата</span>
         </p>
       </article>
-      <!-- 2 -->
+      <!-- 4 -->
       <article class="catalog__card rise" data-dir="pr influence" data-col="c1">
         <div class="catalog__poster catalog__poster--h260">
           <img src="assets/img/dir-pr.jpg" alt="Кадр программы влияния для группы «Родина»" loading="lazy" width="400" height="260">
@@ -109,7 +118,7 @@
           <span class="catalog__metric">+23&nbsp;% к спросу</span>
         </p>
       </article>
-      <!-- 2 -->
+      <!-- 5 -->
       <article class="catalog__card rise" data-dir="pr influence" data-col="a2">
         <div class="catalog__poster catalog__poster--h500">
           <img src="assets/img/cases/case-azbuka-3.jpg" alt="Палочки «Секрет Дракона» — спецпроект «Азбуки вкуса»" loading="lazy" width="400" height="500">
@@ -126,7 +135,7 @@
           <span class="catalog__metric">+42&nbsp;% к доставке</span>
         </p>
       </article>
-      <!-- 2 -->
+      <!-- 6 -->
       <article class="catalog__card rise" data-dir="production" data-col="a3">
         <div class="catalog__poster catalog__poster--h260">
           <img src="assets/img/cases/case-tvc-anim-1.jpg" alt="Кадр анимационной сцены рекламного ролика: героиня на фоне ночного города" loading="lazy" width="400" height="260">
@@ -142,7 +151,7 @@
           <span class="catalog__metric">три техники в&nbsp;одном ролике</span>
         </p>
       </article>
-      <!-- 2 -->
+      <!-- 7 -->
       <article class="catalog__card rise" data-dir="production" data-col="b2">
         <div class="catalog__poster catalog__poster--h250">
           <img src="assets/img/cases/case-supercar-1.jpg" alt="Два спорткара на закате у пальмовой аллеи в ОАЭ" loading="lazy" width="400" height="250">
@@ -158,7 +167,7 @@
           <span class="catalog__metric">4K, две локации в&nbsp;ОАЭ</span>
         </p>
       </article>
-      <!-- 2 -->
+      <!-- 8 -->
       <article class="catalog__card rise" data-dir="events" data-col="b7">
         <div class="catalog__poster catalog__poster--h460">
           <img src="assets/img/cases/proj-megacity-1.jpg" alt="Арочная галерея мультимедийной экспозиции с подсвеченными витринами" loading="lazy" width="400" height="460">
@@ -174,7 +183,7 @@
           <span class="catalog__metric">600&nbsp;тыс. посетителей</span>
         </p>
       </article>
-      <!-- 2 -->
+      <!-- 9 -->
       <article class="catalog__card rise" data-dir="production" data-col="a7">
         <div class="catalog__poster catalog__poster--h250">
           <img src="assets/img/cases/proj-efir-3.jpg" alt="Оператор со стабилизатором на съёмке прямого эфира в студии" loading="lazy" width="400" height="250">
@@ -190,7 +199,7 @@
           <span class="catalog__metric">40+&nbsp;млн просмотров</span>
         </p>
       </article>
-      <!-- 2 -->
+      <!-- 10 -->
       <article class="catalog__card rise" data-dir="it" data-col="c4">
         <div class="catalog__poster catalog__poster--h500">
           <img src="assets/img/cases/case-kiosk-1.jpg" alt="Экран сенсорного киоска: выбор собеседника перед тем, как задать вопрос" loading="lazy" width="400" height="500">
@@ -206,7 +215,7 @@
           <span class="catalog__metric">5 ИИ-собеседников</span>
         </p>
       </article>
-      <!-- 2 -->
+      <!-- 11 -->
       <article class="catalog__card rise" data-dir="pr" data-col="a6">
         <div class="catalog__poster catalog__poster--h400 catalog__poster--cut">
           <img src="assets/img/cases/case-erarta-1.webp" alt="Рома Зверь — портрет к фотовыставке в «Эрарте»" loading="lazy" width="400" height="400">
@@ -222,7 +231,7 @@
           <span class="catalog__metric">2,5&nbsp;млн+ охвата</span>
         </p>
       </article>
-      <!-- 2 -->
+      <!-- 12 -->
       <article class="catalog__card rise" data-dir="it" data-col="a5">
         <div class="catalog__poster catalog__poster--h250">
           <img src="assets/img/cases/proj-platform-1.jpg" alt="Интерфейс онлайн-пробы на цифровой образовательной платформе" loading="lazy" width="400" height="250">
@@ -238,7 +247,7 @@
           <span class="catalog__metric">3,77&nbsp;млн пользователей</span>
         </p>
       </article>
-      <!-- 2 -->
+      <!-- 13 -->
       <article class="catalog__card rise" data-dir="it" data-col="b4">
         <div class="catalog__poster catalog__poster--h260">
           <img src="assets/img/cases/proj-city-1.jpg" alt="Изометрическая карта виртуального интерактивного города на главной странице проекта" loading="lazy" width="400" height="260">
@@ -254,7 +263,7 @@
           <span class="catalog__metric">2,95&nbsp;млн пользователей</span>
         </p>
       </article>
-      <!-- 2 -->
+      <!-- 14 -->
       <article class="catalog__card rise" data-dir="production" data-col="c2" hidden>
         <div class="catalog__poster catalog__poster--h260">
           <img src="assets/img/cases/case-tvc-hair-1.jpg" alt="Кадр ТВ-ролика: героиня с распущенными волосами на фоне неба" loading="lazy" width="400" height="260">
@@ -270,7 +279,7 @@
           <span class="catalog__metric">15&nbsp;с ТВ и&nbsp;6&nbsp;с DOOH, 4K</span>
         </p>
       </article>
-      <!-- 2 -->
+      <!-- 15 -->
       <article class="catalog__card rise" data-dir="production" data-col="b6" hidden>
         <div class="catalog__poster catalog__poster--h300">
           <img src="assets/img/cases/proj-efir-2.jpg" alt="Аппаратная многокамерной трансляции: операторы за пультами в наушниках" loading="lazy" width="400" height="300">
@@ -286,7 +295,7 @@
           <span class="catalog__metric">30&nbsp;часов эфира</span>
         </p>
       </article>
-      <!-- 2 -->
+      <!-- 16 -->
       <article class="catalog__card rise" data-dir="pr influence" data-col="c5" hidden>
         <div class="catalog__poster catalog__poster--h460 catalog__poster--cut">
           <img src="assets/img/cases/case-kukoyaka-1.webp" alt="Денис Кукояка — портрет к открытию салона" loading="lazy" width="400" height="460">
@@ -303,23 +312,23 @@
           <span class="catalog__metric">4&nbsp;млн+ охвата</span>
         </p>
       </article>
-      <!-- 2 -->
+      <!-- 17 -->
       <article class="catalog__card rise" data-dir="production" data-col="b3" hidden>
         <div class="catalog__poster catalog__poster--h300">
           <img src="assets/img/cases/reel-antoha-mc-1.jpg" alt="Кадр клипа: герой в ростовом костюме в коридоре" loading="lazy" width="400" height="300">
         </div>
         <div class="catalog__row">
           <span class="catalog__dot catalog__dot--card" aria-hidden="true"></span>
-          <h3 class="catalog__t">Музыкальные клипы</h3>
+          <h3 class="catalog__t">Клип для&nbsp;музыканта: постановочные сцены и&nbsp;ростовой костюм</h3>
         </div>
-        <p class="catalog__desc">Клипы для&nbsp;музыкантов: постановочные сцены, ростовые костюмы, концертные съёмки, монтаж и&nbsp;цвет.</p>
+        <p class="catalog__desc">Почти четыре минуты истории с&nbsp;героем в&nbsp;ростовом костюме: интерьерные и&nbsp;натурные сцены, монтаж и&nbsp;цвет в&nbsp;кинокадре.</p>
         <p class="catalog__meta">
           <span class="catalog__tag">Продакшн</span>
           <span class="catalog__tag">Клип</span>
-          <span class="catalog__metric">4K, до&nbsp;10 минут хронометража</span>
+          <span class="catalog__metric">3:46 в&nbsp;4K</span>
         </p>
       </article>
-      <!-- 2 -->
+      <!-- 18 -->
       <article class="catalog__card rise" data-dir="events" data-col="c6" hidden>
         <div class="catalog__poster catalog__poster--h300">
           <img src="assets/img/cases/proj-efir-4.jpg" alt="Репортёр берёт интервью на площадке во время прямого включения" loading="lazy" width="400" height="300">
@@ -335,7 +344,7 @@
           <span class="catalog__metric">40 спикеров, 6&nbsp;часов эфира</span>
         </p>
       </article>
-      <!-- 2 -->
+      <!-- 19 -->
       <article class="catalog__card rise" data-dir="it" data-col="c3" hidden>
         <div class="catalog__poster catalog__poster--h300">
           <img src="assets/img/dir-vfx.jpg" alt="Кадр цифровой экосистемы бренда профессиональной косметики" loading="lazy" width="400" height="300">
@@ -351,7 +360,7 @@
           <span class="catalog__metric">запуск на&nbsp;месяц раньше срока</span>
         </p>
       </article>
-      <!-- 2 -->
+      <!-- 20 -->
       <article class="catalog__card rise" data-dir="it" data-col="a4" hidden>
         <div class="catalog__poster catalog__poster--h300">
           <img src="assets/img/cases/proj-platform-3.jpg" alt="Интерфейс практического задания с пошаговой инструкцией на платформе обучения" loading="lazy" width="400" height="300">
@@ -367,7 +376,7 @@
           <span class="catalog__metric">доходимость&nbsp;&gt;93&nbsp;%</span>
         </p>
       </article>
-      <!-- 2 -->
+      <!-- 21 -->
       <article class="catalog__card rise" data-dir="it" data-col="b5" hidden>
         <div class="catalog__poster catalog__poster--h300">
           <img src="assets/img/cases/proj-platform-2.jpg" alt="Интерфейс тренажёра: выбор источников энергии для города на изометрической карте" loading="lazy" width="400" height="300">
@@ -381,6 +390,135 @@
           <span class="catalog__tag">IT</span>
           <span class="catalog__tag">Интерактив</span>
           <span class="catalog__metric">2+&nbsp;млн прохождений</span>
+        </p>
+      </article>
+
+      <!-- 22 -->
+      <article class="catalog__card rise" data-dir="production" data-col="a8" hidden>
+        <div class="catalog__poster catalog__poster--h260">
+          <img src="assets/img/cases/case-ar-gaming-1.jpg" alt="Кадр ролика: геймер в наушниках, поверх кадра — AR-интерфейс магазина с кнопкой «В корзину»" loading="lazy" width="400" height="260">
+        </div>
+        <div class="catalog__row">
+          <span class="catalog__dot catalog__dot--card" aria-hidden="true"></span>
+          <h3 class="catalog__t">Рекламный ролик с&nbsp;AR-графикой для&nbsp;гейминг-ритейла</h3>
+        </div>
+        <p class="catalog__desc">Игровая сцена дома, поверх которой живёт интерфейс магазина: трекинг, композитинг и&nbsp;графика собраны в&nbsp;один кадр.</p>
+        <p class="catalog__meta">
+          <span class="catalog__tag">Продакшн</span>
+          <span class="catalog__tag">Ритейл</span>
+          <span class="catalog__metric">съёмка + AR-графика в&nbsp;одном кадре</span>
+        </p>
+      </article>
+      <!-- 23 -->
+      <article class="catalog__card rise" data-dir="production" data-col="c8" hidden>
+        <div class="catalog__poster catalog__poster--h250">
+          <img src="assets/img/cases/case-live-session-1.jpg" alt="Кадр живой студийной сессии: вокалист с микрофоном крупным планом в тёплом свете" loading="lazy" width="400" height="250">
+        </div>
+        <div class="catalog__row">
+          <span class="catalog__dot catalog__dot--card" aria-hidden="true"></span>
+          <h3 class="catalog__t">Живая студийная сессия: 10&nbsp;минут многокамерной съёмки</h3>
+        </div>
+        <p class="catalog__desc">Многокамерная съёмка выступления группы в&nbsp;павильоне со&nbsp;светом и&nbsp;живым звуком, монтаж и&nbsp;цвет&nbsp;— один непрерывный релиз на&nbsp;десять минут.</p>
+        <p class="catalog__meta">
+          <span class="catalog__tag">Продакшн</span>
+          <span class="catalog__tag">Музыка</span>
+          <span class="catalog__metric">10:25 в&nbsp;4K, многокамерная</span>
+        </p>
+      </article>
+      <!-- 24 -->
+      <article class="catalog__card rise" data-dir="influence" data-col="c9" hidden>
+        <div class="catalog__poster catalog__poster--h260">
+          <img src="assets/img/cases/case-dinamo-1.jpg" alt="Блогер на трибуне стадиона во время домашнего матча «Динамо»" loading="lazy" width="400" height="260">
+        </div>
+        <div class="catalog__row">
+          <span class="catalog__dot catalog__dot--card" aria-hidden="true"></span>
+          <h3 class="catalog__t">ФК «Динамо»: два года инфлюенс-маркетинга</h3>
+        </div>
+        <p class="catalog__desc">Инфлюенс-стратегия под задачи клуба: подбор и&nbsp;координация блогеров на&nbsp;домашние матчи, интеграции с&nbsp;артистами, съёмки на&nbsp;площадке и&nbsp;аналитика по&nbsp;каждому событию.</p>
+        <p class="catalog__meta">
+          <span class="catalog__tag">Инфлюенс</span>
+          <span class="catalog__tag">Спорт</span>
+          <span class="catalog__metric">120+ инфлюенсеров, 30&nbsp;млн+ охвата</span>
+        </p>
+      </article>
+      <!-- 25 -->
+      <article class="catalog__card rise" data-dir="influence" data-col="a9" hidden>
+        <div class="catalog__poster catalog__poster--h400">
+          <img src="assets/img/cases/case-azbuka-influence-1.jpg" alt="Блогер готовит окрошку на кухне — интеграция для «Азбуки вкуса»" loading="lazy" width="400" height="400">
+        </div>
+        <div class="catalog__row">
+          <span class="catalog__dot catalog__dot--card" aria-hidden="true"></span>
+          <h3 class="catalog__t">«Азбука вкуса»: инфлюенс-программа на&nbsp;год</h3>
+        </div>
+        <p class="catalog__desc">130 интеграций и&nbsp;200+ блогеров в&nbsp;сезонных кампаниях&nbsp;— от&nbsp;Масленицы до&nbsp;майских BBQ и&nbsp;продуктовых запусков; просмотры выше плана до&nbsp;681&nbsp;%.</p>
+        <p class="catalog__meta">
+          <span class="catalog__tag">Инфлюенс</span>
+          <span class="catalog__tag">Ритейл</span>
+          <span class="catalog__metric">130 интеграций, план&nbsp;×6,8</span>
+        </p>
+      </article>
+      <!-- 26 -->
+      <article class="catalog__card rise" data-dir="production" data-col="b8" hidden>
+        <div class="catalog__poster catalog__poster--h530">
+          <img src="assets/img/cases/case-robocam-track-1.jpg" alt="Кадр клипа: артист в жёлтой куртке в боксах гоночной трассы под световой рамой" loading="lazy" width="400" height="530">
+        </div>
+        <div class="catalog__row">
+          <span class="catalog__dot catalog__dot--card" aria-hidden="true"></span>
+          <h3 class="catalog__t">Клип с&nbsp;роботизированной камерой на&nbsp;гоночной трассе</h3>
+        </div>
+        <p class="catalog__desc">Съёмка роботизированной камерой в&nbsp;павильоне и&nbsp;на&nbsp;трассе: болид и&nbsp;дрифт-кар в&nbsp;одном кадре, бокс и&nbsp;брендинтеграция внутри клипа.</p>
+        <p class="catalog__meta">
+          <span class="catalog__tag">Продакшн</span>
+          <span class="catalog__tag">Клип</span>
+          <span class="catalog__metric">4K, роботизированная камера</span>
+        </p>
+      </article>
+      <!-- 27 -->
+      <article class="catalog__card rise" data-dir="production" data-col="b9" hidden>
+        <div class="catalog__poster catalog__poster--h530">
+          <img src="assets/img/cases/case-jewelry-vertical-1.jpg" alt="Кадр вертикального фильма: портрет модели в очках и с цепью в бирюзовом свете" loading="lazy" width="400" height="530">
+        </div>
+        <div class="catalog__row">
+          <span class="catalog__dot catalog__dot--card" aria-hidden="true"></span>
+          <h3 class="catalog__t">Вертикальный рекламный фильм для&nbsp;ювелирного бренда</h3>
+        </div>
+        <p class="catalog__desc">Формат под соцсети без&nbsp;переверстки из&nbsp;горизонтали: контровой свет, макро металла и&nbsp;«жидкий» монтаж&nbsp;— кадр сразу под Reels и&nbsp;TikTok.</p>
+        <p class="catalog__meta">
+          <span class="catalog__tag">Продакшн</span>
+          <span class="catalog__tag">Фэшн</span>
+          <span class="catalog__metric">вертикаль 9:16, 1&nbsp;минута</span>
+        </p>
+      </article>
+      <!-- 28 -->
+      <article class="catalog__card rise" data-dir="production" data-col="a10" hidden>
+        <div class="catalog__poster catalog__poster--h260">
+          <img src="assets/img/cases/case-clip-asia-1.jpg" alt="Кадр клипа: ноги на скейтборде под мостом в контровом дневном свете" loading="lazy" width="400" height="260">
+        </div>
+        <div class="catalog__row">
+          <span class="catalog__dot catalog__dot--card" aria-hidden="true"></span>
+          <h3 class="catalog__t">Клип для&nbsp;музыканта с&nbsp;прокатом на&nbsp;азиатский рынок</h3>
+        </div>
+        <p class="catalog__desc">Ночные городские и&nbsp;клубные сцены, скейт-съёмка, тёмный кинематографический грейд; релиз с&nbsp;субтитрами под азиатскую аудиторию.</p>
+        <p class="catalog__meta">
+          <span class="catalog__tag">Продакшн</span>
+          <span class="catalog__tag">Клип</span>
+          <span class="catalog__metric">релиз с&nbsp;субтитрами, кинокадр 2.35:1</span>
+        </p>
+      </article>
+      <!-- 29 -->
+      <article class="catalog__card rise" data-dir="production" data-col="c10" hidden>
+        <div class="catalog__poster catalog__poster--h250">
+          <img src="assets/img/cases/case-beauty-story-1.jpg" alt="Кадр игрового ролика: героиня надувает пузырь из жвачки, рядом вентилятор в неоновом свете" loading="lazy" width="400" height="250">
+        </div>
+        <div class="catalog__row">
+          <span class="catalog__dot catalog__dot--card" aria-hidden="true"></span>
+          <h3 class="catalog__t">Игровой ролик-история для&nbsp;бьюти-сервиса</h3>
+        </div>
+        <p class="catalog__desc">Короткая игровая история о&nbsp;приложении салона: неоновый свет, интерьерная съёмка, экранная графика поверх кадра.</p>
+        <p class="catalog__meta">
+          <span class="catalog__tag">Продакшн</span>
+          <span class="catalog__tag">Бьюти</span>
+          <span class="catalog__metric">4K, игровой сюжет</span>
         </p>
       </article>
 

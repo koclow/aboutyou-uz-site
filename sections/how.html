@@ -23,8 +23,8 @@
       <div class="how__stage">
         <p class="how__tech" style="--x:0px;--y:14px">Сценарий 01 · Проект с нуля</p>
         <p class="how__tech how__tech--right" style="--y:14px">About You · Ташкент</p>
-        <p class="how__tech how__tech--bottom how__tech--soft" style="--x:230px">Собираем команду</p>
-        <p class="how__tech how__tech--bottom how__tech--soft" style="--x:560px">Координируем и проверяем</p>
+        <p class="how__tech how__tech--bottom how__tech--soft how__tech--center" style="--x:436px">Собираем команду</p>
+        <p class="how__tech how__tech--bottom how__tech--soft how__tech--center" style="--x:751px">Координируем и проверяем</p>
 
         <svg class="how__lines" width="1312" height="430" viewBox="0 0 1312 430" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
           <path d="M180 215 L244 215"/>
@@ -43,8 +43,10 @@
           <path d="M1058 215 L 1112 215" stroke-opacity="0.45"/>
           <rect class="how__mark" x="244" y="209" width="12" height="12" transform="rotate(45 250 215)"/>
           <rect class="how__mark" x="612" y="209" width="12" height="12" transform="rotate(45 618 215)"/>
-          <path class="how__arrow" d="M733 158 A 16 14 0 1 1 762 166"/>
-          <path class="how__arrow" d="M758 160 L762 166 L767 161" stroke-linecap="round" stroke-linejoin="round"/>
+          <!-- петля итерации: выходит из верхнего края узла «Проверка ⇄ доработка»
+               (центр 751) справа и возвращается в него слева, наконечник по касательной -->
+          <path class="how__arrow" d="M773 186 A 26 26 0 1 0 729 186"/>
+          <path class="how__arrow" d="M721.9 182.3 L729 186 L728.7 178" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
 
         <div class="how__nodes">
@@ -92,13 +94,16 @@
         <p class="how__tech" style="--x:212px;--y:352px">План · текущие задачи · быстрая реакция</p>
 
         <svg class="how__lines" width="1312" height="430" viewBox="0 0 1312 430" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-          <path d="M190 215 L 436 215"/>
+          <path d="M190 215 L 324 215"/>
           <circle cx="560" cy="215" r="118" stroke-opacity="0.55"/>
-          <path class="how__arrow" d="M670 201 L678 213 L687 201" stroke-linecap="round" stroke-linejoin="round"/>
-          <path class="how__arrow" d="M433 229 L442 217 L450 229" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M678 215 L 900 215"/>
+          <!-- ход по кругу по часовой; наконечники — на свободных дугах (45° и 225°),
+               а не в точках под узлами, где их не видно -->
+          <path class="how__arrow" d="M645.5 290.7 L643.4 298.4 L651.2 296.4" stroke-linecap="round" stroke-linejoin="round"/>
+          <path class="how__arrow" d="M474.5 139.3 L476.6 131.6 L468.8 133.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M796 215 L 900 215"/>
           <path d="M1074 215 L 1112 215" stroke-opacity="0.45"/>
-          <rect class="how__mark" x="430" y="209" width="12" height="12" transform="rotate(45 436 215)"/>
+          <!-- вход в цикл: ромб перед узлом «Проверка», а не под ним -->
+          <rect class="how__mark" x="306" y="209" width="12" height="12" transform="rotate(45 312 215)"/>
           <path class="how__dash" d="M24 392 L 1288 392" stroke-opacity="0.7"/>
           <circle class="how__dot" cx="24" cy="392" r="4"/>
           <circle class="how__dot" cx="1288" cy="392" r="4"/>
@@ -139,19 +144,20 @@
       <div class="how__stage">
         <p class="how__tech" style="--x:0px;--y:14px">Сценарий 03 · Отдельная задача</p>
         <p class="how__tech how__tech--right" style="--y:14px">About You · Ташкент</p>
-        <p class="how__tech how__tech--bottom how__tech--soft" style="--x:420px">Понятный объём · срок · результат</p>
+        <p class="how__tech how__tech--bottom how__tech--soft how__tech--center" style="--x:656px">Понятный объём · срок · результат</p>
 
         <svg class="how__lines" width="1312" height="430" viewBox="0 0 1312 430" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-          <path d="M186 215 L 234 215"/>
+          <path d="M190 215 L 234 215"/>
           <path d="M488 215 L 536 215"/>
           <path d="M790 215 L 838 215"/>
           <path d="M1022 215 L 1070 215"/>
-          <path class="how__arrow" d="M916 158 A 16 14 0 1 1 945 166"/>
-          <path class="how__arrow" d="M941 160 L945 166 L950 161" stroke-linecap="round" stroke-linejoin="round"/>
+          <!-- петля итерации на верхнем крае узла «Доработка» (центр 930), как в сценарии 01 -->
+          <path class="how__arrow" d="M952 186 A 26 26 0 1 0 908 186"/>
+          <path class="how__arrow" d="M900.9 182.3 L908 186 L907.7 178" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
 
         <div class="how__nodes">
-          <div class="how__node" style="--x:10px;--y:186px;--w:176px;--h:58px">
+          <div class="how__node" style="--x:10px;--y:186px;--w:180px;--h:58px">
             <span class="how__node-t">Задача и оценка</span><span class="how__node-s">объём · смета · сроки</span>
           </div>
           <div class="how__node" style="--x:234px;--y:186px;--w:254px;--h:58px">

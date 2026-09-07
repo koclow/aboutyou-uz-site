@@ -31,6 +31,37 @@
     });
   });
 
+  /* переходы по якорям: не лететь через всю страницу (Никита 07.09:
+     «Обсудить проект» с hero бросает в самый низ, пролетая весь сайт).
+     Если цель дальше полутора экранов — мгновенно встаём за GLIDE до неё
+     и плавно докручиваем остаток; ближние цели — обычная плавная. */
+  var GLIDE = 560;
+  var navH = nav ? nav.offsetHeight : 0;
+  document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      var id = a.getAttribute('href').slice(1);
+      if (!id) return;
+      var t = document.getElementById(id);
+      if (!t) return;
+      e.preventDefault();
+      var top = Math.max(0, t.getBoundingClientRect().top + window.pageYOffset - (id === 'top' ? 0 : navH));
+      var here = window.pageYOffset;
+      var html = document.documentElement;
+      if (reduce) {
+        window.scrollTo(0, top);
+      } else if (Math.abs(top - here) > window.innerHeight * 1.5) {
+        var from = top - (top > here ? GLIDE : -GLIDE);
+        html.style.scrollBehavior = 'auto';
+        window.scrollTo(0, from);
+        html.style.scrollBehavior = '';
+        window.requestAnimationFrame(function () { window.scrollTo({ top: top, behavior: 'smooth' }); });
+      } else {
+        window.scrollTo({ top: top, behavior: 'smooth' });
+      }
+      if (window.history && history.replaceState) history.replaceState(null, '', '#' + id);
+    });
+  });
+
   /* появление блоков */
   var items = document.querySelectorAll('.rise');
   if (reduce || !('IntersectionObserver' in window)) {
