@@ -17,7 +17,7 @@ const pages = [
   { tpl: 'index-v2.template.html', out: 'v2.html',
     sections: ['v2-hero', 'v2-work', 'v2-cases', 'how', 'v2-about', 'apply'], post: eventify },
   { tpl: 'index-v3.template.html', out: 'v3.html',
-    sections: ['v3-hero', 'v3-scale', 'v2-work', 'v2-cases', 'v3-breath', 'how', 'v2-about', 'apply'], post: v3ify },
+    sections: ['v3-hero', 'v3-scale', 'v2-work', 'v2-cases', 'how', 'v2-about', 'apply'], post: v3ify },   // «вдох» (v3-breath) снят 07.09 по слову Никиты, файлы секции остались
 ];
 
 for (const p of pages) {
