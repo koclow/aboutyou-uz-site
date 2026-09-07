@@ -1,0 +1,78 @@
+/* Shared frame: full-bleed backgrounds with one content edge across v3.
+   The 1920px ceiling refers to content, not a padded outer wrapper. */
+.page-v3 .nav,.page-v3 .v3hero,.page-v3 .work__kicker,.page-v3 .row,
+.page-v3 .how,.page-v3 .manifesto,.page-v3 .vteam,.page-v3 .apply,
+.page-v3 .v3clients{padding-left:var(--v3-inset);padding-right:var(--v3-inset)}
+.page-v3 .v3hero__in{max-width:none}
+.page-v3 .artcases__in{max-width:none;padding-left:var(--v3-inset);padding-right:var(--v3-inset)}
+.page-v3 .row__tags{color:var(--ink-dim)}
+@media(hover:hover){.page-v3 .row:hover .row__tags{color:var(--bone)}}
+.page-v3 .row[data-case-direction="pr"] .row__img{object-position:50% 42%}
+.page-v3 .row__img--integration{object-position:50% 28%}
+.page-v3 .row[data-case-direction="it"] .row__img{object-position:50% 0%}
+.page-v3 .artcases__case{scroll-margin-top:100px}
+@media(min-width:1640px){
+  .page-v3 #cases .artcases__mosaic .artcases__case:nth-child(n) .artcases__art{height:var(--v3-case-small)}
+  .page-v3 #cases .artcases__mosaic .artcases__case:nth-child(5n+1) .artcases__art,
+  .page-v3 #cases .artcases__mosaic .artcases__case:nth-child(5n+2) .artcases__art{height:var(--v3-case-large)}
+}
+/* One client block, eight visible initially; remaining logos expand in place. */
+.v3clients{background:var(--paper);color:var(--ink);padding-top:32px;padding-bottom:32px;border-bottom:1px solid var(--ink-hair)}
+.v3clients__head{display:flex;justify-content:space-between;align-items:center;gap:16px}
+.v3clients__head .kicker{color:var(--ink-dim);margin:0}
+.v3clients__toggle{background:none;border:0;color:var(--ink-dim);font-family:var(--body);font-size:var(--fs-small);cursor:pointer;padding:10px 0;display:flex;align-items:center;gap:18px;min-height:44px}
+.v3clients__toggle:hover{color:var(--ink)}
+.v3clients__toggle:focus-visible{outline:2px solid var(--signal);outline-offset:4px}
+.v3clients [hidden]{display:none!important}
+.v3clients__logos{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:20px 28px;padding:0;margin:18px 0 0;list-style:none}
+.v3clients__logos li{display:flex;align-items:center;justify-content:center;min-width:0;height:58px}
+.v3clients__logo{width:auto;max-width:88%;height:auto;max-height:var(--v3-logo-height);object-fit:contain;filter:brightness(0);opacity:.72}
+.v3clients__logo--t,.v3clients__logo--s{max-height:var(--v3-logo-tall)}
+.v3clients__logo--xw{max-height:26px}
+@media(max-width:1000px){.v3clients__logos{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media(max-width:560px){
+  .v3clients{padding-top:20px;padding-bottom:24px;--v3-logo-height:24px;--v3-logo-tall:36px}
+  .v3clients__head{align-items:flex-start;gap:14px}
+  .v3clients__head .kicker{max-width:12ch;padding-top:10px}
+  .v3clients__toggle{font-size:var(--fs-caption);gap:8px;max-width:17ch;text-align:right;line-height:1.3}
+  .v3clients__logos{gap:12px 16px;margin-top:12px}
+  .v3clients__logos li{height:40px}
+  .v3clients__logo--xw{max-height:20px}
+}
+/* Manifesto remains expressive; two type scales replace the single large paragraph. */
+.page-v3 .manifesto__editorial{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(48px,6vw,120px);margin-top:40px}
+.page-v3 .manifesto__opening{font-size:var(--v3-fs-opening);font-weight:500;line-height:1.14;letter-spacing:-.035em;margin:0;max-width:20ch;text-wrap:pretty}
+.page-v3 .manifesto__story{font-size:var(--v3-fs-story);line-height:1.5;color:var(--dim-strong);max-width:44ch}
+.page-v3 .manifesto__story p{margin:0 0 1.1em}
+.page-v3 .manifesto__story .manifesto__closing{color:var(--bone);margin:1.5em 0 0;font-weight:600}
+/* Neutral editorial placeholders, explicitly requested by Nikita; no invented portraits. */
+.page-v3 .vteam__placeholder{flex:0 0 var(--v3-photo);width:var(--v3-photo);height:var(--v3-photo);border:1px solid var(--faint-16);border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--v3-photo-fill);color:var(--dim);font-size:var(--fs-tech);letter-spacing:.04em}
+.page-v3 .vteam__lead .vteam__placeholder{width:var(--v3-photo-lead);height:var(--v3-photo-lead);flex-basis:var(--v3-photo-lead)}
+.page-v3 .vteam__person{align-items:flex-start}
+.page-v3 .vteam__person .vteam__t{padding-top:3px}
+.page-v3 .vteam__people{gap:20px}
+@media(max-width:900px){
+  .page-v3 .manifesto__editorial{grid-template-columns:1fr;gap:32px;margin-top:28px}
+  .page-v3 .manifesto__opening{max-width:22ch}
+  .page-v3 .manifesto__story{max-width:50ch}
+}
+@media(max-width:560px){
+  .page-v3 .work{padding-top:52px;padding-bottom:36px}
+  .page-v3 .row{padding-top:26px;padding-bottom:26px}
+}
+/* Diagram coordinates use CSS percentages; connectors read the rendered node ports. */
+.page-v3 .how--refined{--how-k:1;--how-node-shadow:var(--v3-node-shadow);--how-pill-shadow:none}
+.how--refined .how__frame{height:440px;scroll-snap-type:x proximity;scrollbar-color:var(--ink-faint) transparent;scroll-padding-left:0}
+.how--refined .how__stage{width:100%;min-width:1180px;height:438px;transform:none;margin:0}
+.how--refined .how__stage::before,.how--refined .how__stage::after{display:none}
+.how--refined .how__lines{width:100%;height:100%;overflow:visible}
+.how--refined .how__routes path,.how--refined .how__tip{fill:none;stroke:var(--signal);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.how--refined .how__routes .how__route--soft{opacity:.65}
+.how--refined .how__node{--fs:var(--fs-node);left:calc((100% - var(--w))*var(--pos));border-radius:var(--v3-node-radius);padding:0 8px}
+.how--refined .how__node-s{font-size:var(--fs-tech);font-weight:400;text-transform:none;letter-spacing:0;color:var(--ink-dim);line-height:1.35;margin-top:5px}
+.how--refined .how__node--pill .how__node-s{color:var(--bone)}
+.how--refined .how__node--pill{border-radius:var(--v3-node-radius)}
+.how--refined .how__caption{position:absolute;left:calc((100% - var(--w))*var(--pos));width:var(--w);bottom:4px;margin:0;text-align:center;font-size:var(--fs-small);color:var(--ink-dim)}
+.how--refined .how__panel[hidden]{display:none}
+.how--refined .how__frame:focus-visible{outline:2px solid var(--signal);outline-offset:4px}
+@media(prefers-reduced-motion:reduce){.v3clients__toggle{transition:none}}
