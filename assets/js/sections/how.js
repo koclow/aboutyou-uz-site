@@ -14,7 +14,7 @@
   var STAGE = 1312;          /* ширина схемы в макете 1440 */
   var OUT = 200, IN = 300;   /* уход / приход панели, мс */
   var current = 0;
-  var busy = false;
+  var timers = [];   /* таймеры смены панели: новый клик их сбрасывает */
 
   /* ── масштаб схемы: k = ширина контента / 1312, не больше 1 и
      не меньше --how-k-min (ниже него подписи узлов не читаются).
@@ -87,31 +87,41 @@
     if (focus) tabs[i].focus();
   }
 
+  /* Смена панели без блокировки: раньше на время анимации (900 мс) стоял
+     замок busy, и клик в это окно помечал таб выбранным, а панель не менял —
+     «переключается со второго раза» (Никита 07.09). Теперь каждый клик
+     сбрасывает незавершённую смену и показывает нужную панель. */
   function show(i, focus) {
-    if (i === current || busy) { select(i, focus); return; }
+    select(i, focus);
+    if (i === current) return;
     var out = panels[current], next = panels[i];
     current = i;
-    select(i, focus);
-    if (!out || !next) return;
+    timers.forEach(window.clearTimeout);
+    timers = [];
+    panels.forEach(function (pn) {
+      if (pn !== next && pn !== out) { pn.hidden = true; pn.classList.remove('is-in', 'is-out'); }
+    });
+    if (!next) return;
 
-    if (reduce) {
-      out.hidden = true;
+    if (reduce || !out || out.hidden) {
+      if (out) { out.hidden = true; out.classList.remove('is-in', 'is-out'); }
+      next.classList.remove('is-in', 'is-out');
       next.hidden = false;
       draw(next);
       return;
     }
 
-    busy = true;
+    out.classList.remove('is-in');
     out.classList.add('is-out');
-    window.setTimeout(function () {
+    timers.push(window.setTimeout(function () {
       out.classList.remove('is-out');
       out.hidden = true;
       next.hidden = false;
       void next.offsetWidth;
       next.classList.add('is-in');
       draw(next);
-      window.setTimeout(function () { next.classList.remove('is-in'); busy = false; }, IN + 400);
-    }, OUT);
+      timers.push(window.setTimeout(function () { next.classList.remove('is-in'); }, IN + 400));
+    }, OUT));
   }
 
   tabs.forEach(function (tab, i) {
