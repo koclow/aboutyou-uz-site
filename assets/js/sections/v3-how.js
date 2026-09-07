@@ -63,6 +63,7 @@
     current=i;
     tabs.forEach(function(t,n){t.setAttribute('aria-selected',String(i===n));t.tabIndex=i===n?0:-1;panels[n].hidden=i!==n;});
     layout();
+    root.dispatchEvent(new Event('how:change'));
     if(focus) tabs[i].focus();
     if(!reduce.matches) {
       // Only opacity changes: ports and arrowheads remain registered throughout the transition.
