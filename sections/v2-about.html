@@ -9,73 +9,191 @@
   <p class="manifesto__text">Нам интересно работать с теми, кому <em class="manifesto__accent">есть что сказать</em> — особенно если это сложно уместить в обычный бриф. Помогаем добраться до сути, придумываем форму и создаём опыт, через который идею увидят, поймут и запомнят. Это может быть одна PR-кампания, вирусный ролик, цифровой продукт или целая экосистема — <span class="manifesto__marked">задача определяет решение<svg class="manifesto__underline" width="100%" height="16" viewBox="0 0 420 16" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path class="manifesto__stroke" pathLength="1" d="M4 12 C 130 9.5, 300 8.5, 416 7" stroke-width="9" stroke-linecap="butt" fill="none"></path></svg></span>, а не набор наших услуг.</p>
 </section>
 
-<!-- ══ КОМАНДА (v2) ══ макет: ../Канвас — рабочие файлы/Team.dc.html (1440).
-     Отличия от артборда — дозировка красного: красный только у кикера,
-     заголовок одним цветом, плашка «Видео · слот» графитовая.
-     Видео-слоты — заглушки: не кликаются, курсор обычный. -->
+<!-- ══ КОМАНДА (v2/v3) ══ состав объединённого агентства, утверждён
+     Никитой 07.09.2026 (имена и роли — ровно как здесь). Роспись и
+     обоснование должностей — «03 Фактура/Команда About You UZ — состав
+     07.09.2026.md» и «…/Команда — кандидаты из Проектории 07.09.2026.md».
+
+     Принцип (решение Никиты 07.09): единица блока — СТРОКА человека
+     (имя + роль), фото — необязательная добавка. Есть портрет — он идёт
+     маленьким кругом слева от имени:
+       <img class="vteam__photo" src="assets/img/team/….webp" alt="" loading="lazy">
+     первым ребёнком в .vteam__person. Нет портрета — строка просто без
+     него; пустых кружков и инициалов НЕ ставим. Портрет вписан в высоту
+     строки (min-height), поэтому строки с фото и без — одной высоты.
+     Пока портретов нет ни у кого — все строки без <img>.
+
+     Порядок направлений — как в блоке «Что делаем»: PR · Инфлюенс ·
+     Ивенты · Продакшн · IT. Руководитель первым в своём направлении.
+     Илья Макаров и Игорь Макаров — однофамильцы, так и оставлено. -->
 <section class="vteam">
   <div class="vteam__in">
 
     <div class="vteam__head rise">
       <p class="kicker vteam__kicker">Команда</p>
-      <h2 class="vteam__h">За пикселями — люди, которым не всё равно</h2>
+      <h2 class="vteam__h">С кем вы будете работать</h2>
     </div>
 
-    <div class="vteam__founders">
-      <figure class="vteam__founder rise" style="transition-delay:.05s">
-        <div class="vteam__slot">
-          <img class="vteam__slot-img" src="assets/img/frame-f.jpg" alt="" loading="lazy" width="1000" height="563">
-          <span class="vteam__play" aria-hidden="true">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" focusable="false"><path d="M8 5.5 L18.5 12 L8 18.5 Z" fill="currentColor"></path></svg>
-          </span>
-          <span class="vteam__badge">Видео · слот</span>
-        </div>
-        <figcaption class="vteam__cap">
-          <span class="vteam__cap-name">Вика</span>
-          <span class="vteam__cap-role">Сооснователь About You · о том, как мы работаем</span>
-        </figcaption>
-      </figure>
-
-      <figure class="vteam__founder rise" style="transition-delay:.12s">
-        <div class="vteam__slot">
-          <img class="vteam__slot-img" src="assets/img/frame-e.jpg" alt="" loading="lazy" width="1000" height="563">
-          <span class="vteam__play" aria-hidden="true">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" focusable="false"><path d="M8 5.5 L18.5 12 L8 18.5 Z" fill="currentColor"></path></svg>
-          </span>
-          <span class="vteam__badge">Видео · слот</span>
-        </div>
-        <figcaption class="vteam__cap">
-          <span class="vteam__cap-name">Илья</span>
-          <span class="vteam__cap-role">Сооснователь About You · про кухню проектов</span>
-        </figcaption>
-      </figure>
+    <!-- основатель — отдельно, над направлениями, на ступень крупнее -->
+    <div class="vteam__lead rise" style="transition-delay:.05s">
+      <span class="vteam__t">
+        <span class="vteam__name">Виктория Французова</span>
+        <span class="vteam__role">Основатель</span>
+      </span>
     </div>
 
-    <!-- четыре направления агентства в лицах; фото ещё нет — инициалы -->
-    <ul class="vteam__people">
-      <li class="vteam__person rise" style="transition-delay:.05s">
-        <span class="vteam__portrait" aria-hidden="true"><span class="vteam__initials">КЮ</span></span>
-        <span class="vteam__name">Камила Юсупова</span>
-        <span class="vteam__role">PR-менеджер</span>
-      </li>
-      <li class="vteam__person rise" style="transition-delay:.11s">
-        <span class="vteam__portrait" aria-hidden="true"><span class="vteam__initials">ТР</span></span>
-        <span class="vteam__name">Тимур Рахимов</span>
-        <span class="vteam__role">Продюсер ивентов</span>
-      </li>
-      <li class="vteam__person rise" style="transition-delay:.17s">
-        <span class="vteam__portrait" aria-hidden="true"><span class="vteam__initials">МА</span></span>
-        <span class="vteam__name">Мадина Алимова</span>
-        <span class="vteam__role">Арт-директор</span>
-      </li>
-      <li class="vteam__person rise" style="transition-delay:.23s">
-        <span class="vteam__portrait" aria-hidden="true"><span class="vteam__initials">СБ</span></span>
-        <span class="vteam__name">Санжар Бекмуратов</span>
-        <span class="vteam__role">Разработчик</span>
-      </li>
-    </ul>
+    <div class="vteam__dirs">
 
-    <p class="vteam__impressum rise"><b>Алёна Соколова</b> — смыслы и тексты<i> · </i><b>Мария Ким</b> — инфлюенс и медиа<i> · </i><b>Даниил Волков</b> — продакшн и съёмки</p>
+      <section class="vteam__dir rise" style="transition-delay:.08s">
+        <h3 class="vteam__dir-n">PR</h3>
+        <ul class="vteam__people">
+          <li class="vteam__person">
+            <span class="vteam__t">
+              <span class="vteam__name">Илья Макаров</span>
+              <span class="vteam__role">Руководитель PR-направления</span>
+            </span>
+          </li>
+          <li class="vteam__person">
+            <span class="vteam__t">
+              <span class="vteam__name">Арина Фадеева</span>
+              <span class="vteam__role">PR-стратег</span>
+            </span>
+          </li>
+          <li class="vteam__person">
+            <span class="vteam__t">
+              <span class="vteam__name">Мария Бердяева</span>
+              <span class="vteam__role">Главный редактор</span>
+            </span>
+          </li>
+          <li class="vteam__person">
+            <span class="vteam__t">
+              <span class="vteam__name">Женя Ефимова</span>
+              <span class="vteam__role">Автор</span>
+            </span>
+          </li>
+        </ul>
+      </section>
 
+      <section class="vteam__dir rise" style="transition-delay:.14s">
+        <h3 class="vteam__dir-n">Инфлюенс</h3>
+        <ul class="vteam__people">
+          <li class="vteam__person">
+            <span class="vteam__t">
+              <span class="vteam__name">Лида Мармыш</span>
+              <span class="vteam__role">Руководитель инфлюенс-направления</span>
+            </span>
+          </li>
+          <li class="vteam__person">
+            <span class="vteam__t">
+              <span class="vteam__name">Алина Тимерчиева</span>
+              <span class="vteam__role">Работа со звёздами и медиа</span>
+            </span>
+          </li>
+          <li class="vteam__person">
+            <span class="vteam__t">
+              <span class="vteam__name">Максим Солгалов</span>
+              <span class="vteam__role">Маркетинг-стратег</span>
+            </span>
+          </li>
+        </ul>
+      </section>
+
+      <section class="vteam__dir rise" style="transition-delay:.2s">
+        <h3 class="vteam__dir-n">Ивенты</h3>
+        <ul class="vteam__people">
+          <li class="vteam__person">
+            <span class="vteam__t">
+              <span class="vteam__name">Даниэль</span>
+              <span class="vteam__role">Руководитель ивент-направления</span>
+            </span>
+          </li>
+          <li class="vteam__person">
+            <span class="vteam__t">
+              <span class="vteam__name">Светлана Пимонова</span>
+              <span class="vteam__role">Продюсер</span>
+            </span>
+          </li>
+          <li class="vteam__person">
+            <span class="vteam__t">
+              <span class="vteam__name">Асида Габуния</span>
+              <span class="vteam__role">Менеджер проектов, продакшн и выставки</span>
+            </span>
+          </li>
+          <li class="vteam__person">
+            <span class="vteam__t">
+              <span class="vteam__name">Александр Ларин</span>
+              <span class="vteam__role">Моушн-дизайн для ивентов</span>
+            </span>
+          </li>
+        </ul>
+      </section>
+
+      <section class="vteam__dir rise" style="transition-delay:.26s">
+        <h3 class="vteam__dir-n">Продакшн</h3>
+        <ul class="vteam__people">
+          <li class="vteam__person">
+            <span class="vteam__t">
+              <span class="vteam__name">Александра Потехина</span>
+              <span class="vteam__role">Руководитель продакшн-направления, генеральный продюсер</span>
+            </span>
+          </li>
+          <li class="vteam__person">
+            <span class="vteam__t">
+              <span class="vteam__name">Александр Локотков</span>
+              <span class="vteam__role">Режиссёр</span>
+            </span>
+          </li>
+          <li class="vteam__person">
+            <span class="vteam__t">
+              <span class="vteam__name">Елена Гусева</span>
+              <span class="vteam__role">Режиссёр монтажа</span>
+            </span>
+          </li>
+          <li class="vteam__person">
+            <span class="vteam__t">
+              <span class="vteam__name">Андрей Черкасов</span>
+              <span class="vteam__role">Управление проектами</span>
+            </span>
+          </li>
+        </ul>
+      </section>
+
+      <section class="vteam__dir rise" style="transition-delay:.32s">
+        <h3 class="vteam__dir-n">IT</h3>
+        <ul class="vteam__people">
+          <li class="vteam__person">
+            <span class="vteam__t">
+              <span class="vteam__name">Никита Козлов</span>
+              <span class="vteam__role">Руководитель IT-направления, арт-дирекшн</span>
+            </span>
+          </li>
+          <li class="vteam__person">
+            <span class="vteam__t">
+              <span class="vteam__name">Игорь Макаров</span>
+              <span class="vteam__role">Цифровые продукты</span>
+            </span>
+          </li>
+          <li class="vteam__person">
+            <span class="vteam__t">
+              <span class="vteam__name">Максим Шек</span>
+              <span class="vteam__role">Техлид</span>
+            </span>
+          </li>
+          <li class="vteam__person">
+            <span class="vteam__t">
+              <span class="vteam__name">Евгений Оглоблин</span>
+              <span class="vteam__role">Дизайнер</span>
+            </span>
+          </li>
+          <li class="vteam__person">
+            <span class="vteam__t">
+              <span class="vteam__name">Екатерина Лескова</span>
+              <span class="vteam__role">Иллюстратор</span>
+            </span>
+          </li>
+        </ul>
+      </section>
+
+    </div>
   </div>
 </section>

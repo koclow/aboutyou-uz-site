@@ -1,0 +1,75 @@
+[
+  {
+    "slug": "supercar-uae",
+    "title": "Рекламный фильм о суперкаре в ОАЭ",
+    "type": "frame",
+    "params": {
+      "img": "src/supercar-45.png",
+      "pos": "50% 50%",
+      "zoom": 1,
+      "tone": "dark"
+    }
+  },
+  {
+    "slug": "ai-kiosk-forum",
+    "title": "ИИ-интерактив для стенда на международном форуме",
+    "type": "composition",
+    "params": {
+      "bg": "#16264A",
+      "tone": "dark",
+      "main": {
+        "img": "src/kiosk-card.png",
+        "w": 740,
+        "x": 390,
+        "y": 140,
+        "kind": "cutout"
+      },
+      "sub": {
+        "img": "src/kiosk-medal-3.png",
+        "w": 250,
+        "x": 110,
+        "y": 1100,
+        "kind": "cutout"
+      }
+    }
+  },
+  {
+    "slug": "azbuka-vkusa-pr",
+    "title": "«Азбука вкуса»: годовая PR-кампания",
+    "type": "composition",
+    "params": {
+      "bg": "#1E4034",
+      "tone": "dark",
+      "main": {
+        "img": "src/azbuka-cutout.png",
+        "w": 1000,
+        "x": 260,
+        "y": 320,
+        "kind": "cutout"
+      }
+    }
+  },
+  {
+    "slug": "tanuki-kazakhstan",
+    "title": "Запуск ресторанов Александра Орлова в Казахстане",
+    "type": "type",
+    "params": {
+      "bg": "#26221F",
+      "tone": "dark",
+      "fg": "#EDEAE3",
+      "text": "1,4\nмлн+",
+      "fs": 440,
+      "fw": 900,
+      "x": "96px",
+      "y": "280px",
+      "sub": {
+        "img": "src/tanuki-umbrellas.png",
+        "w": 460,
+        "x": 660,
+        "y": 940,
+        "kind": "card",
+        "photo": true
+      }
+    }
+  }
+]

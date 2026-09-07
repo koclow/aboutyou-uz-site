@@ -32,7 +32,11 @@
 }
 .manifesto.in .manifesto__stroke{stroke-dashoffset:0}
 
-/* ── строка «Команда» ── */
+/* ── строка «Команда» ── ТОЛЬКО для index.html (sections/about.html).
+   Аудит 07.09 пометил .manifesto__team*, __avatars, __avatar*, __impressum*
+   как мёртвые для v3 — это так: v2-about.html их не содержит, команду на
+   v2/v3 рисует .vteam (v2-team.css). Но index.html (about.html:7–24) ими
+   живёт, поэтому правила остаются. Убрать можно вместе с index.html. */
 .manifesto__team{
   display:flex;align-items:flex-start;gap:60px;
   margin-top:clamp(56px,10vh,120px);padding-top:36px;

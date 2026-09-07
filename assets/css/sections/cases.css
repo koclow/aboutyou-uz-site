@@ -7,14 +7,8 @@
    собираются color-mix'ом от var(--ink), новых hex нет.
    ══════════════════════════════════════════════════════════ */
 .catalog{
-  /* 12.5px — кегль тихого UI (фильтр, рамочная кнопка); в tokens.css
-     такого шага пока нет, при следующей ревизии вынести в --fs-ui */
-  --catalog-fs-ui:12.5px;
-  --catalog-ink-55:color-mix(in srgb,var(--ink) 55%,transparent);
-  --catalog-ink-50:color-mix(in srgb,var(--ink) 50%,transparent);
-  --catalog-ink-35:color-mix(in srgb,var(--ink) 35%,transparent);
-  --catalog-ink-25:color-mix(in srgb,var(--ink) 25%,transparent);
-
+  /* тихий UI каталога сидит на общих токенах (аудит 07.09, п. 7 и 10):
+     кегль --fs-ui, три роли тихого текста --ink-dim / --ink-mid / --ink-soft */
   padding:clamp(64px,12vh,130px) 0 clamp(56px,10vh,110px);
   overflow:hidden;              /* сдвинутая параллаксом колонка не лезет в соседний акт */
 }
@@ -51,14 +45,14 @@
 /* ══ тихая строка фильтра ══ */
 .catalog__filter{
   display:flex;align-items:baseline;flex-wrap:wrap;gap:12px 26px;
-  margin-top:40px;font-size:var(--catalog-fs-ui);letter-spacing:.04em;
+  margin-top:40px;font-size:var(--fs-ui);letter-spacing:.04em;
 }
 .catalog__filter-label{color:var(--ink-mid);font-weight:500}
 .catalog__f{
   display:inline-flex;align-items:baseline;gap:8px;
   margin:0;padding:0;border:0;background:none;cursor:pointer;
   font-family:var(--body);font-size:inherit;letter-spacing:inherit;
-  font-weight:500;color:var(--catalog-ink-55);
+  font-weight:500;color:var(--ink-dim);
   transition:color var(--dur-s) var(--ease);
 }
 .catalog__f:hover{color:var(--ink)}
@@ -114,11 +108,11 @@
 .catalog__meta{
   display:flex;align-items:baseline;flex-wrap:wrap;gap:6px 14px;
   margin:12px 0 0 17px;                       /* 7px точки + 10px зазора */
-  font-size:var(--fs-kicker);font-weight:500;color:var(--catalog-ink-50);
+  font-size:var(--fs-caption);font-weight:500;color:var(--ink-mid);
 }
 .catalog__tag{
   text-decoration:underline;text-underline-offset:3px;
-  text-decoration-color:var(--catalog-ink-25);
+  text-decoration-color:var(--ink-soft);
 }
 /* метрика — единое число, рвать её посреди «3,77 млн» нельзя */
 .catalog__metric{color:var(--signal);white-space:nowrap}
@@ -133,13 +127,13 @@
 .catalog__foot{display:flex;justify-content:center;margin-top:110px}
 .catalog__all{
   display:inline-flex;align-items:center;cursor:pointer;
-  font-family:var(--disp);font-weight:700;font-size:var(--catalog-fs-ui);
+  font-family:var(--disp);font-weight:700;font-size:var(--fs-ui);line-height:1.5;
   letter-spacing:.05em;text-transform:uppercase;
-  color:var(--ink);background:none;border:1px solid var(--catalog-ink-35);
-  padding:16px 26px;
+  color:var(--ink);background:none;border:1px solid var(--ink-faint);
+  padding:18px 29px;               /* та же высота, что у .cta (56.75px), минус 1px обводки */
   transition:background-color var(--dur-s) var(--ease),color var(--dur-s) var(--ease),border-color var(--dur-s) var(--ease);
 }
-.catalog__all:hover{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.catalog__all:hover{background:var(--ink-grid);border-color:var(--ink-soft)}   /* один язык рамочной кнопки: тонировка, не инверсия */
 
 /* ══ <1200: параллакса нет, UI становится «пальцевым» ══ */
 @media (max-width:1199px){

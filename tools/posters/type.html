@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><title>Обложка · Типографика</title>
+<link rel="stylesheet" href="posters.css">
+<!-- Тип «Типографика» (только 2–3 крупные истории): одна цифра или одно слово
+     в Unbounded на цветном фоне + маленький реальный элемент картинки.
+     Параметры (?p=JSON):
+       bg, tone, fg — цвета; text — строка (перенос через "\n"; вторая строка мельче),
+       fs — кегль (px), fw — вес (500/700/900), x, y — положение (css-значения),
+       sub — {img, w, x, y, kind:"card"|"cutout"|"flat", photo:true} — маленький элемент -->
+</head>
+<body>
+<div class="poster" id="poster">
+  <div class="el" id="sub"><img alt=""></div>
+  <div class="word" id="word"></div>
+  <div class="grain"><svg xmlns="http://www.w3.org/2000/svg"><filter id="g"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter><rect width="100%" height="100%" filter="url(#g)"/></svg></div>
+</div>
+<script>
+  const p = JSON.parse(new URLSearchParams(location.search).get('p') || '{}');
+  const poster = document.getElementById('poster');
+  poster.style.setProperty('--bg', p.bg || '#221F1D');
+  poster.style.setProperty('--grain', p.grain != null ? p.grain : .045);
+  if (p.tone === 'light') poster.classList.add('light');
+  const w = document.getElementById('word');
+  if (p.fg) w.style.setProperty('--fg', p.fg);
+  if (p.fs) w.style.setProperty('--fs', p.fs + 'px');
+  if (p.fw) w.style.setProperty('--fw', p.fw);
+  if (p.x) w.style.setProperty('--x', p.x);
+  if (p.y) w.style.setProperty('--y', p.y);
+  const lines = String(p.text || '').split('\n');
+  w.textContent = lines[0];
+  if (lines[1]) { const s = document.createElement('small'); s.textContent = lines[1]; w.appendChild(s); }
+  const sub = document.getElementById('sub');
+  if (p.sub) {
+    const e = p.sub;
+    sub.style.left = e.x + 'px'; sub.style.top = e.y + 'px'; sub.style.width = e.w + 'px';
+    sub.classList.add(e.kind === 'card' ? 'card' : e.kind === 'flat' ? 'flat' : 'shadow');
+    if (e.photo) sub.classList.add('photo-el');
+    sub.querySelector('img').src = e.img;
+  } else sub.remove();
+</script>
+</body></html>

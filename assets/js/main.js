@@ -10,13 +10,17 @@
     track.innerHTML += track.innerHTML;
   }
 
-  /* шапка: фон и CTA после первого экрана */
+  /* шапка: фон и CTA после первого экрана.
+     Если в разметке есть [data-nav-anchor] (блок внутри hero), следим
+     за ним без отступа; иначе — за #top с отступом. На всех трёх
+     страницах сейчас якоря нет (столбик на hero сняли 07.09). */
   var nav = document.getElementById('nav');
   var hero = document.getElementById('top');
-  if (nav && hero && 'IntersectionObserver' in window) {
+  var anchor = document.querySelector('[data-nav-anchor]');
+  if (nav && (anchor || hero) && 'IntersectionObserver' in window) {
     new IntersectionObserver(function (e) {
       nav.classList.toggle('solid', !e[0].isIntersecting);
-    }, { rootMargin: '-64px 0px 0px 0px' }).observe(hero);
+    }, { rootMargin: anchor ? '0px' : '-64px 0px 0px 0px' }).observe(anchor || hero);
   }
 
   /* клик по направлению — открыть каталог с этим фильтром */

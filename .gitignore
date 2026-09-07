@@ -2,3 +2,9 @@
 node_modules/
 *.log
 .claude/
+
+# исходники и выходы генератора обложек — не для публичного репозитория
+tools/posters/src/
+tools/posters/out/
+# исходник hero (используется webp)
+assets/img/hero-tashkent.png

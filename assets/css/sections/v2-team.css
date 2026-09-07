@@ -1,22 +1,42 @@
 /* ══════════════════════════════════════════════════════════
-   v2-team.css — большой блок «Команда» второй страницы (v2.html).
-   Макет: ../Канвас — рабочие файлы/Team.dc.html (1440, графит).
+   v2-team.css — блок «Команда» второй и третьей страниц.
+   Состав: «03 Фактура/Команда About You UZ — состав 07.09.2026.md»,
+   утверждён Никитой 07.09.
 
-   Отличия от артборда — дозировка красного (правило v2):
-   красный в блоке ровно один — кикер «Команда» (--signal-lift).
-   Заголовок идёт одним цветом --bone, без красного span; плашка
-   «Видео · слот» из сигнально-красной стала графитовой.
-   Дисплейный шрифт и вес h2 берём у v2.css (Commissioner 800) —
-   жёстко 900 не задаём.
+   Пересобран 07.09.2026 (вторая итерация): «строка как единица, фото
+   как добавка».
+   · единица блока — строка человека: имя + роль. Портрет необязателен:
+     есть <img class="vteam__photo"> первым ребёнком строки — он идёт
+     маленьким кругом слева; нет — строка просто без него. Серых
+     кружков-заглушек и инициалов больше нет (.vteam__portrait,
+     .vteam__initials ушли, токены --portrait / --avatar-* блоком не
+     используются);
+   · строки одной высоты независимо от портрета: у .vteam__person стоит
+     min-height = размер портрета, портрет вписан в неё и строку не растит;
+   · имена — --body 600, не Unbounded: в дисплейном шрифте 13–15 px не
+     читаются. Роль — тихим текстом --dim, обычным регистром (капс с
+     разрядкой на 24 строках рябил);
+   · колонка = направление, порядок как в «Что делаем»: PR · Инфлюенс ·
+     Ивенты · Продакшн · IT, руководитель первым. ≥1100 — пять колонок,
+     ≤1100 — три, ≤900 — две, ≤600 — один столбец.
 
-   Манифест выше живёт на своих классах и своих стилях (about.css),
-   здесь не повторяется и не перебивается.
+   Дозировка красного (правило v2/v3): красный в блоке ровно один — кикер
+   «Команда» (--signal-lift). Названия направлений идут --dim-strong,
+   заголовок — --bone.
    ══════════════════════════════════════════════════════════ */
 
 .vteam{
   background:var(--graphite);color:var(--bone);
   /* сверху не отступаем: воздух даёт нижний padding манифеста */
   padding:0 var(--pad) clamp(72px,12vh,120px);
+
+  /* Локальные величины строки. Портрет 44px — по решению Никиты 07.09
+     («40–44 px, круг слева от имени»); токена такого размера в tokens.css
+     нет, кандидат на --portrait-row у агента токенов. Высота строки равна
+     портрету, чтобы строки с фото и без не различались. */
+  --vteam-photo:44px;
+  --vteam-row:var(--vteam-photo);
+  --vteam-gap:14px;
 }
 .vteam__in{
   border-top:1px solid var(--faint);
@@ -32,95 +52,69 @@
   font-size:var(--fs-act);line-height:1.06;color:var(--bone);
 }
 
-/* ── два видео-слота сооснователей ── */
-.vteam__founders{
-  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:26px;
+/* ── строка человека ── */
+.vteam__person{
+  display:flex;align-items:center;gap:var(--vteam-gap);
+  min-height:var(--vteam-row);min-width:0;
 }
-.vteam__founder{margin:0;display:flex;flex-direction:column;gap:14px;min-width:0}
-
-.vteam__slot{
-  position:relative;aspect-ratio:16/9;overflow:hidden;
-  background:var(--graphite-2);
-  display:flex;align-items:center;justify-content:center;
-}
-.vteam__slot-img{
-  position:absolute;inset:0;width:100%;height:100%;
-  object-fit:cover;opacity:.45;
-}
-/* заглушка, а не проигрыватель: кликов нет, курсор обычный */
-.vteam__play{
-  position:relative;width:68px;height:68px;border-radius:50%;
-  display:flex;align-items:center;justify-content:center;
-  border:2px solid var(--bone);background:var(--ink-mid);color:var(--bone);
-}
-.vteam__badge{
-  position:absolute;top:14px;left:14px;padding:5px 10px;
-  background:var(--graphite-2);color:var(--dim-strong);
-  font-size:var(--fs-tech);font-weight:600;
-  letter-spacing:.12em;text-transform:uppercase;
-}
-
-.vteam__cap{display:flex;flex-direction:column;gap:4px}
-.vteam__cap-name{
-  font-family:var(--disp);font-weight:700;
-  font-size:var(--fs-card);color:var(--bone);
-}
-.vteam__cap-role{
-  font-size:var(--fs-caption);letter-spacing:.08em;
-  text-transform:uppercase;color:var(--dim);
-}
-
-/* ── четыре портретные карточки ── */
-.vteam__people{
-  list-style:none;margin:0;padding:0;
-  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));
-  gap:20px;
-}
-.vteam__person{display:flex;flex-direction:column;gap:10px;min-width:0}
-/* фото ещё нет: вместо него инициалы, как в кружках facepile */
-.vteam__portrait{
-  aspect-ratio:3/4;
-  display:flex;align-items:center;justify-content:center;
-  background:linear-gradient(165deg,var(--avatar-a) 0%,var(--graphite-2) 100%);
-}
-.vteam__person:nth-child(even) .vteam__portrait{
-  background:linear-gradient(165deg,var(--avatar-b) 0%,var(--graphite-2) 100%);
-}
-.vteam__initials{
-  font-family:var(--disp);font-weight:700;
-  font-size:var(--fs-sub);line-height:1;letter-spacing:.02em;
-  color:var(--dim-half);
-}
+.vteam__t{display:flex;flex-direction:column;gap:2px;min-width:0}
 .vteam__name{
-  font-family:var(--disp);font-weight:700;
-  font-size:var(--fs-small);line-height:1.2;color:var(--bone);
+  font-family:var(--body);font-weight:600;
+  font-size:var(--fs-body);line-height:1.25;color:var(--bone);
 }
 .vteam__role{
-  margin-top:-6px;
-  font-size:var(--fs-caption);letter-spacing:.06em;
-  text-transform:uppercase;color:var(--dim);
+  font-size:var(--fs-small);line-height:1.35;color:var(--dim);
 }
 
-/* ── импрессум: остальные, кого не видно карточками ── */
-.vteam__impressum{
-  margin:0;max-width:78ch;
-  font-size:var(--fs-body);line-height:2;color:var(--dim);
+/* портрет — добавка к строке. Круг, вписан в высоту строки.
+   Насыщенность чуть снята — по «Стилю v3» (портреты сдержанные,
+   −10…−20 %), чтобы разные съёмки в одном ряду не спорили. */
+.vteam__photo{
+  flex:0 0 auto;
+  width:var(--vteam-photo);height:var(--vteam-photo);
+  border-radius:50%;object-fit:cover;
+  background:var(--graphite-2);           /* пока грузится */
+  filter:saturate(.85);
 }
-.vteam__impressum b{color:var(--bone);font-weight:600}
-/* разделитель в about.css красный — здесь гасим: красный уже занят кикером */
-.vteam__impressum i{color:var(--faint-30);font-style:normal}
+
+/* ── основатель: отдельно, над направлениями, на ступень крупнее ── */
+.vteam__lead{display:flex;align-items:center;gap:22px}
+.vteam__lead .vteam__t{gap:4px}
+.vteam__lead .vteam__name{font-size:var(--fs-h3)}
+.vteam__lead .vteam__role{font-size:var(--fs-body);color:var(--dim-strong)}
+/* портрет основателя, если появится, — крупнее рядового */
+.vteam__lead .vteam__photo{width:var(--portrait);height:var(--portrait)}
+
+/* ── направления: колонка = направление ── */
+.vteam__dirs{
+  display:grid;grid-template-columns:repeat(5,minmax(0,1fr));
+  gap:clamp(24px,2.6vw,34px);
+}
+.vteam__dir{
+  display:flex;flex-direction:column;gap:18px;min-width:0;
+  border-top:1px solid var(--faint);padding-top:16px;
+}
+.vteam__dir-n{
+  margin:0;
+  font-size:var(--fs-kicker);font-weight:600;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--dim-strong);
+}
+.vteam__people{
+  list-style:none;margin:0;padding:0;
+  display:flex;flex-direction:column;gap:14px;
+}
 
 /* ── адаптив ── */
-@media (max-width:900px){
-  .vteam__founders{grid-template-columns:minmax(0,1fr);gap:30px}
-  .vteam__people{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
-  .vteam__h{max-width:20ch}
-  .vteam__impressum{line-height:1.85;max-width:60ch}
+@media (max-width:1100px){
+  .vteam__dirs{grid-template-columns:repeat(3,minmax(0,1fr))}
 }
-@media (max-width:520px){
-  /* две колонки держим: «Санжар Бекмуратов» в 13px влезает и на 320px */
-  .vteam__people{gap:14px}
-  .vteam__play{width:56px;height:56px}
-  .vteam__cap-role{letter-spacing:.06em}
+@media (max-width:900px){
+  .vteam__dirs{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .vteam__h{max-width:20ch}
+  .vteam__lead{gap:18px}
+}
+@media (max-width:600px){
+  /* один столбец: направления друг под другом */
+  .vteam__dirs{grid-template-columns:minmax(0,1fr);gap:22px}
+  .vteam__people{gap:12px}
 }

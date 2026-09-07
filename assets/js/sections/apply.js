@@ -13,7 +13,7 @@
   var DEBOUNCE = 300;
 
   var fields = Array.prototype.slice.call(
-    form.querySelectorAll('input[name], textarea[name]')
+    form.querySelectorAll('input[name]:not([type="file"]), textarea[name]')
   );
   if (!fields.length) return;
 
@@ -77,16 +77,19 @@
     if (document.visibilityState === 'hidden') flush();
   });
 
-  /* Отправки пока нет. Не врём «отправлено», не чистим поля,
-     не чистим черновик — просто говорим, как с нами связаться. */
-  var status = document.getElementById('apply-status');
+  /* имя выбранного вложения рядом со скрепкой */
+  var file = document.getElementById('apply-file');
+  var fileName = document.getElementById('apply-file-name');
+  if (file && fileName) {
+    file.addEventListener('change', function () {
+      fileName.textContent = file.files && file.files[0] ? file.files[0].name : '';
+    });
+  }
+
+  /* Отправки пока нет (бэкенд подключается после запуска). Не врём
+     «отправлено», не чистим поля и черновик — просто сохраняем ввод. */
   form.addEventListener('submit', function (e) {
     e.preventDefault();
     flush();
-    if (!status) return;
-    status.hidden = false;
-    if (typeof status.scrollIntoView === 'function') {
-      status.scrollIntoView({ block: 'nearest' });
-    }
   });
 })();

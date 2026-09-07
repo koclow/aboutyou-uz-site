@@ -2,9 +2,11 @@
    Заявка + подвал (id="contact") — финальный акт.
    Макет: Канвас — рабочие файлы/FinalStudiogram.dc.html (1440).
    Только var() из tokens.css; hex здесь не живёт.
+   07.09 (дозировка красного, аудит): точка заголовка и иконки контактов
+   больше не красные — красным в акте остаются кикер, кнопка и фокус поля.
    ══════════════════════════════════════════════════════════ */
 .apply{
-  border-top:1px solid var(--faint-16);
+  border-top:1px solid var(--faint);   /* одна волосяная на графите */
   padding:clamp(56px,10vh,90px) var(--pad) 24px;
   background-image:linear-gradient(175deg,
     var(--graphite-2) 0%, var(--graphite-25) 55%, var(--graphite-3) 100%);
@@ -22,20 +24,20 @@
 .apply__intro{display:flex;flex-direction:column;gap:20px}
 .apply__h{
   font-family:var(--disp);font-weight:900;text-transform:uppercase;
-  font-size:clamp(28px,3.4vw,44px);line-height:1.08;letter-spacing:-.015em;
+  font-size:var(--fs-act);line-height:1;letter-spacing:-.015em;
   margin:0;text-wrap:balance;
 }
-.apply__dot{color:var(--signal)}
+.apply__dot{color:inherit}   /* точка — просто точка; красный дозируем */
 .apply__lead{margin:0;font-size:var(--fs-body);line-height:1.6;color:var(--dim);max-width:42ch}
 
 .apply__contacts{display:flex;flex-direction:column;align-items:flex-start;gap:14px;margin-top:14px}
 .apply__contact{
   display:inline-flex;align-items:center;gap:12px;
-  font-size:14px;color:var(--bone);text-decoration:none;
+  font-size:var(--fs-body);color:var(--bone);text-decoration:none;
   transition:color var(--dur-s) var(--ease);
 }
 .apply__contact:hover{color:var(--signal-lift)}
-.apply__ico{flex:0 0 auto;color:var(--signal)}
+.apply__ico{flex:0 0 auto;color:var(--signal-lift)}   /* красные иконки — Никите так нравится больше (07.09) */
 
 /* ── форма ── */
 .apply__form{display:flex;flex-direction:column;gap:28px}
@@ -44,7 +46,7 @@
 
 .apply__field{display:flex;flex-direction:column;gap:9px;margin:0;min-width:0}
 .apply__label{
-  font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  font-size:var(--fs-kicker);font-weight:600;letter-spacing:.14em;text-transform:uppercase;
   color:var(--dim-strong);
 }
 .apply__input{
@@ -57,7 +59,7 @@
 .apply__input:hover{border-bottom-color:var(--dim)}
 .apply__input:focus{outline:none;border-bottom-color:var(--signal)}
 .apply__input:focus-visible{outline:none}
-.apply__area{padding-bottom:38px;min-height:66px;resize:vertical}
+.apply__area{padding-bottom:12px;min-height:120px;resize:vertical}   /* четыре строки: задачу описывают абзацем, не строкой */
 /* автозаполнение браузера не должно выбивать белым прямоугольником */
 .apply__input:-webkit-autofill,
 .apply__input:-webkit-autofill:focus{
@@ -67,16 +69,25 @@
 }
 
 .apply__send{display:flex;align-items:center;gap:22px;flex-wrap:wrap;margin-top:4px}
-.apply__btn{border:0;cursor:pointer;font-family:var(--disp);padding:18px 28px}
+/* посадка, шрифт и высота — от .cta (main.css); здесь только сброс кнопки */
+.apply__btn{border:0;cursor:pointer}
 .apply__note{font-size:var(--fs-caption);line-height:1.5;color:var(--dim);max-width:34ch}
 
-/* честная заглушка вместо ложного «отправлено» */
-.apply__status{
-  margin:0;font-size:var(--fs-small);line-height:1.55;color:var(--dim-strong);
+/* ── вложение ──
+   Нативный input спрятан визуально (не display:none — остаётся в фокусе
+   и доступен с клавиатуры), кликабелен label со скрепкой. */
+.apply__attach{gap:0}
+.apply__file{
+  display:inline-flex;align-items:center;gap:12px;cursor:pointer;
+  font-size:var(--fs-body);color:var(--bone);
+  transition:color var(--dur-s) var(--ease);
 }
-.apply__status[hidden]{display:none}
-.apply__status a{color:var(--signal-lift);text-decoration:none;border-bottom:1px solid var(--faint-30)}
-.apply__status a:hover{border-bottom-color:var(--signal-lift)}
+.apply__file:hover{color:var(--signal-lift)}
+.apply__file-name{font-size:var(--fs-small);color:var(--dim)}
+.apply__file-name:empty{display:none}
+.apply__file-input{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.apply__file-input:focus-visible + .apply__file,
+.apply__file:has(+ .apply__file-input:focus-visible){outline:2px solid var(--signal);outline-offset:4px}
 
 /* ── строка подвала ── */
 .apply__foot{
@@ -107,7 +118,7 @@
   .apply__contact{min-height:44px;padding:4px 0}
   .apply__input{padding:11px 0 13px}
   /* большое нижнее поле десктопа не нужно: даём настоящую высоту в строках */
-  .apply__area{min-height:110px;padding-bottom:14px}
+  .apply__area{min-height:120px;padding-bottom:12px}
 }
 
 @media (prefers-reduced-motion:reduce){

@@ -1,0 +1,40 @@
+/* ══════════════════════════════════════════════════════════
+   v3-breath — «вдох»: один документальный кадр на всю ширину
+   между каталогом кейсов и «Что можно поручить нам».
+   Секция не меняет тему: сверху и снизу бумага, подложка тоже
+   бумага (видна только пока кадр грузится). Без параллакса —
+   кадр стоит, подпись просто rise. Все значения — var().
+   ══════════════════════════════════════════════════════════ */
+
+.breath{
+  position:relative;isolation:isolate;overflow:hidden;
+  height:60vh;height:60svh;min-height:320px;max-height:760px;
+  background:var(--paper);color:var(--bone);
+}
+
+/* Кадр 3:2, окно ~2.4:1 — кроп идёт по вертикали; окно держим у верха
+   кадра, где лица (на 1440×900 при 32 % левой макушке не хватало места). */
+.breath__img{
+  display:block;width:100%;height:100%;
+  object-fit:cover;object-position:center 12%;
+}
+
+/* Лёгкая завеса снизу под подпись — ступени того же графита,
+   что у героя (--veil-*), верх кадра остаётся чистым. */
+.breath::after{
+  content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(0deg,var(--veil-mid) 0%,var(--veil-none) 38%);
+}
+
+/* Подпись — кикерный кегль, но не .kicker: на act-light он красный,
+   а здесь по решению — кость на тёмном градиенте. */
+.breath__cap{
+  position:absolute;left:var(--pad);right:var(--pad);bottom:clamp(20px,3.4vh,32px);z-index:2;
+  margin:0;font-size:var(--fs-kicker);font-weight:600;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--bone);
+}
+
+@media (max-width:720px){
+  .breath{height:50vh;height:50svh;min-height:260px}
+  .breath__img{object-position:center 36%}
+}

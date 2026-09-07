@@ -1,26 +1,21 @@
 /* ══════════════════════════════════════════════════════════
-   About You UZ — секция «С чем вы приходите» (акт на бумаге)
+   About You UZ — секция «Что можно поручить нам» (акт на бумаге)
    Макет: HowFlow1/2/3.dc.html, десктоп 1440 (контент 1312).
-   Все цвета — производные от токенов (color-mix), новых hex нет.
+   Все цвета — токены; производные (color-mix) только там, где нужна
+   ступень, которой в tokens.css нет по смыслу (номер вкладки, тени).
+   07.09: фон акта — второй тон бумаги --paper-2, полоса фаз 01–04
+   снята, на телефоне схема листается вбок со snap по узлам.
    ══════════════════════════════════════════════════════════ */
 .how{
   /* ── производные цвета (только из токенов) ── */
-  --how-tab-border:color-mix(in srgb, var(--ink) 20%, transparent);
-  --how-tab-ink:color-mix(in srgb, var(--ink) 65%, transparent);
   --how-num-off:color-mix(in srgb, var(--signal) 55%, transparent);
-  --how-tech-soft:color-mix(in srgb, var(--ink) 35%, transparent);
   --how-node-shadow:0 6px 18px color-mix(in srgb, var(--ink) 6%, transparent);
   --how-pill-shadow:0 10px 26px color-mix(in srgb, var(--signal) 28%, transparent);
   --how-pill-sub:color-mix(in srgb, var(--white) 80%, transparent);
 
-  /* ── размеры, которых нет в общем типоритме (из артбордов) ── */
-  --how-fs-tab:13px;
-  --how-fs-tab-n:11px;
-  --how-fs-intro:14.5px;
-  --how-fs-sub:8.5px;        /* сабподпись узла */
-  --how-fs-desc:12.5px;      /* описание фазы */
-  --how-fs-phase:19px;
-  --how-fs-phase-n:12px;
+  /* ── размеры внутри схемы, которых нет в общем типоритме (из артбордов) ── */
+  --how-fs-sub:8.5px;        /* сабподпись узла (капсом, с разрядкой) */
+  --how-fs-sub-plain:10px;   /* та же строка обычным регистром — капс её держал крупнее */
 
   /* ── масштаб схемы: k = ширина контейнера / 1312 ── */
   --how-k:1;
@@ -29,6 +24,10 @@
   --how-k-min:.7;
 
   padding:clamp(64px,12vh,110px) var(--pad) clamp(56px,10vh,100px);
+  /* второй тон бумаги: четыре светлых акта подряд не должны быть одним
+     листом (решение 07.09). Узлы схемы белые — на --paper-2 читаются лучше,
+     чем на --paper; фон акта act-light перебиваем здесь, каскад ниже */
+  background:var(--paper-2);
 }
 /* запасные значения до того, как скрипт измерит контейнер */
 @media (max-width:1439px){ .how{--how-k:.88} }
@@ -42,25 +41,25 @@
   font-family:var(--disp);font-weight:900;text-transform:uppercase;
   font-size:var(--fs-act);line-height:1;letter-spacing:-.015em;margin:0;color:var(--ink);
 }
-.how__intro{
-  margin:0 0 6px;font-size:var(--how-fs-intro);line-height:1.55;
-  color:var(--ink-dim);max-width:34ch;
-}
 
-/* ══ вкладки ══ */
+/* ══ вкладки ══
+   Рамочная кнопка на бумаге в одном языке с призрачной на графите
+   (v3-hero.css): обводка --ink-faint, под курсором — тонировка фоном и
+   плотнее обводка, без инверсии. 14px по вертикали: 13 × 1.2 + 28 + 2
+   обводки = 45.6px — тап-мишень ≥44 на любой ширине (аудит, п. 5). */
 .how__tabs{display:flex;gap:10px;flex-wrap:wrap;margin-top:clamp(28px,5vh,48px)}
 .how__tab{
   display:inline-flex;align-items:baseline;gap:8px;
-  font-family:var(--body);font-size:var(--how-fs-tab);font-weight:600;line-height:1.2;
-  padding:13px 20px;cursor:pointer;
-  color:var(--how-tab-ink);background:none;border:1px solid var(--how-tab-border);
+  font-family:var(--body);font-size:var(--fs-small);font-weight:600;line-height:1.2;
+  padding:14px 20px;cursor:pointer;
+  color:var(--ink-dim);background:none;border:1px solid var(--ink-faint);
   transition:color var(--dur-s) var(--ease),background-color var(--dur-s) var(--ease),border-color var(--dur-s) var(--ease);
 }
 .how__tab-n{
-  font-family:var(--disp);font-weight:700;font-size:var(--how-fs-tab-n);
+  font-family:var(--disp);font-weight:700;font-size:var(--fs-kicker);
   color:var(--how-num-off);transition:color var(--dur-s) var(--ease);
 }
-.how__tab:hover{color:var(--ink);border-color:var(--ink)}
+.how__tab:hover{color:var(--ink);background:var(--ink-grid);border-color:var(--ink-soft)}
 .how__tab[aria-selected="true"]{
   background:var(--graphite);color:var(--paper);border-color:var(--graphite);
 }
@@ -79,6 +78,9 @@
   position:relative;margin-top:34px;
   overflow-x:auto;overflow-y:hidden;overscroll-behavior-x:contain;
   -webkit-overflow-scrolling:touch;scrollbar-width:thin;
+  /* когда схема шире рамки (телефон, планшет) — листается с прилипанием
+     к узлам; на десктопе прокрутки нет и snap ничего не делает */
+  scroll-snap-type:x mandatory;scroll-padding-left:calc(10px * var(--how-k));
   height:calc(430px * var(--how-k));
   border-top:1px solid var(--ink-hair);border-bottom:1px solid var(--ink-hair);
 }
@@ -111,7 +113,7 @@
 /* правый и нижний края отсчитываются от макета 1312×430, а не от ужатого бокса */
 .how__tech--right{left:auto;right:calc(100% - 1312px)}
 .how__tech--bottom{top:auto;bottom:calc(100% - 416px)}
-.how__tech--soft{color:var(--how-tech-soft)}
+.how__tech--soft{color:var(--ink-soft)}
 .how__tech--hot{color:var(--signal)}
 
 /* ── линии ── */
@@ -131,11 +133,16 @@
   text-align:center;padding:0 10px;box-sizing:border-box;
   background:var(--white);border:1px solid var(--ink-hair);border-radius:10px;
   box-shadow:var(--how-node-shadow);
+  scroll-snap-align:start;
 }
 .how__node-t{font-size:var(--fs);font-weight:600;line-height:1.1;color:var(--ink)}
 .how__node-s{
   margin-top:3px;font-size:var(--how-fs-sub);font-weight:600;letter-spacing:.1em;
   text-transform:uppercase;color:var(--signal);
+}
+/* точка входа схемы 01: текст обычным регистром, не капсом */
+.how__node--plain .how__node-s{
+  font-size:var(--how-fs-sub-plain);text-transform:none;letter-spacing:.01em;
 }
 .how__node--pill{
   background:var(--signal);border:0;border-radius:calc(var(--h) / 2);
@@ -144,20 +151,6 @@
 .how__node--pill .how__node-t{color:var(--white)}
 .how__node--pill .how__node-s{color:var(--how-pill-sub)}
 
-/* ══ полоса фаз 01–04 ══ */
-.how__phases{
-  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:32px;
-  margin:40px 0 0;padding:22px 0 0;list-style:none;
-  border-top:1px solid var(--ink-faint);
-}
-.how__phase{display:flex;flex-direction:column;gap:9px}
-.how__phase-h{margin:0;display:flex;align-items:baseline;gap:8px}
-.how__phase-n{font-family:var(--disp);font-weight:700;font-size:var(--how-fs-phase-n);color:var(--signal)}
-.how__phase-t{
-  font-family:var(--disp);font-weight:700;font-size:var(--how-fs-phase);
-  letter-spacing:-.01em;color:var(--ink);
-}
-.how__phase-d{margin:0;font-size:var(--how-fs-desc);line-height:1.55;color:var(--ink-dim)}
 
 /* ══ анимация смены вкладок ══ */
 @media (prefers-reduced-motion:no-preference){
@@ -172,54 +165,37 @@
   .how__panel.is-in .how__node:nth-child(6){animation-delay:.2s}
   .how__panel.is-in .how__node:nth-child(7){animation-delay:.24s}
   .how__panel.is-in .how__node:nth-child(8){animation-delay:.28s}
+  .how__panel.is-in .how__node:nth-child(9){animation-delay:.32s}
   @keyframes howOut{to{opacity:0;transform:translateY(14px)}}
   @keyframes howIn{from{opacity:0;transform:translateY(18px)}}
   @keyframes howNodeIn{from{opacity:0;transform:translateY(10px)}}
 }
 
-/* ══ планшет: схема живёт, полоса фаз складывается в 2×2,
-   вкладки получают тап-мишень ≥44px ══ */
+/* ══ планшет ══ */
 @media (max-width:1023px){
-  .how__phases{grid-template-columns:repeat(2,minmax(0,1fr));gap:26px 32px}
   .how__tabs{gap:8px}
-  .how__tab{padding:15px 18px}
+  .how__tab{padding:14px 18px}
 }
-/* схему, которая не влезла по ширине, листают вбок — говорим об этом словами.
-   Подсказку включает скрипт (.how--pan) только когда прокрутка реально есть. */
+/* схему, которая не влезла по ширине, листают вбок — говорим об этом тихим
+   кикером. Подсказку включает скрипт (.how--pan) только когда прокрутка
+   реально есть. */
 .how--pan .how__lead::after{
-  content:"Схема шире экрана — листается вбок →";
+  content:"Листайте →";
   display:block;margin-top:14px;
-  font-family:var(--body);font-size:var(--fs-tech);font-weight:600;
-  letter-spacing:.14em;text-transform:uppercase;color:var(--how-tech-soft);
+  font-family:var(--body);font-size:var(--fs-kicker);font-weight:600;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--ink-mid);
 }
 
-/* ══ ≤720px: схема разворачивается в вертикальный список узлов ══ */
+/* ══ ≤720px: схема остаётся схемой (решение Никиты 07.09) ══
+   Столбика пилюль больше нет: сцена держит масштаб .85 (1312 × .85 ≈ 1115px
+   — как на десктопе по ощущению), рамка листается вбок со snap по узлам,
+   подписи узлов 16 × .85 ≈ 13.6px — читаются. */
 @media (max-width:719px){
-  .how{--how-k-min:0}
+  .how{--how-k-min:.85}
   /* вкладки в столбец во всю ширину — иначе рваный правый край */
   .how__tabs{flex-direction:column;align-items:stretch}
   .how__tab{justify-content:flex-start}
-  .how__intro{margin-bottom:0}
-  .how__frame{height:auto;overflow:visible;border:0;margin-top:26px}
-  .how__stage{width:auto;height:auto;transform:none}
-  .how__stage::before,.how__stage::after{display:none}
-  .how__lines,.how__tech{display:none}
-  .how__nodes{
-    position:static;display:flex;flex-direction:column;gap:10px;
-    padding-left:22px;border-left:1px solid var(--signal);
-  }
-  .how__node{
-    position:relative;left:auto;top:auto;width:auto;height:auto;
-    align-items:flex-start;text-align:left;padding:12px 14px;
-  }
-  /* сабподпись 8.5px — размер для схемы 1:1; в списке она читается */
-  .how__node-s{margin-top:5px;font-size:var(--fs-tech);letter-spacing:.08em}
-  .how__node::before{
-    content:"";position:absolute;left:-26px;top:16px;
-    width:9px;height:9px;border-radius:50%;background:var(--signal);
-  }
-  .how__node--pill{border-radius:10px}
-  .how__phases{grid-template-columns:1fr;gap:22px;margin-top:30px}
+  .how__frame{margin-top:26px}
 }
 
 @media (prefers-reduced-motion:reduce){

@@ -1,0 +1,62 @@
+/* ══════════════════════════════════════════════════════════
+   Обложки кейсов — «афиша». Общий css трёх шаблонов.
+   Формат 4:5, 1200×1500. Значения — из tokens.css сайта
+   (кость #EDEAE3, чернила #141312, бумага #F2EFE9), здесь
+   продублированы, потому что шаблон рендерится вне сайта.
+   ══════════════════════════════════════════════════════════ */
+@import url("https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;900&display=swap");
+
+:root{
+  --bone:#EDEAE3;
+  --ink:#141312;
+  --paper:#F2EFE9;
+  --disp:"Unbounded",system-ui,sans-serif;
+  --W:1200px; --H:1500px;
+  --inset:4%;                 /* отступ внутренней рамки от края */
+  --line:2px;                 /* толщина рамки */
+  --lift:#191512;             /* приподнятый чёрный (тёплый) */
+  --warm:rgba(122,82,44,.14); /* тёплые тени */
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:var(--W);height:var(--H);overflow:hidden;background:#000}
+.poster{position:relative;width:var(--W);height:var(--H);overflow:hidden;background:var(--bg,#141312)}
+
+/* ── внутренняя рамка — общий приём для всех ── */
+.poster::after{
+  content:"";position:absolute;inset:var(--inset);pointer-events:none;z-index:9;
+  border:var(--line) solid rgba(237,234,227,.7);
+}
+.poster.light::after{border-color:rgba(20,19,18,.35)}
+
+/* ── единая обработка фото ── */
+.photo{position:absolute;inset:0;overflow:hidden}
+.photo img{
+  width:100%;height:100%;object-fit:cover;object-position:var(--pos,50% 50%);
+  transform:scale(var(--zoom,1));transform-origin:var(--pos,50% 50%);
+  filter:saturate(.85) contrast(1);
+}
+/* приподнятый чёрный: lighten поднимает всё темнее --lift к тёплому графиту */
+.photo::before{content:"";position:absolute;inset:0;background:var(--lift);mix-blend-mode:lighten;z-index:1}
+/* тёплые тени: мягкий тёплый слой заметнее в тенях */
+.photo::after{content:"";position:absolute;inset:0;background:var(--warm);mix-blend-mode:soft-light;z-index:2}
+
+/* ── зерно 2–3 % ── */
+.grain{position:absolute;inset:0;z-index:8;pointer-events:none;opacity:var(--grain,.055);mix-blend-mode:overlay}
+.grain svg{width:100%;height:100%;display:block}
+
+/* ── композиция ── */
+.el{position:absolute;display:block}
+.el img{display:block;width:100%;height:auto}
+.el.shadow img{filter:drop-shadow(0 40px 70px rgba(0,0,0,.42)) drop-shadow(0 6px 14px rgba(0,0,0,.25))}
+.el.card img{box-shadow:0 40px 80px rgba(0,0,0,.45),0 8px 18px rgba(0,0,0,.25)}
+.el.photo-el img{filter:saturate(.85) contrast(.97)}
+
+/* ── типографика ── */
+.word{
+  position:absolute;left:var(--x,8%);top:var(--y,50%);
+  font-family:var(--disp);font-weight:var(--fw,900);font-size:var(--fs,260px);
+  line-height:.9;letter-spacing:-.02em;color:var(--fg,var(--bone));
+  white-space:nowrap;text-transform:uppercase;
+}
+.word small{display:block;font-size:.34em;font-weight:700;letter-spacing:0;margin-top:.12em}

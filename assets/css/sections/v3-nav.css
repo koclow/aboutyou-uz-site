@@ -1,0 +1,36 @@
+/* ══════════════════════════════════════════════════════════
+   v3-nav — шапка третьей страницы: знак и пункты в строку, прозрачная
+   над кадром hero, графитовая по прокрутке (класс solid ставит main.js
+   по выходу #top из вида). Столбик пунктов под знаком внутри hero
+   пробовали 07.09 — Никита снял («не очевидно, что это меню»).
+   Базовая .nav из main.css не трогается — index.html и v2.html
+   этот файл не подключают. Значения — только var() из tokens.css.
+   ══════════════════════════════════════════════════════════ */
+
+
+/* ── знак ──
+   Маска по тому же assets/img/wm-lockup.svg, что и везде: в файле пути
+   идут currentColor, но внутри <img> цвет взять неоткуда и знак вышел бы
+   чёрным. Маска красит его ровно в --bone и оставляет один источник
+   графики. */
+.nav--v3 .nav__logo{
+  display:block;width:clamp(110px,10vw,124px);aspect-ratio:1476/164;
+  background:var(--bone);
+  -webkit-mask:url(../../img/wm-lockup.svg) no-repeat center/contain;
+  mask:url(../../img/wm-lockup.svg) no-repeat center/contain;
+}
+
+/* ── телефон ──
+   База прячет .nav__menu ≤720 в пользу .nav__cta — на v3 плашки-CTA
+   в шапке нет, меню и есть весь nav. Четыре пункта в 390px не влезают
+   рядом со знаком, поэтому остаются два крайних по смыслу:
+   «Кейсы» (что смотреть) и «Обсудить проект» (что делать).
+   Бургера нет — решение. */
+@media (max-width:720px){
+  .nav--v3 .nav__menu{display:flex;gap:14px}
+  .nav--v3 .nav__menu a{font-size:var(--fs-tech);letter-spacing:.06em}
+  .nav--v3 .nav__menu li:nth-child(1),
+  .nav--v3 .nav__menu li:nth-child(3){display:none}
+  .nav--v3 .nav__logo{width:92px}
+}
+

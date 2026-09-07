@@ -1,0 +1,99 @@
+/* ══════════════════════════════════════════════════════════
+   v3-scale — акт «Масштаб»: кикер, заголовок и ряд знаков клиентов.
+   Роль блока — разделительная линия перед уходом страницы в графит,
+   поэтому вертикали здесь короче, чем у полноценных актов.
+   Статика: ни ленты, ни счётчиков — только rise из базы.
+   Бумагу и чернила даёт .act-light (main.css) — как у кейсов и схемы;
+   все значения — var(): токены из tokens.css плюс локальные
+   переменные оптической массы, объявленные тут же.
+   07.09: заголовок в общей шкале h2 (--fs-act, одной строкой), сетка
+   логотипов — CSS-grid 5-5-5-4 с центрированным последним рядом,
+   модификаторы --light/--heavy под оптическую массу.
+   ══════════════════════════════════════════════════════════ */
+
+.v3scale{padding:clamp(44px,6vh,72px) 0 clamp(40px,5.5vh,64px)}
+.v3scale__in{max-width:var(--content-max);margin:0 auto;padding:0 var(--pad)}
+
+.v3scale__kicker{margin:0}
+/* кегль, вес, трекинг — из правила .page-v3 h2 (v3.css); здесь отступ и цвет.
+   Одной строкой: «голова» не должна быть выше «тела» из логотипов */
+.v3scale__h{margin:14px 0 0;color:var(--ink)}
+
+/* одна тихая строка фактов под заголовком — сейчас закомментирована в
+   разметке, включится с подтверждёнными цифрами */
+.v3scale__facts{
+  margin:14px 0 0;
+  font-size:var(--fs-kicker);font-weight:600;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--ink-mid);
+}
+
+/* ── клиенты ──
+   Сетка 10 колонок, знак занимает две: так 19 знаков ложатся 5-5-5-4,
+   а неполный последний ряд центрируется сдвигом 16-го знака на колонку
+   вправо (см. nth-child ниже). Знаков стало не 19 → пересчитать.
+   Логотипы разного веса и насыщенности, поэтому все приглушены
+   одинаково — контраст возвращается под курсором и по одному. */
+.v3scale__clients{
+  /* высота знака по пропорции: чем шире вордмарк, тем ниже */
+  --logo-xw:28px;   /* от 4.4:1 — длинные вордмарки */
+  --logo-w:32px;    /* 3:1 … 4.4:1 */
+  --logo-m:38px;    /* 1.8:1 … 3:1 */
+  --logo-t:52px;    /* 1.05:1 … 1.8:1 */
+  --logo-s:58px;    /* квадратные и вертикальные знаки */
+  --logo-row:66px;  /* высота ячейки — по самому высокому знаку с --light */
+  --logo-gap:clamp(20px,2.6vw,38px);
+
+  display:grid;grid-template-columns:repeat(10,minmax(0,1fr));
+  align-items:center;column-gap:calc(var(--logo-gap) / 2);row-gap:var(--logo-gap);
+  margin:clamp(30px,4.5vh,54px) 0 0;padding:clamp(24px,3.4vh,34px) 0 0;
+  border-top:1px solid var(--ink-hair);
+  list-style:none;
+}
+.v3scale__clients li{
+  grid-column:span 2;
+  display:flex;align-items:center;justify-content:center;
+  min-width:0;height:var(--logo-row);
+}
+/* 19 знаков: 16-й открывает последний ряд из четырёх со сдвигом на колонку */
+.v3scale__clients li:nth-child(16){grid-column:2 / span 2}
+
+.v3scale__logo{
+  /* --h — высота по пропорции, --k — поправка на оптическую массу */
+  --k:1;
+  max-height:calc(var(--h) * var(--k));
+  width:auto;max-width:88%;object-fit:contain;
+  opacity:.62;
+  transition:opacity var(--dur-s) var(--ease);
+}
+.v3scale__logo--xw{--h:var(--logo-xw)}
+.v3scale__logo--w {--h:var(--logo-w)}
+.v3scale__logo--m {--h:var(--logo-m)}
+.v3scale__logo--t {--h:var(--logo-t)}
+.v3scale__logo--s {--h:var(--logo-s)}
+.v3scale__logo--light{--k:1.2}   /* тонкие, мелкие, с подписью под знаком */
+.v3scale__logo--heavy{--k:.85}   /* плотные чёрные вордмарки */
+
+@media (hover:hover){
+  .v3scale__logo:hover{opacity:1}
+}
+
+/* ≤900: три знака в ряд — сетка на 6 колонок, 19-й центрируется */
+@media (max-width:900px){
+  .v3scale__clients{
+    --logo-xw:20px;
+    --logo-w:23px;
+    --logo-m:27px;
+    --logo-t:37px;
+    --logo-s:41px;
+    --logo-row:48px;
+    --logo-gap:18px;
+    grid-template-columns:repeat(6,minmax(0,1fr));
+  }
+  .v3scale__clients li:nth-child(16){grid-column:span 2}
+  .v3scale__clients li:nth-child(19){grid-column:3 / span 2}
+  .v3scale__logo{max-width:92%}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .v3scale__logo{transition:none}
+}

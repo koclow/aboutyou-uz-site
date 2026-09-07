@@ -37,20 +37,22 @@
 }
 
 /* ══ ритм колонок ══
-   15 карточек, по пять в колонке. Высоты постеров берутся из
+   21 карточка, по семь в колонке. Высоты постеров берутся из
    cases.css (250/260/300/400/460/500/530) — новых классов не нужно,
-   суммы колонок сходятся: A 1740 (530+400+300+260+250),
-   B 1720 (500+460+250+250+260), C 1690 (530+300+260+300+300).
-   Разбег 50px: колонки заканчиваются почти вровень, и параллакс
-   не оголяет низ акта. Горизонтальные кадры стоят в низких слотах
-   250–300, вертикали — в 400+; менять постер, не пересчитав
-   суммы, нельзя. */
+   суммы колонок сходятся: A 2390 (530+400+260+300+250+400+250),
+   B 2460 (530+250+300+260+300+300+460),
+   C 2340 (260+260+300+500+460+300+260).
+   Текст карточек тоже добавляет высоту, поэтому на 1440 колонки
+   выходят в 4079/4069/4096 px — разбег 27px; колонки заканчиваются вровень, и
+   параллакс не оголяет низ акта. Горизонтальные кадры стоят в низких
+   слотах 250–300, вертикали и вырезки — в 400+; менять постер, не
+   пересчитав суммы, нельзя. */
 
-/* ══ четвёртая и пятая карточки в колонке ══
-   В каталоге v2 по пять карточек в колонке, а порядок мобильной
-   ленты в cases.css расписан до третьей. Дописываем четвёртый и
-   пятый ряды, чтобы на узком экране колонки по-прежнему
-   чередовались A-B-C, а не шли блоками по колонкам. */
+/* ══ четвёртая — седьмая карточки в колонке ══
+   В каталоге v2 по семь карточек в колонке, а порядок мобильной
+   ленты в cases.css расписан до третьей. Дописываем остальные ряды,
+   чтобы на узком экране колонки по-прежнему чередовались A-B-C,
+   а не шли блоками по колонкам. */
 @media (max-width:699px){
   .catalog__col--a .catalog__card:nth-child(4){order:10}
   .catalog__col--b .catalog__card:nth-child(4){order:11}
@@ -58,4 +60,174 @@
   .catalog__col--a .catalog__card:nth-child(5){order:13}
   .catalog__col--b .catalog__card:nth-child(5){order:14}
   .catalog__col--c .catalog__card:nth-child(5){order:15}
+  .catalog__col--a .catalog__card:nth-child(6){order:16}
+  .catalog__col--b .catalog__card:nth-child(6){order:17}
+  .catalog__col--c .catalog__card:nth-child(6){order:18}
+  .catalog__col--a .catalog__card:nth-child(7){order:19}
+  .catalog__col--b .catalog__card:nth-child(7){order:20}
+  .catalog__col--c .catalog__card:nth-child(7){order:21}
+}
+
+/* ══ кнопка под каталогом: одна разметка, две подписи ══
+   «Все кейсы» — v2 (снимает фильтр), «Ещё кейсы» — v3 (подгрузка).
+   Когда карточки кончились, cases.js ставит на .catalog__foot hidden;
+   у базы .catalog__foot — display:flex, поэтому hidden нужно поддержать явно. */
+.catalog__all-label--v3{display:none}
+.page-v3 .catalog__all-label--v2{display:none}
+.page-v3 .catalog__all-label--v3{display:inline}
+.catalog__foot[hidden]{display:none}
+
+/* ══ v2 без скрипта ══
+   Фрагмент теперь плоский, колонки для v2 собирает cases.js. Пока скрипт
+   не отработал (или его нет), карточки не должны встать в одну строку
+   флекса: раскладываем в три колонки multicol и открываем все hidden. */
+.page-v2 .catalog__grid:not(.is-cols){display:block;columns:3;column-gap:56px}
+.page-v2 .catalog__grid:not(.is-cols) .catalog__card{
+  break-inside:avoid;-webkit-column-break-inside:avoid;page-break-inside:avoid;
+  margin:0 0 64px;
+}
+.page-v2 .catalog__grid:not(.is-cols) .catalog__card[hidden]{display:block}
+@media (max-width:1199px){
+  .page-v2 .catalog__grid:not(.is-cols){columns:2;column-gap:40px}
+}
+@media (max-width:699px){
+  .page-v2 .catalog__grid:not(.is-cols){columns:1}
+}
+
+/* ══════════════════════════════════════════════════════════
+   v3 — модульная сетка (решение Никиты 07.09, ритм уточнён 07.09 вечером)
+   «Доказательства крупно, форма — тихо»: ровная сетка с единым зазором,
+   карточки двух размеров, без параллакса, наклонов и масштабирования.
+   Слот карточки задаёт её место в потоке (nth-child), не сама карточка;
+   JS раскладку не считает. Скрытые карточки (hidden) стоят в конце и
+   в счёте nth-child участвуют — порции открываются по порядку.
+
+   Ритм на 4 колонках (≥1200), первая порция — 13 карточек:
+     ┌───────┬───┬───┐  ┌───────┬───────┐  ┌───┬───┬───┬───┐  ┌───────┬───────┐
+     │       │ 2 │ 3 │  │   6   │   7   │  │ 8 │ 9 │10 │11 │  │  12   │  13   │
+     │   1   ├───┼───┤  └───────┴───────┘  └───┴───┴───┴───┘  └───────┴───────┘
+     │       │ 4 │ 5 │
+     └───────┴───┴───┘
+   «Ещё кейсы» открывает вторую порцию тем же языком: [14 15] → [16 17 18 19]
+   → [20 21]. После пятой карточки период восемь: 8n+6, 8n+7, 8n+12, 8n+13 —
+   большие на две колонки.
+
+   Пропорции. Маленькая — 16:10. Большая в паре — тоже 16:10, на две колонки
+   (644×402 на 1440): 4:5 на две колонки дало бы обложку 805 px — пара таких
+   съедает экран целиком, а исходники в основном 3:2 и 16:10, вертикальный
+   кроп резал бы кадр вдвое. Первая большая — единственная, чья высота
+   считается не пропорцией, а сеткой: карточка растянута на два ряда
+   (align-self:stretch), обложка добирает высоту до низа второй маленькой —
+   так модуль закрывается ровно при любой длине текста соседей (на 1440
+   обложка выходит ≈644×600, почти квадрат; воздуха под большой нет).
+
+   3 колонки (900–1199): модуль из трёх — большая на два ряда + две
+   маленькие столбиком, затем ряд из трёх маленьких; большая чередует край
+   (6n+1 — большая, 12n+7 — справа). Порция здесь 12 (13 ≡ 1 mod 3 оставило
+   бы дыру), всего 21 = 7 модулей по три — ровно.
+
+   2 колонки (600–899): большие во всю ширину (16:10 — кроп тот же, что на
+   десктопе), маленькие по две в ряд 16:10. Формулы те же, что на 4 колонках.
+
+   1 колонка (≤599): большие 4:5, маленькие 16:10, всё во всю ширину.
+
+   grid-auto-flow: row dense нужен только правой большой на 3 колонках —
+   чтобы маленькие вернулись в свободную первую колонку; в остальных
+   раскладках поток и так последовательный.
+   ══════════════════════════════════════════════════════════ */
+.page-v3 .catalog__filter{display:none}
+.page-v3 .catalog__grid{
+  /* единый зазор сетки: 24 на 1440, 16 на телефоне; по вертикали вдвое
+     больше — под обложкой стоит текст, следующему ряду нужен воздух */
+  --catalog-gap:clamp(16px,1.7vw,24px);
+  --catalog-page:13;
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  grid-auto-flow:row dense;
+  align-items:start;
+  gap:calc(var(--catalog-gap)*2) var(--catalog-gap);
+  margin-top:56px;
+}
+.page-v3 .catalog__card{margin:0;min-width:0}
+.page-v3 .catalog__card[hidden]{display:none}
+
+/* обложка: маленькая и большая в паре — 16:10, кадр режется по центру */
+.page-v3 .catalog__poster{
+  position:relative;aspect-ratio:16/10;max-height:none;
+}
+/* вертикальный кадр в горизонтальном слоте: держим верх, лица не режутся */
+.page-v3 .catalog__poster--top img{object-position:50% 0}
+.page-v3 .catalog__poster img{transition:none}
+.page-v3 .catalog__card:hover .catalog__poster img{transform:none}
+/* ховер — лёгкое затемнение обложки, без движения */
+.page-v3 .catalog__poster::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:var(--ink-faint);opacity:0;
+  transition:opacity var(--dur-s) var(--ease);
+}
+@media (hover:hover){
+  .page-v3 .catalog__card:hover .catalog__poster::after{opacity:1}
+}
+
+/* красного меньше: точка перед заголовком снята, метрика остаётся красной;
+   без точки текст выравнивается по левому краю обложки */
+.page-v3 .catalog__dot--card{display:none}
+.page-v3 .catalog__row{gap:0}
+.page-v3 .catalog__desc,
+.page-v3 .catalog__meta{margin-left:0}
+
+/* ── большая на два ряда (≥900): карточка — флекс-колонка на всю высоту
+   слота, обложка добирает высоту сеткой; 16:10 — только стартовая
+   высота, ниже неё обложка не ужимается ── */
+@media (min-width:900px){
+  .page-v3 .catalog__card:first-child{
+    grid-column:span 2;grid-row:span 2;
+    align-self:stretch;display:flex;flex-direction:column;
+  }
+  .page-v3 .catalog__card:first-child .catalog__poster{flex:1 1 auto;min-height:0}
+  .page-v3 .catalog__card:first-child .catalog__poster img{position:absolute;inset:0}
+}
+
+/* ── 4 колонки: пары больших — на две колонки ── */
+@media (min-width:1200px){
+  .page-v3 .catalog__card:nth-child(8n+6),
+  .page-v3 .catalog__card:nth-child(8n+7),
+  .page-v3 .catalog__card:nth-child(8n+12),
+  .page-v3 .catalog__card:nth-child(8n+13){grid-column:span 2}
+}
+
+/* ── 3 колонки: большая на два ряда каждая 6n+1, чётная из них справа ── */
+@media (min-width:900px) and (max-width:1199px){
+  .page-v3 .catalog__grid{grid-template-columns:repeat(3,minmax(0,1fr));--catalog-page:12}
+  .page-v3 .catalog__card:nth-child(6n+1){
+    grid-column:span 2;grid-row:span 2;
+    align-self:stretch;display:flex;flex-direction:column;
+  }
+  .page-v3 .catalog__card:nth-child(12n+7){grid-column:2 / span 2}
+  .page-v3 .catalog__card:nth-child(6n+1) .catalog__poster{flex:1 1 auto;min-height:0}
+  .page-v3 .catalog__card:nth-child(6n+1) .catalog__poster img{position:absolute;inset:0}
+}
+
+/* ── 2 колонки: большие во всю ширину, маленькие по две ── */
+@media (min-width:600px) and (max-width:899px){
+  .page-v3 .catalog__grid{grid-template-columns:repeat(2,minmax(0,1fr));margin-top:40px}
+  .page-v3 .catalog__card:first-child,
+  .page-v3 .catalog__card:nth-child(8n+6),
+  .page-v3 .catalog__card:nth-child(8n+7),
+  .page-v3 .catalog__card:nth-child(8n+12),
+  .page-v3 .catalog__card:nth-child(8n+13){grid-column:span 2}
+}
+
+/* ── 1 колонка: большие 4:5, маленькие 16:10 ── */
+@media (max-width:599px){
+  .page-v3 .catalog__grid{grid-template-columns:minmax(0,1fr);margin-top:40px}
+  .page-v3 .catalog__card:first-child .catalog__poster,
+  .page-v3 .catalog__card:nth-child(8n+6) .catalog__poster,
+  .page-v3 .catalog__card:nth-child(8n+7) .catalog__poster,
+  .page-v3 .catalog__card:nth-child(8n+12) .catalog__poster,
+  .page-v3 .catalog__card:nth-child(8n+13) .catalog__poster{aspect-ratio:4/5}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .page-v3 .catalog__poster::after{transition:none}
 }
