@@ -26,20 +26,20 @@
 .work--paper .row:last-of-type{border-bottom-color:var(--ink-hair)}
 .work--paper .row__name{color:var(--ink)}
 
-/* ── теги-чипы ──
-   Каждый тег — чип с волосяной обводкой: кегль и вес кикера, разрядка
-   .1em, обычная посадка. На красной заливке ховера обводка и текст
-   уходят в кость — чипы остаются читаемыми. */
-.row__tags{display:flex;flex-wrap:wrap;gap:8px;margin:0}
-.row__tag{
-  display:inline-block;padding:7px 11px 6px;
-  border:1px solid var(--ink-faint);border-radius:999px;
-  font-size:var(--fs-kicker);font-weight:600;letter-spacing:.1em;line-height:1;
-  text-transform:uppercase;color:var(--ink-dim);white-space:nowrap;
-  transition:color .35s var(--ease),border-color .35s var(--ease);
+/* ── теги: кегль и вес кикера, тихим цветом ──
+   Разрядка .12em, а не кикерные .18em: строка тегов длиннее кикера
+   в пять раз, при .18em она разваливалась на четыре строки. Разделитель
+   « · » в разметке привязан к предыдущему слову (&nbsp;·), перенос идёт
+   после точки — тег не отрывается от своей точки. Чипы с обводкой
+   пробовали 07.09 — сняты. */
+.row__tags{
+  margin:0;
+  font-size:var(--fs-kicker);font-weight:600;letter-spacing:.12em;
+  text-transform:uppercase;line-height:1.7;color:var(--ink-mid);
+  transition:color .35s var(--ease);
 }
 @media (hover:hover){
-  .row:hover .row__tag{color:var(--bone);border-color:var(--faint-30)}
+  .row:hover .row__tags{color:var(--dim-strong)}
 }
 
 /* ── сетка строки на десктопе: имя · картинка · теги ──
@@ -75,5 +75,5 @@
 }
 
 @media (prefers-reduced-motion:reduce){
-  .row__tag{transition:none}
+  .row__tags{transition:none}
 }

@@ -95,45 +95,55 @@
 }
 
 /* ══════════════════════════════════════════════════════════
-   v3 — модульная сетка (решение Никиты 07.09, ритм уточнён 07.09 вечером)
+   v3 — модульная сетка (решение Никиты 07.09; три пропорции — 07.09 ночь)
    «Доказательства крупно, форма — тихо»: ровная сетка с единым зазором,
-   карточки двух размеров, без параллакса, наклонов и масштабирования.
-   Слот карточки задаёт её место в потоке (nth-child), не сама карточка;
-   JS раскладку не считает. Скрытые карточки (hidden) стоят в конце и
-   в счёте nth-child участвуют — порции открываются по порядку.
+   без параллакса, наклонов и масштабирования. Слот карточки задаёт её
+   место и пропорцию обложки (nth-child), не сама карточка; JS раскладку
+   не считает. Скрытые карточки (hidden) стоят в конце и в счёте nth-child
+   участвуют — порции открываются по порядку.
 
-   Ритм на 4 колонках (≥1200), первая порция — 13 карточек:
-     ┌───────┬───┬───┐  ┌───────┬───────┐  ┌───┬───┬───┬───┐  ┌───────┬───────┐
-     │       │ 2 │ 3 │  │   6   │   7   │  │ 8 │ 9 │10 │11 │  │  12   │  13   │
-     │   1   ├───┼───┤  └───────┴───────┘  └───┴───┴───┴───┘  └───────┴───────┘
-     │       │ 4 │ 5 │
-     └───────┴───┴───┘
-   «Ещё кейсы» открывает вторую порцию тем же языком: [14 15] → [16 17 18 19]
-   → [20 21]. После пятой карточки период восемь: 8n+6, 8n+7, 8n+12, 8n+13 —
-   большие на две колонки.
+   Фидбек Никиты (07.09, вечер): везде горизонтальные обложки — одинаково.
+   Теперь три пропорции слотов чередуются: вертикальная большая,
+   горизонтальные (пары и маленькие в модуле), вертикальные четвёрки.
 
-   Пропорции. Маленькая — 16:10. Большая в паре — тоже 16:10, на две колонки
-   (644×402 на 1440): 4:5 на две колонки дало бы обложку 805 px — пара таких
-   съедает экран целиком, а исходники в основном 3:2 и 16:10, вертикальный
-   кроп резал бы кадр вдвое. Первая большая — единственная, чья высота
-   считается не пропорцией, а сеткой: карточка растянута на два ряда
-   (align-self:stretch), обложка добирает высоту до низа второй маленькой —
-   так модуль закрывается ровно при любой длине текста соседей (на 1440
-   обложка выходит ≈644×600, почти квадрат; воздуха под большой нет).
+   Ритм на ≥1200, первая порция — 13 карточек:
+     ┌─────┬────┬────┐  ┌───────┬───────┐  ┌──┬──┬──┬──┐  ┌───────┬───────┐
+     │     │  2 │  3 │  │   6   │   7   │  │8 │9 │10│11│  │  12   │  13   │
+     │  1  ├────┼────┤  └───────┴───────┘  │  │  │  │  │  └───────┴───────┘
+     │ 4:5 │  4 │  5 │       16:10         └──┴──┴──┴──┘       16:10
+     └─────┴────┴────┘                          4:5
+   «Ещё кейсы» → [14 15] → [16 17 18 19] → [20 21] тем же языком. После
+   пятой карточки период восемь: 8n+6, 8n+7, 8n+12, 8n+13 — горизонтальные
+   на полширины; 8n+8 … 8n+11 — вертикальные четвёрки.
 
-   3 колонки (900–1199): модуль из трёх — большая на два ряда + две
-   маленькие столбиком, затем ряд из трёх маленьких; большая чередует край
-   (6n+1 — большая, 12n+7 — справа). Порция здесь 12 (13 ≡ 1 mod 3 оставило
-   бы дыру), всего 21 = 7 модулей по три — ровно.
+   Почему сетка из 32 единиц, а не из 4 колонок. На 1440 (контент 1312,
+   зазор 24) при равных колонках большая 4:5 на двух — 805 px обложки
+   + ~150 текста ≈ 955, а столбик из двух маленьких 16:10 — 2 × (194 +
+   ~180) + 48 ≈ 800: разрыв ~150 px не закрывается ни 3:2 (+26), ни 4:3
+   (+76), ни зазором — маленьким пришлось бы стать квадратными. Поэтому
+   большая берёт 14 единиц (≈560), маленькие в модуле — по 9 (≈352):
+   обложка добирает высоту столбика (флекс, как раньше) и сама выходит
+   4:5 (0,80 на 1440; на 1200 — 0,72: текст соседей на узкой колонке
+   длиннее, большая чуть стройнее). Пары — 16 + 16, четвёрки — 8 × 4
+   (те же 310 px, что колонка сетки 4×), всё сходится в 32.
+   Воздуха под большой нет по построению: её высота — высота столбика.
 
-   2 колонки (600–899): большие во всю ширину (16:10 — кроп тот же, что на
-   десктопе), маленькие по две в ряд 16:10. Формулы те же, что на 4 колонках.
+   3 колонки (900–1199) — 12 единиц, тот же период и те же роли слотов,
+   чтобы кадр, подобранный под вертикальный слот на четырёх колонках,
+   остался вертикальным и здесь:
+     [1 (7 ед., два ряда) | 2, 3 (по 5)] → [4 5] → [6 7] → [8 9 10 — 4:5]
+     → [12, 13 (по 5) | 11 (7 ед., справа)] → [14 15] → [16 17 18 — 4:5]
+     → [19 (слева) | 20 21]. Большая чередует край: 16n+11 справа,
+     first-child и 16n+19 слева. Порция 13 закрывает модуль ровно.
 
-   1 колонка (≤599): большие 4:5, маленькие 16:10, всё во всю ширину.
+   2 колонки (600–899): большая 4:5 во всю ширину, маленькие модуля по две
+   16:10, пары — во всю ширину 16:10, четвёрки — 2×2 вертикальные 4:5.
 
-   grid-auto-flow: row dense нужен только правой большой на 3 колонках —
-   чтобы маленькие вернулись в свободную первую колонку; в остальных
-   раскладках поток и так последовательный.
+   1 колонка (≤599): пропорция по слоту — 4:5 у большой и четвёрок,
+   16:10 у остальных.
+
+   grid-auto-flow: row dense нужен правой большой на 3 колонках — чтобы
+   маленькие с явной колонкой 1 встали рядом с ней, а не ниже.
    ══════════════════════════════════════════════════════════ */
 .page-v3 .catalog__filter{display:none}
 .page-v3 .catalog__grid{
@@ -142,21 +152,28 @@
   --catalog-gap:clamp(16px,1.7vw,24px);
   --catalog-page:13;
   display:grid;
-  grid-template-columns:repeat(4,minmax(0,1fr));
+  grid-template-columns:repeat(32,minmax(0,1fr));
   grid-auto-flow:row dense;
   align-items:start;
   gap:calc(var(--catalog-gap)*2) var(--catalog-gap);
   margin-top:56px;
 }
-.page-v3 .catalog__card{margin:0;min-width:0}
+.page-v3 .catalog__card{margin:0;min-width:0;grid-column:span 8}
 .page-v3 .catalog__card[hidden]{display:none}
 
-/* обложка: маленькая и большая в паре — 16:10, кадр режется по центру */
+/* ── обложки: горизонтальный слот — 16:10, вертикальный — 4:5 ── */
 .page-v3 .catalog__poster{
   position:relative;aspect-ratio:16/10;max-height:none;
 }
+.page-v3 .catalog__card:nth-child(8n+8) .catalog__poster,
+.page-v3 .catalog__card:nth-child(8n+9) .catalog__poster,
+.page-v3 .catalog__card:nth-child(8n+10) .catalog__poster,
+.page-v3 .catalog__card:nth-child(8n+11) .catalog__poster{aspect-ratio:4/5}
 /* вертикальный кадр в горизонтальном слоте: держим верх, лица не режутся */
 .page-v3 .catalog__poster--top img{object-position:50% 0}
+/* кадр с мусором по краям (шапка сторис сверху, водяной знак снизу):
+   окно чуть выше центра — при 4:5 в срез попадает только чистая часть */
+.page-v3 .catalog__poster--upper img{object-position:50% 35%}
 .page-v3 .catalog__poster img{transition:none}
 .page-v3 .catalog__card:hover .catalog__poster img{transform:none}
 /* ховер — лёгкое затемнение обложки, без движения */
@@ -177,40 +194,61 @@
 .page-v3 .catalog__meta{margin-left:0}
 
 /* ── большая на два ряда (≥900): карточка — флекс-колонка на всю высоту
-   слота, обложка добирает высоту сеткой; 16:10 — только стартовая
-   высота, ниже неё обложка не ужимается ── */
+   слота, обложка добирает высоту сеткой (flex-basis 0 — своей высоты
+   у неё нет, ряды задают соседи), кадр — absolute внутри ── */
 @media (min-width:900px){
   .page-v3 .catalog__card:first-child{
-    grid-column:span 2;grid-row:span 2;
+    grid-row:span 2;
     align-self:stretch;display:flex;flex-direction:column;
   }
-  .page-v3 .catalog__card:first-child .catalog__poster{flex:1 1 auto;min-height:0}
+  .page-v3 .catalog__card:first-child .catalog__poster{
+    flex:1 1 0;min-height:0;aspect-ratio:auto;
+  }
   .page-v3 .catalog__card:first-child .catalog__poster img{position:absolute;inset:0}
 }
 
-/* ── 4 колонки: пары больших — на две колонки ── */
+/* ── 4 колонки (32 единицы): большая 14, маленькие модуля 9, пары 16,
+   четвёрки 8 ── */
 @media (min-width:1200px){
+  .page-v3 .catalog__card:first-child{grid-column:span 14}
+  .page-v3 .catalog__card:nth-child(n+2):nth-child(-n+5){grid-column:span 9}
   .page-v3 .catalog__card:nth-child(8n+6),
   .page-v3 .catalog__card:nth-child(8n+7),
   .page-v3 .catalog__card:nth-child(8n+12),
-  .page-v3 .catalog__card:nth-child(8n+13){grid-column:span 2}
+  .page-v3 .catalog__card:nth-child(8n+13){grid-column:span 16}
 }
 
-/* ── 3 колонки: большая на два ряда каждая 6n+1, чётная из них справа ── */
+/* ── 3 колонки (12 единиц): большая 7 на два ряда, маленькие модуля 5,
+   пары 6, тройки 4; большая чередует край ── */
 @media (min-width:900px) and (max-width:1199px){
-  .page-v3 .catalog__grid{grid-template-columns:repeat(3,minmax(0,1fr));--catalog-page:12}
-  .page-v3 .catalog__card:nth-child(6n+1){
-    grid-column:span 2;grid-row:span 2;
+  .page-v3 .catalog__grid{grid-template-columns:repeat(12,minmax(0,1fr))}
+  .page-v3 .catalog__card{grid-column:span 4}
+  .page-v3 .catalog__card:first-child,
+  .page-v3 .catalog__card:nth-child(16n+19){grid-column:1 / span 7}
+  .page-v3 .catalog__card:nth-child(16n+11){grid-column:6 / span 7}
+  .page-v3 .catalog__card:nth-child(8n+11){
+    grid-row:span 2;
     align-self:stretch;display:flex;flex-direction:column;
   }
-  .page-v3 .catalog__card:nth-child(12n+7){grid-column:2 / span 2}
-  .page-v3 .catalog__card:nth-child(6n+1) .catalog__poster{flex:1 1 auto;min-height:0}
-  .page-v3 .catalog__card:nth-child(6n+1) .catalog__poster img{position:absolute;inset:0}
+  .page-v3 .catalog__card:nth-child(8n+11) .catalog__poster{
+    flex:1 1 0;min-height:0;aspect-ratio:auto;
+  }
+  .page-v3 .catalog__card:nth-child(8n+11) .catalog__poster img{position:absolute;inset:0}
+  .page-v3 .catalog__card:nth-child(n+2):nth-child(-n+3),
+  .page-v3 .catalog__card:nth-child(8n+12),
+  .page-v3 .catalog__card:nth-child(8n+13){grid-column:span 5}
+  /* маленькие при правой большой — в первую колонку, рядом с ней */
+  .page-v3 .catalog__card:nth-child(16n+12),
+  .page-v3 .catalog__card:nth-child(16n+13){grid-column:1 / span 5}
+  .page-v3 .catalog__card:nth-child(n+4):nth-child(-n+5),
+  .page-v3 .catalog__card:nth-child(8n+6),
+  .page-v3 .catalog__card:nth-child(8n+7){grid-column:span 6}
 }
 
-/* ── 2 колонки: большие во всю ширину, маленькие по две ── */
+/* ── 2 колонки: большая 4:5 и пары во всю ширину, остальное по две ── */
 @media (min-width:600px) and (max-width:899px){
   .page-v3 .catalog__grid{grid-template-columns:repeat(2,minmax(0,1fr));margin-top:40px}
+  .page-v3 .catalog__card{grid-column:span 1}
   .page-v3 .catalog__card:first-child,
   .page-v3 .catalog__card:nth-child(8n+6),
   .page-v3 .catalog__card:nth-child(8n+7),
@@ -218,14 +256,14 @@
   .page-v3 .catalog__card:nth-child(8n+13){grid-column:span 2}
 }
 
-/* ── 1 колонка: большие 4:5, маленькие 16:10 ── */
+/* ── 1 колонка: пропорция по слоту ── */
 @media (max-width:599px){
   .page-v3 .catalog__grid{grid-template-columns:minmax(0,1fr);margin-top:40px}
-  .page-v3 .catalog__card:first-child .catalog__poster,
-  .page-v3 .catalog__card:nth-child(8n+6) .catalog__poster,
-  .page-v3 .catalog__card:nth-child(8n+7) .catalog__poster,
-  .page-v3 .catalog__card:nth-child(8n+12) .catalog__poster,
-  .page-v3 .catalog__card:nth-child(8n+13) .catalog__poster{aspect-ratio:4/5}
+  .page-v3 .catalog__card{grid-column:span 1}
+}
+/* ниже 900 большая — обычная карточка с обложкой 4:5 */
+@media (max-width:899px){
+  .page-v3 .catalog__card:first-child .catalog__poster{aspect-ratio:4/5}
 }
 
 @media (prefers-reduced-motion:reduce){
